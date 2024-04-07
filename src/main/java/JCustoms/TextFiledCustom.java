@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package JCustoms;
 
-/**
- *
- * @author kaiqu
- */
-public class TextFiledCustom {
+import javax.swing.JTextField;
+
+public class TextFiledCustom extends JTextField{
     
 }
