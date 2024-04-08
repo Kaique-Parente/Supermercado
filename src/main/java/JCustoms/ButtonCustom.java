@@ -1,13 +1,11 @@
 package JCustoms;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addMouseListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
-import org.w3c.dom.events.MouseEvent;
 
 public class ButtonCustom extends JButton {
 
