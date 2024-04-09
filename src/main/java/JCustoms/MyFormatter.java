@@ -30,7 +30,7 @@ public class MyFormatter extends JPanel {
     public MyFormatter() {
         // Configuração do campo de CPF
         try {
-            MaskFormatter formatter = new MaskFormatter("##/##/####");
+            MaskFormatter formatter = new MaskFormatter("A##-A#A#");
             formatter.setPlaceholderCharacter('_'); // Caractere de preenchimento
             campoCPF = new JFormattedTextField(formatter);
             campoCPF.setValue(""); // Valor inicial (opcional)
