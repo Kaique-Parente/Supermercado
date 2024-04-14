@@ -5,17 +5,20 @@
 package JFrame;
 
 import java.awt.Color;
+import javax.swing.UIManager;
 
 /**
  *
- * @author kaique.psilva12
+ * @author kaiqu
  */
-public class TelaVendas extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form TelaVendas
+     * Creates new form NewJFrame
      */
-    public TelaVendas() {
+    public TelaPrincipal() {
+        //Aba selecionada cor
+        UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
         initComponents();
     }
 
@@ -28,7 +31,7 @@ public class TelaVendas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         tVendas = new javax.swing.JPanel();
         tProdutos = new javax.swing.JPanel();
         tClientes = new javax.swing.JPanel();
@@ -36,32 +39,43 @@ public class TelaVendas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(134, 83, 83));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTabbedPane1.setOpaque(true);
-        jTabbedPane1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jTabbedPane1FocusGained(evt);
+        jTabbedPane2.setBackground(new java.awt.Color(134, 83, 83));
+        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane2.setFocusable(false);
+        jTabbedPane2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jTabbedPane2.setOpaque(true);
+        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane2MouseClicked(evt);
             }
         });
 
         tVendas.setBackground(new java.awt.Color(255, 255, 255));
-        tVendas.setForeground(new java.awt.Color(255, 153, 0));
+        tVendas.setForeground(new java.awt.Color(255, 51, 51));
+        tVendas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tVendasFocusGained(evt);
+            }
+        });
+        tVendas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tVendasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
         tVendasLayout.setHorizontalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         tVendasLayout.setVerticalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Vendas", tVendas);
+        jTabbedPane2.addTab("    Vendas    ", tVendas);
 
         tProdutos.setForeground(new java.awt.Color(102, 0, 255));
         tProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,14 +88,14 @@ public class TelaVendas extends javax.swing.JFrame {
         tProdutos.setLayout(tProdutosLayout);
         tProdutosLayout.setHorizontalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         tProdutosLayout.setVerticalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Produtos", tProdutos);
+        jTabbedPane2.addTab("Produtos", tProdutos);
 
         tClientes.setForeground(new java.awt.Color(102, 102, 255));
 
@@ -89,14 +103,14 @@ public class TelaVendas extends javax.swing.JFrame {
         tClientes.setLayout(tClientesLayout);
         tClientesLayout.setHorizontalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         tClientesLayout.setVerticalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Clientes", tClientes);
+        jTabbedPane2.addTab("Clientes", tClientes);
 
         tRelatorios.setForeground(new java.awt.Color(153, 0, 0));
 
@@ -104,36 +118,47 @@ public class TelaVendas extends javax.swing.JFrame {
         tRelatorios.setLayout(tRelatoriosLayout);
         tRelatoriosLayout.setHorizontalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 642, Short.MAX_VALUE)
         );
         tRelatoriosLayout.setVerticalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
+            .addGap(0, 478, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Relátorios", tRelatorios);
+        jTabbedPane2.addTab("Relátorios", tRelatorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTabbedPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane1FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTabbedPane1FocusGained
 
     private void tProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tProdutosMouseClicked
         //tProdutos.setBackground(Color.yellow);
     }//GEN-LAST:event_tProdutosMouseClicked
+
+    private void tVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tVendasMouseClicked
+       
+    }//GEN-LAST:event_tVendasMouseClicked
+
+    private void tVendasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tVendasFocusGained
+        
+    }//GEN-LAST:event_tVendasFocusGained
+
+    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+      
+    }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,32 +171,33 @@ public class TelaVendas extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Windowss".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaVendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaVendas().setVisible(true);
+                new TelaPrincipal().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
