@@ -4,9 +4,11 @@
  */
 package JFrame;
 
+import java.awt.Color;
+
 /**
  *
- * @author kaiqu
+ * @author kaique.psilva12
  */
 public class TelaVendas extends javax.swing.JFrame {
 
@@ -26,26 +28,112 @@ public class TelaVendas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menu1 = new JCustoms.Menu();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tVendas = new javax.swing.JPanel();
+        tProdutos = new javax.swing.JPanel();
+        tClientes = new javax.swing.JPanel();
+        tRelatorios = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTabbedPane1.setBackground(new java.awt.Color(134, 83, 83));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTabbedPane1.setOpaque(true);
+        jTabbedPane1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTabbedPane1FocusGained(evt);
+            }
+        });
+
+        tVendas.setBackground(new java.awt.Color(255, 255, 255));
+        tVendas.setForeground(new java.awt.Color(255, 153, 0));
+
+        javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
+        tVendas.setLayout(tVendasLayout);
+        tVendasLayout.setHorizontalGroup(
+            tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+        );
+        tVendasLayout.setVerticalGroup(
+            tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Vendas", tVendas);
+
+        tProdutos.setForeground(new java.awt.Color(102, 0, 255));
+        tProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tProdutosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tProdutosLayout = new javax.swing.GroupLayout(tProdutos);
+        tProdutos.setLayout(tProdutosLayout);
+        tProdutosLayout.setHorizontalGroup(
+            tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+        );
+        tProdutosLayout.setVerticalGroup(
+            tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Produtos", tProdutos);
+
+        tClientes.setForeground(new java.awt.Color(102, 102, 255));
+
+        javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
+        tClientes.setLayout(tClientesLayout);
+        tClientesLayout.setHorizontalGroup(
+            tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+        );
+        tClientesLayout.setVerticalGroup(
+            tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Clientes", tClientes);
+
+        tRelatorios.setForeground(new java.awt.Color(153, 0, 0));
+
+        javax.swing.GroupLayout tRelatoriosLayout = new javax.swing.GroupLayout(tRelatorios);
+        tRelatorios.setLayout(tRelatoriosLayout);
+        tRelatoriosLayout.setHorizontalGroup(
+            tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 572, Short.MAX_VALUE)
+        );
+        tRelatoriosLayout.setVerticalGroup(
+            tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Relátorios", tRelatorios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(630, 630, 630))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTabbedPane1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane1FocusGained
+
+    private void tProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tProdutosMouseClicked
+        //tProdutos.setBackground(Color.yellow);
+    }//GEN-LAST:event_tProdutosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -58,7 +146,7 @@ public class TelaVendas extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -83,6 +171,10 @@ public class TelaVendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JCustoms.Menu menu1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel tClientes;
+    private javax.swing.JPanel tProdutos;
+    private javax.swing.JPanel tRelatorios;
+    private javax.swing.JPanel tVendas;
     // End of variables declaration//GEN-END:variables
 }
