@@ -5,8 +5,11 @@
 package JFrame;
 
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,14 +45,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnConfirmar = new JCustoms.ButtonCustom();
-        btnCancelar = new JCustoms.ButtonCustom();
+        btnCancelarVenda = new JCustoms.ButtonCustom();
         txtTotalVenda = new JCustoms.TextFiledCustom();
         txtCliente = new JCustoms.TextFiledCustom();
         tProdutos = new javax.swing.JPanel();
         txtPesquisarProdutos = new JCustoms.PesquisarCustom();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTabelaProduto = new javax.swing.JTable();
+        tblProdutos2 = new javax.swing.JTable();
         btnNovoProduto = new JCustoms.ButtonCustom();
         btnVisualizarProduto = new JCustoms.ButtonCustom();
         btnExcluirProduto = new JCustoms.ButtonCustom();
@@ -166,15 +169,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setBorderColor(java.awt.Color.red);
-        btnCancelar.setBorderPainted(false);
-        btnCancelar.setColorClick(new java.awt.Color(255, 100, 100));
-        btnCancelar.setColorOver(new java.awt.Color(255, 80, 80));
-        btnCancelar.setFocusPainted(false);
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnCancelar.setRadius(15);
+        btnCancelarVenda.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarVenda.setText("Cancelar");
+        btnCancelarVenda.setBorderColor(java.awt.Color.red);
+        btnCancelarVenda.setBorderPainted(false);
+        btnCancelarVenda.setColorClick(new java.awt.Color(255, 100, 100));
+        btnCancelarVenda.setColorOver(new java.awt.Color(255, 80, 80));
+        btnCancelarVenda.setFocusPainted(false);
+        btnCancelarVenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCancelarVenda.setRadius(15);
 
         txtTotalVenda.setForeground(new java.awt.Color(0, 0, 0));
         txtTotalVenda.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -205,7 +208,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
                 .addGap(152, 152, 152)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
@@ -241,7 +244,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
         );
@@ -266,30 +269,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jScrollPane2.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTabelaProduto.setAutoCreateRowSorter(true);
-        jTabelaProduto.setBackground(new java.awt.Color(81, 0, 42));
-        jTabelaProduto.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTabelaProduto.setForeground(new java.awt.Color(255, 255, 255));
-        jTabelaProduto.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos2.setAutoCreateRowSorter(true);
+        tblProdutos2.setBackground(new java.awt.Color(81, 0, 42));
+        tblProdutos2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblProdutos2.setForeground(new java.awt.Color(255, 255, 255));
+        tblProdutos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Nome", "Marca", "Categoria", "Valor", "Quantidade", "Validade", "Status"
             }
-        ));
-        jTabelaProduto.setFillsViewportHeight(true);
-        jTabelaProduto.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        jTabelaProduto.setRowHeight(20);
-        jTabelaProduto.setShowGrid(true);
-        jScrollPane2.setViewportView(jTabelaProduto);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblProdutos2.setFillsViewportHeight(true);
+        tblProdutos2.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblProdutos2.setRowHeight(20);
+        tblProdutos2.setShowGrid(true);
+        jScrollPane2.setViewportView(tblProdutos2);
 
         btnNovoProduto.setBackground(new java.awt.Color(174, 107, 107));
         btnNovoProduto.setForeground(new java.awt.Color(0, 0, 0));
@@ -300,6 +311,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnNovoProduto.setColorOver(new java.awt.Color(255, 80, 80));
         btnNovoProduto.setFocusPainted(false);
         btnNovoProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnNovoProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoProdutoActionPerformed(evt);
+            }
+        });
 
         btnVisualizarProduto.setForeground(new java.awt.Color(0, 0, 0));
         btnVisualizarProduto.setText("VIsualizar");
@@ -706,6 +722,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarProdutos1ActionPerformed
 
+    private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
+        Produtos np = new Produtos();
+        np.setVisible(true);
+    }//GEN-LAST:event_btnNovoProdutoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -740,11 +761,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 new TelaPrincipal().setVisible(true);
             }
         });
+        
+        
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JCustoms.ButtonCustom btnBuscar;
-    private JCustoms.ButtonCustom btnCancelar;
+    private JCustoms.ButtonCustom btnCancelarVenda;
     private JCustoms.ButtonCustom btnConfirmar;
     private JCustoms.ButtonCustom btnDetalhes;
     private JCustoms.ButtonCustom btnEditarCliente;
@@ -770,7 +795,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTabelaProduto;
     private javax.swing.JTable jTabelaProduto1;
     private javax.swing.JTable jTabelaRelatorio;
     private javax.swing.JTable jTabelaVenda;
@@ -778,6 +802,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
     private javax.swing.JPanel tVendas;
+    private javax.swing.JTable tblProdutos2;
     private JCustoms.TextFiledCustom txtCliente;
     private JCustoms.TextFiledCustom txtDataInicio;
     private JCustoms.TextFiledCustom txtDataTermino;

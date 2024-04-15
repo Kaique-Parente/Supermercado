@@ -30,7 +30,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTabelaProduto2 = new javax.swing.JTable();
-        btnNovoCliente2 = new JCustoms.ButtonCustom();
+        btnCancelar = new JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(720, 550));
@@ -85,18 +85,18 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         jTabelaProduto2.setShowGrid(true);
         jScrollPane4.setViewportView(jTabelaProduto2);
 
-        btnNovoCliente2.setBackground(new java.awt.Color(174, 107, 107));
-        btnNovoCliente2.setForeground(new java.awt.Color(0, 0, 0));
-        btnNovoCliente2.setText("Voltar");
-        btnNovoCliente2.setBorderColor(java.awt.Color.red);
-        btnNovoCliente2.setColor(new java.awt.Color(174, 107, 107));
-        btnNovoCliente2.setColorClick(new java.awt.Color(255, 100, 100));
-        btnNovoCliente2.setColorOver(new java.awt.Color(255, 80, 80));
-        btnNovoCliente2.setFocusPainted(false);
-        btnNovoCliente2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnNovoCliente2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancelar.setBackground(new java.awt.Color(174, 107, 107));
+        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setText("Voltar");
+        btnCancelar.setBorderColor(java.awt.Color.red);
+        btnCancelar.setColor(new java.awt.Color(174, 107, 107));
+        btnCancelar.setColorClick(new java.awt.Color(255, 100, 100));
+        btnCancelar.setColorOver(new java.awt.Color(255, 80, 80));
+        btnCancelar.setFocusPainted(false);
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoCliente2ActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
             }
         });
 
@@ -108,7 +108,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNovoCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -119,16 +119,16 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNovoCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoCliente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoCliente2ActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
-    }//GEN-LAST:event_btnNovoCliente2ActionPerformed
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,7 +167,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private JCustoms.ButtonCustom btnNovoCliente2;
+    private JCustoms.ButtonCustom btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTabelaProduto2;

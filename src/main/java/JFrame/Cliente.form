@@ -464,6 +464,9 @@
             </Property>
             <Property name="radius" type="int" value="15"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="JCustoms.ButtonCustom" name="btnConfirmarCliente">
           <Properties>

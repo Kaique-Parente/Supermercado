@@ -4,7 +4,13 @@
  */
 package JFrame;
 
+import com.mycompany.supermercado.models.Produto;
+import com.mycompany.supermercado.utils.TableProdutosUtil;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Produtos extends javax.swing.JFrame {
 
@@ -31,21 +37,21 @@ public class Produtos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cbEstadoCivil = new javax.swing.JComboBox<>();
+        cbCategoriaProduto = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lbValor = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtNomeProduto = new JCustoms.TextFiledCustom();
-        txtMarca = new JCustoms.TextFiledCustom();
-        txtValor = new JCustoms.TextFiledCustom();
+        txtMarcaProduto = new JCustoms.TextFiledCustom();
+        txtValorProduto = new JCustoms.TextFiledCustom();
         jPanel5 = new javax.swing.JPanel();
         txtCodBarras = new JCustoms.FormatterCodBarras();
-        txtDataNascimento = new JCustoms.MyFormatterDate();
+        txtDataValidade = new JCustoms.MyFormatterDate();
         jLabel15 = new javax.swing.JLabel();
         btnCancelarProduto = new JCustoms.ButtonCustom();
         btnConfirmarProduto = new JCustoms.ButtonCustom();
-        myFormatterEmpty1 = new JCustoms.MyFormatterEmpty();
+        txtQuantidadeProduto = new JCustoms.MyFormatterEmpty();
 
         btnConfirmar.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmar.setText("Confirmar");
@@ -101,13 +107,18 @@ public class Produtos extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Marca");
 
-        cbEstadoCivil.setBackground(new java.awt.Color(255, 255, 255));
-        cbEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------", "Açougue", "Padaria", "Horti-Fruti", "Higiente Pessoal", "Produtos de Limpeza", "Bebidas", "Pet  Shop" }));
-        cbEstadoCivil.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        cbEstadoCivil.addActionListener(new java.awt.event.ActionListener() {
+        cbCategoriaProduto.setBackground(new java.awt.Color(255, 255, 255));
+        cbCategoriaProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbCategoriaProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------", "Açougue", "Padaria", "Horti-Fruti", "Higiente Pessoal", "Produtos de Limpeza", "Bebidas", "Pet  Shop" }));
+        cbCategoriaProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbCategoriaProduto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbCategoriaProdutoFocusLost(evt);
+            }
+        });
+        cbCategoriaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstadoCivilActionPerformed(evt);
+                cbCategoriaProdutoActionPerformed(evt);
             }
         });
 
@@ -115,9 +126,9 @@ public class Produtos extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Categoria");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Valor");
+        lbValor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbValor.setForeground(new java.awt.Color(0, 0, 0));
+        lbValor.setText("Valor");
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -132,8 +143,8 @@ public class Produtos extends javax.swing.JFrame {
         txtCodBarras.setBackground(new java.awt.Color(255, 255, 255));
         txtCodBarras.setForeground(new java.awt.Color(0, 0, 0));
 
-        txtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
-        txtDataNascimento.setForeground(new java.awt.Color(0, 0, 0));
+        txtDataValidade.setBackground(new java.awt.Color(255, 255, 255));
+        txtDataValidade.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -148,6 +159,11 @@ public class Produtos extends javax.swing.JFrame {
         btnCancelarProduto.setFocusPainted(false);
         btnCancelarProduto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCancelarProduto.setRadius(15);
+        btnCancelarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarProdutoActionPerformed(evt);
+            }
+        });
 
         btnConfirmarProduto.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmarProduto.setText("Confirmar");
@@ -164,8 +180,8 @@ public class Produtos extends javax.swing.JFrame {
             }
         });
 
-        myFormatterEmpty1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatterEmpty1.setForeground(new java.awt.Color(0, 0, 0));
+        txtQuantidadeProduto.setBackground(new java.awt.Color(255, 255, 255));
+        txtQuantidadeProduto.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -182,7 +198,7 @@ public class Produtos extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(103, 103, 103))
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(txtMarcaProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,21 +216,21 @@ public class Produtos extends javax.swing.JFrame {
                                             .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel14))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(txtQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
-                                            .addComponent(cbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(cbCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                            .addComponent(txtValorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lbValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -238,22 +254,22 @@ public class Produtos extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtMarcaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
+                                .addComponent(lbValor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtValorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -291,17 +307,102 @@ public class Produtos extends javax.swing.JFrame {
        dispose();
     }//GEN-LAST:event_buttonCustom2ActionPerformed
 
-    private void cbEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoCivilActionPerformed
+    private void cbCategoriaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCategoriaProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbEstadoCivilActionPerformed
+    }//GEN-LAST:event_cbCategoriaProdutoActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarProdutoActionPerformed
+       
+        //Validar Código de Barras
+        long codBarras = 0;
+        if(txtCodBarras.getCPF().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Digite o Código de Barras!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+             codBarras = Long.parseLong(txtCodBarras.getCPF());
+        }
+        
+        //Validar Nome
+        String nome = "";
+        if(txtNomeProduto.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Digite o Nome do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }else {
+             nome = txtNomeProduto.getText();
+        }
+        
+        //Marca
+        String marca = txtMarcaProduto.getText();
+        
+        //Validar Categoria
+        String categoria = "";
+        if(cbCategoriaProduto.getSelectedIndex() == 0) {
+             JOptionPane.showMessageDialog(rootPane, "Selecione a Categoria!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+            categoria = cbCategoriaProduto.getSelectedItem().toString();
+        }
+        
+        //Validar Valor
+        double valor = 0.0;
+        if(txtValorProduto.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Digite o valor do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }else {
+            valor = Double.parseDouble(txtValorProduto.getText());
+        }
+        
+        //Validade
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+        LocalDate validade = null;
+        if(txtDataValidade.getCPF().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Digite a validade do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try{
+                validade = LocalDate.parse(txtDataValidade.getCPF(), fm2);
+                System.out.println(validade);
+            }catch(DateTimeParseException e){
+                JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
 
+        //Quantidade
+        int quantidade = 0;
+        if(txtQuantidadeProduto.getCPF().equals("")){
+            quantidade = 0;
+        }else {
+            quantidade = Integer.parseInt(txtQuantidadeProduto.getCPF());
+        }
+        
+        //Status
+        boolean status = true;
+        
+        Produto p = new Produto(codBarras, nome, marca, categoria, valor, validade, quantidade, status);
+        
+        //Tabela
+        
+        
+        
+       
+        
+       
+        
     }//GEN-LAST:event_btnConfirmarProdutoActionPerformed
+
+    private void btnCancelarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProdutoActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarProdutoActionPerformed
+
+    private void cbCategoriaProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbCategoriaProdutoFocusLost
+
+        String categoria = cbCategoriaProduto.getSelectedItem().toString();
+        
+        if(categoria.equals("Açougue") || categoria.equals("Padaria") || categoria.equals("Horti-Fruti")){
+            lbValor.setText("Valor por KG:");
+        } else {
+            lbValor.setText("Valor por Unidade:");
+        }
+    }//GEN-LAST:event_cbCategoriaProdutoFocusLost
 
     /**
      * @param args the command line arguments
@@ -342,10 +443,9 @@ public class Produtos extends javax.swing.JFrame {
     private JCustoms.ButtonCustom btnCancelarProduto;
     private JCustoms.ButtonCustom btnConfirmar;
     private JCustoms.ButtonCustom btnConfirmarProduto;
-    private javax.swing.JComboBox<String> cbEstadoCivil;
+    private javax.swing.JComboBox<String> cbCategoriaProduto;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -355,11 +455,12 @@ public class Produtos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private JCustoms.MyFormatterEmpty myFormatterEmpty1;
+    private javax.swing.JLabel lbValor;
     private JCustoms.FormatterCodBarras txtCodBarras;
-    private JCustoms.MyFormatterDate txtDataNascimento;
-    private JCustoms.TextFiledCustom txtMarca;
+    private JCustoms.MyFormatterDate txtDataValidade;
+    private JCustoms.TextFiledCustom txtMarcaProduto;
     private JCustoms.TextFiledCustom txtNomeProduto;
-    private JCustoms.TextFiledCustom txtValor;
+    private JCustoms.MyFormatterEmpty txtQuantidadeProduto;
+    private JCustoms.TextFiledCustom txtValorProduto;
     // End of variables declaration//GEN-END:variables
 }

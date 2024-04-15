@@ -156,6 +156,11 @@ public class Cliente extends javax.swing.JFrame {
         btnCancelarCliente.setFocusPainted(false);
         btnCancelarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCancelarCliente.setRadius(15);
+        btnCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarClienteActionPerformed(evt);
+            }
+        });
 
         btnConfirmarCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmarCliente.setText("Confirmar");
@@ -349,6 +354,10 @@ public class Cliente extends javax.swing.JFrame {
     private void btnConfirmarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
+
+    private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarClienteActionPerformed
 
     /**
      * @param args the command line arguments
