@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package JCustoms;
 
 import java.awt.Color;
@@ -19,18 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-/**
- *
- * @author kaiqu
- */
-public class MyFormatter extends JPanel {
 
+public class FormatterTelefone extends JPanel {
+    
     private JFormattedTextField campoCPF;
 
-    public MyFormatter() {
+    public FormatterTelefone() {
         // Configuração do campo de CPF
         try {
-            MaskFormatter formatter = new MaskFormatter("###.###.###-##");
+            MaskFormatter formatter = new MaskFormatter("(##)#####-####");
             formatter.setPlaceholderCharacter('_'); // Caractere de preenchimento
             campoCPF = new JFormattedTextField(formatter);
             campoCPF.setValue(""); // Valor inicial (opcional)
