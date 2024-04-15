@@ -95,7 +95,9 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="buttonCustom1" min="-2" pref="149" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="buttonCustom2" min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -146,7 +148,10 @@
                       <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  <Component id="buttonCustom1" min="-2" pref="47" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="buttonCustom1" pref="47" max="32767" attributes="0"/>
+                      <Component id="buttonCustom2" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace min="0" pref="113" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -355,13 +360,18 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
             <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+              <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
             <Property name="radius" type="int" value="15"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCustom1ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="JCustoms.ButtonCustom" name="buttonCustom2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="buttonCustom2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

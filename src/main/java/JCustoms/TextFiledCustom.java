@@ -26,7 +26,7 @@ public class TextFiledCustom extends JTextField {
     private int round = 15;
 
     public TextFiledCustom() {
-        border = new Border(10);
+        border = new Border(8);
         border.setRound(round);
         setBorder(border);
         setOpaque(false);
@@ -35,13 +35,13 @@ public class TextFiledCustom extends JTextField {
         addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent fe) {
-                border.setColor(new Color(128, 189, 255));
+                border.setColor(new Color(0, 56, 80));
                 repaint();
             }
 
             @Override
             public void focusLost(FocusEvent fe) {
-                border.setColor(new Color(206, 212, 218));
+                border.setColor(new Color(0, 56, 64));
                 repaint();
             }
         });
@@ -73,8 +73,8 @@ public class TextFiledCustom extends JTextField {
             this.color = color;
         }
 
-        private Color focusColor = new Color(128, 189, 255);
-        private Color color = new Color(206, 212, 218);
+        private Color focusColor = new Color(0, 56, 80);
+        private Color color = new Color(0, 56, 64);
         private int round;
 
         public Border(int border) {

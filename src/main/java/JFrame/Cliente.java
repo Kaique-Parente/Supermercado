@@ -48,6 +48,7 @@ public class Cliente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtBairro = new JCustoms.TextFiledCustom();
         buttonCustom1 = new JCustoms.ButtonCustom();
+        buttonCustom2 = new JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,13 +127,15 @@ public class Cliente extends javax.swing.JFrame {
 
         buttonCustom1.setForeground(new java.awt.Color(0, 0, 0));
         buttonCustom1.setText("Cancelar");
-        buttonCustom1.setBorderColor(new java.awt.Color(255, 255, 255));
+        buttonCustom1.setBorderColor(new java.awt.Color(102, 102, 102));
         buttonCustom1.setRadius(15);
         buttonCustom1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonCustom1ActionPerformed(evt);
             }
         });
+
+        buttonCustom2.setText("buttonCustom2");
 
         javax.swing.GroupLayout jpFundoLayout = new javax.swing.GroupLayout(jpFundo);
         jpFundo.setLayout(jpFundoLayout);
@@ -178,7 +181,9 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFundoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(228, 228, 228))
+                .addGap(30, 30, 30)
+                .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         jpFundoLayout.setVerticalGroup(
             jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +224,9 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
-                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(buttonCustom2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 113, Short.MAX_VALUE))
         );
 
@@ -283,6 +290,7 @@ public class Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
     private JCustoms.ButtonCustom buttonCustom1;
+    private JCustoms.ButtonCustom buttonCustom2;
     private javax.swing.JComboBox<String> cbEstadoCivil;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JLabel jLabel1;

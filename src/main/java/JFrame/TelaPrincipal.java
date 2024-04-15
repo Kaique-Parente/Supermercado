@@ -33,11 +33,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         tVendas = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        pesquisarCustom2 = new JCustoms.PesquisarCustom();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        pesquisarCustom1 = new JCustoms.PesquisarCustom();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        buttonCustom1 = new JCustoms.ButtonCustom();
+        buttonCustom2 = new JCustoms.ButtonCustom();
+        textFiledCustom5 = new JCustoms.TextFiledCustom();
+        textFiledCustom3 = new JCustoms.TextFiledCustom();
+        myFormatterEmpty1 = new JCustoms.MyFormatterEmpty();
         tProdutos = new javax.swing.JPanel();
+        pesquisarCustom3 = new JCustoms.PesquisarCustom();
         tClientes = new javax.swing.JPanel();
+        pesquisarCustom4 = new JCustoms.PesquisarCustom();
         tRelatorios = new javax.swing.JPanel();
+        pesquisarCustom5 = new JCustoms.PesquisarCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,33 +79,146 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Venda");
 
-        pesquisarCustom2.setForeground(new java.awt.Color(0, 0, 0));
-        pesquisarCustom2.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Cliente");
+
+        pesquisarCustom1.setForeground(new java.awt.Color(0, 0, 0));
+        pesquisarCustom1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        pesquisarCustom1.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+
+        jScrollPane1.setBackground(new java.awt.Color(51, 51, 51));
+
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.setBackground(new java.awt.Color(81, 0, 42));
+        jTable1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        jTable1.setRowHeight(20);
+        jTable1.setRowMargin(5);
+        jTable1.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Quantidade");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("R$");
+
+        buttonCustom1.setForeground(new java.awt.Color(0, 0, 0));
+        buttonCustom1.setText("Confirmar");
+        buttonCustom1.setBorderColor(java.awt.Color.blue);
+        buttonCustom1.setBorderPainted(false);
+        buttonCustom1.setColorClick(new java.awt.Color(101, 101, 252));
+        buttonCustom1.setColorOver(new java.awt.Color(101, 101, 252));
+        buttonCustom1.setFocusPainted(false);
+        buttonCustom1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        buttonCustom1.setRadius(15);
+
+        buttonCustom2.setForeground(new java.awt.Color(0, 0, 0));
+        buttonCustom2.setText("Cancelar");
+        buttonCustom2.setBorderColor(java.awt.Color.red);
+        buttonCustom2.setBorderPainted(false);
+        buttonCustom2.setColorClick(new java.awt.Color(255, 100, 100));
+        buttonCustom2.setColorOver(new java.awt.Color(255, 80, 80));
+        buttonCustom2.setFocusPainted(false);
+        buttonCustom2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        buttonCustom2.setRadius(15);
+
+        textFiledCustom5.setForeground(new java.awt.Color(0, 0, 0));
+        textFiledCustom5.setCaretColor(new java.awt.Color(0, 0, 0));
+        textFiledCustom5.setSelectionColor(new java.awt.Color(108, 56, 84));
+
+        textFiledCustom3.setForeground(new java.awt.Color(0, 0, 0));
+        textFiledCustom3.setCaretColor(new java.awt.Color(0, 0, 0));
+        textFiledCustom3.setSelectionColor(new java.awt.Color(108, 56, 84));
+
+        myFormatterEmpty1.setBackground(new java.awt.Color(255, 255, 255));
+        myFormatterEmpty1.setForeground(new java.awt.Color(18, 30, 49));
 
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
         tVendasLayout.setHorizontalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tVendasLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(tVendasLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFiledCustom3, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
+                    .addComponent(pesquisarCustom1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tVendasLayout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(jButton1))
-                    .addGroup(tVendasLayout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(pesquisarCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(183, Short.MAX_VALUE))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFiledCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         tVendasLayout.setVerticalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tVendasLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(pesquisarCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
-                .addComponent(jButton1)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFiledCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(pesquisarCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFiledCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         jTabbedPane2.addTab("    Vendas    ", tVendas);
@@ -104,45 +230,75 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        pesquisarCustom3.setForeground(new java.awt.Color(0, 0, 0));
+        pesquisarCustom3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        pesquisarCustom3.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+
         javax.swing.GroupLayout tProdutosLayout = new javax.swing.GroupLayout(tProdutos);
         tProdutos.setLayout(tProdutosLayout);
         tProdutosLayout.setHorizontalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(tProdutosLayout.createSequentialGroup()
+                .addContainerGap(428, Short.MAX_VALUE)
+                .addComponent(pesquisarCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         tProdutosLayout.setVerticalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(tProdutosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pesquisarCustom3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(591, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Produtos", tProdutos);
 
         tClientes.setForeground(new java.awt.Color(102, 102, 255));
 
+        pesquisarCustom4.setForeground(new java.awt.Color(0, 0, 0));
+        pesquisarCustom4.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        pesquisarCustom4.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+
         javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
         tClientes.setLayout(tClientesLayout);
         tClientesLayout.setHorizontalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(tClientesLayout.createSequentialGroup()
+                .addContainerGap(428, Short.MAX_VALUE)
+                .addComponent(pesquisarCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         tClientesLayout.setVerticalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(tClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pesquisarCustom4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(591, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Clientes", tClientes);
 
         tRelatorios.setForeground(new java.awt.Color(153, 0, 0));
 
+        pesquisarCustom5.setForeground(new java.awt.Color(0, 0, 0));
+        pesquisarCustom5.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        pesquisarCustom5.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+
         javax.swing.GroupLayout tRelatoriosLayout = new javax.swing.GroupLayout(tRelatorios);
         tRelatorios.setLayout(tRelatoriosLayout);
         tRelatoriosLayout.setHorizontalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(tRelatoriosLayout.createSequentialGroup()
+                .addContainerGap(428, Short.MAX_VALUE)
+                .addComponent(pesquisarCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         tRelatoriosLayout.setVerticalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(tRelatoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pesquisarCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(591, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Relátorios", tRelatorios);
@@ -155,9 +311,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jTabbedPane2)
         );
 
         pack();
@@ -217,12 +371,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private JCustoms.ButtonCustom buttonCustom1;
+    private JCustoms.ButtonCustom buttonCustom2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private JCustoms.PesquisarCustom pesquisarCustom2;
+    private javax.swing.JTable jTable1;
+    private JCustoms.MyFormatterEmpty myFormatterEmpty1;
+    private JCustoms.PesquisarCustom pesquisarCustom1;
+    private JCustoms.PesquisarCustom pesquisarCustom3;
+    private JCustoms.PesquisarCustom pesquisarCustom4;
+    private JCustoms.PesquisarCustom pesquisarCustom5;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
     private javax.swing.JPanel tVendas;
+    private JCustoms.TextFiledCustom textFiledCustom3;
+    private JCustoms.TextFiledCustom textFiledCustom5;
     // End of variables declaration//GEN-END:variables
 }
