@@ -4,6 +4,8 @@
  */
 package JFrame;
 
+import javax.swing.JOptionPane;
+import com.mycompany.supermercado.utils.ValidarEmail;
 /**
  *
  * @author digol
@@ -47,10 +49,10 @@ public class Cliente extends javax.swing.JFrame {
         btnCancelarCliente = new JCustoms.ButtonCustom();
         btnConfirmarCliente = new JCustoms.ButtonCustom();
         jLabel11 = new javax.swing.JLabel();
-        txtDataNascimento = new JCustoms.MyFormatterDate();
         txtCpfCliente = new JCustoms.MyFormatter();
-        TxtTelefoneCliente = new JCustoms.MyFormatterTelefone();
         cbEstado = new javax.swing.JComboBox<>();
+        txtTelefone = new JCustoms.MyFormatterTelefone();
+        myFormatterDate1 = new JCustoms.MyFormatterDate();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -156,6 +158,11 @@ public class Cliente extends javax.swing.JFrame {
         btnCancelarCliente.setFocusPainted(false);
         btnCancelarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnCancelarCliente.setRadius(15);
+        btnCancelarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarClienteActionPerformed(evt);
+            }
+        });
 
         btnConfirmarCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmarCliente.setText("Confirmar");
@@ -176,14 +183,8 @@ public class Cliente extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Data de Nascimento");
 
-        txtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
-        txtDataNascimento.setForeground(new java.awt.Color(0, 0, 0));
-
         txtCpfCliente.setBackground(new java.awt.Color(255, 255, 255));
         txtCpfCliente.setForeground(new java.awt.Color(0, 0, 0));
-
-        TxtTelefoneCliente.setBackground(new java.awt.Color(255, 255, 255));
-        TxtTelefoneCliente.setForeground(new java.awt.Color(0, 0, 0));
 
         cbEstado.setBackground(new java.awt.Color(255, 255, 255));
         cbEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -194,6 +195,12 @@ public class Cliente extends javax.swing.JFrame {
                 cbEstadoActionPerformed(evt);
             }
         });
+
+        txtTelefone.setBackground(new java.awt.Color(255, 255, 255));
+        txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
+
+        myFormatterDate1.setBackground(new java.awt.Color(255, 255, 255));
+        myFormatterDate1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jpFundoLayout = new javax.swing.GroupLayout(jpFundo);
         jpFundo.setLayout(jpFundoLayout);
@@ -217,11 +224,11 @@ public class Cliente extends javax.swing.JFrame {
                                 .addComponent(txtEmailCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jpFundoLayout.createSequentialGroup()
-                                .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(myFormatterDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(140, 140, 140)))
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpFundoLayout.createSequentialGroup()
@@ -254,7 +261,7 @@ public class Cliente extends javax.swing.JFrame {
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(194, 194, 194))
                                     .addGroup(jpFundoLayout.createSequentialGroup()
-                                        .addComponent(TxtTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(62, 62, 62)
@@ -283,8 +290,8 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtTelefoneCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -316,7 +323,7 @@ public class Cliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(myFormatterDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -347,8 +354,69 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cbEstadoActionPerformed
 
     private void btnConfirmarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClienteActionPerformed
-        // TODO add your handling code here:
+        //Validar nome
+        String nome = "";
+        if (txtNomeCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite um nome", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            nome = txtNomeCliente.getText();
+        }
+        
+        //Validar CPF
+        double Cpf = 0;
+        if (txtCpfCliente.getCPF().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            Cpf = Double.parseDouble(txtCpfCliente.getCPF());
+        }
+        
+        //Validar Telefone
+        double telefone = 0;
+        if (txtTelefone.getCPF().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            telefone = Double.parseDouble(txtTelefone.getCPF());
+        }
+        
+        //validar Endereço
+        String bairro = "";
+        String rua = "";
+        if (txtRua.getText().equals("") || txtBairro.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            rua = txtRua.getText();
+            bairro = txtBairro.getText();
+        }
+
+        //Validar combo-box
+        String estado = "";
+        if (cbEstado.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            estado = cbEstado.getSelectedItem().toString();
+        }
+
+        String estCivil = "";
+        if (cbEstadoCivil.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            estCivil = cbEstadoCivil.getSelectedItem().toString();
+        }
+
+        String sexo = "";
+        if (cbSexo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } else {
+            sexo = cbSexo.getSelectedItem().toString();
+        }
+        
+        String email = ValidarEmail.validar(txtEmailCliente.getText());
+        JOptionPane.showMessageDialog(rootPane, email);
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
+
+    private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCancelarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,6 +444,7 @@ public class Cliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -387,7 +456,6 @@ public class Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private JCustoms.MyFormatterTelefone TxtTelefoneCliente;
     private JCustoms.ButtonCustom btnCancelarCliente;
     private JCustoms.ButtonCustom btnConfirmarCliente;
     private javax.swing.JComboBox<String> cbEstado;
@@ -405,11 +473,12 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jpFundo;
+    private JCustoms.MyFormatterDate myFormatterDate1;
     private JCustoms.TextFiledCustom txtBairro;
     private JCustoms.MyFormatter txtCpfCliente;
-    private JCustoms.MyFormatterDate txtDataNascimento;
     private JCustoms.TextFiledCustom txtEmailCliente;
     private JCustoms.TextFiledCustom txtNomeCliente;
     private JCustoms.TextFiledCustom txtRua;
+    private JCustoms.MyFormatterTelefone txtTelefone;
     // End of variables declaration//GEN-END:variables
 }
