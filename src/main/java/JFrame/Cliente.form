@@ -53,7 +53,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="txtRua" min="-2" pref="403" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cbEstadoCivil1" min="-2" pref="152" max="-2" attributes="0"/>
+                                  <Component id="cbEstado" min="-2" pref="152" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -61,15 +61,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="textFiledCustom1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtEmailCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNomeCliente" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="0" pref="213" max="32767" attributes="0"/>
-                                      <Component id="myFormatterDate1" max="32767" attributes="0"/>
+                                      <Component id="txtDataNascimento" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
@@ -95,16 +95,16 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Component id="buttonCustom2" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="btnCancelarCliente" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Component id="buttonCustom1" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="btnConfirmarCliente" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Component id="myFormatter1" min="-2" pref="152" max="-2" attributes="0"/>
+                                      <Component id="txtCpfCliente" min="-2" pref="152" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -113,7 +113,7 @@
                                           <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="myFormatterTelefone1" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="TxtTelefoneCliente" min="-2" pref="185" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -146,7 +146,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="6" pref="6" max="6" attributes="0"/>
-                          <Component id="txtNome" max="32767" attributes="0"/>
+                          <Component id="txtNomeCliente" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -155,8 +155,8 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="myFormatter1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="myFormatterTelefone1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtCpfCliente" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtTelefoneCliente" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -170,7 +170,7 @@
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="cbEstadoCivil" alignment="2" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="cbSexo" alignment="2" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="textFiledCustom1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmailCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -183,22 +183,22 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="txtRua" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbEstadoCivil1" alignment="2" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="cbEstado" alignment="2" min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="txtBairro" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="buttonCustom2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="buttonCustom1" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="btnCancelarCliente" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="btnConfirmarCliente" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="myFormatterDate1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDataNascimento" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="36" max="32767" attributes="0"/>
@@ -259,7 +259,7 @@
             <Property name="text" type="java.lang.String" value="Nome Completo"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtNome">
+        <Component class="JCustoms.TextFiledCustom" name="txtNomeCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -305,7 +305,7 @@
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="textFiledCustom1">
+        <Component class="JCustoms.TextFiledCustom" name="txtEmailCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -442,7 +442,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="buttonCustom2">
+        <Component class="JCustoms.ButtonCustom" name="btnCancelarCliente">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -465,7 +465,7 @@
             <Property name="radius" type="int" value="15"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="buttonCustom1">
+        <Component class="JCustoms.ButtonCustom" name="btnConfirmarCliente">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -487,6 +487,9 @@
             </Property>
             <Property name="radius" type="int" value="15"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmarClienteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -499,7 +502,7 @@
             <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterDate" name="myFormatterDate1">
+        <Component class="JCustoms.MyFormatterDate" name="txtDataNascimento">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -509,7 +512,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatter" name="myFormatter1">
+        <Component class="JCustoms.MyFormatter" name="txtCpfCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -519,7 +522,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterTelefone" name="myFormatterTelefone1">
+        <Component class="JCustoms.MyFormatterTelefone" name="TxtTelefoneCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -529,7 +532,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbEstadoCivil1">
+        <Component class="javax.swing.JComboBox" name="cbEstado">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -574,7 +577,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEstadoCivil1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEstadoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

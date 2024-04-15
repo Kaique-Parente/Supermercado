@@ -30,11 +30,11 @@ public class Cliente extends javax.swing.JFrame {
         Cabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNome = new JCustoms.TextFiledCustom();
+        txtNomeCliente = new JCustoms.TextFiledCustom();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        textFiledCustom1 = new JCustoms.TextFiledCustom();
+        txtEmailCliente = new JCustoms.TextFiledCustom();
         cbEstadoCivil = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -44,13 +44,13 @@ public class Cliente extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtBairro = new JCustoms.TextFiledCustom();
-        buttonCustom2 = new JCustoms.ButtonCustom();
-        buttonCustom1 = new JCustoms.ButtonCustom();
+        btnCancelarCliente = new JCustoms.ButtonCustom();
+        btnConfirmarCliente = new JCustoms.ButtonCustom();
         jLabel11 = new javax.swing.JLabel();
-        myFormatterDate1 = new JCustoms.MyFormatterDate();
-        myFormatter1 = new JCustoms.MyFormatter();
-        myFormatterTelefone1 = new JCustoms.MyFormatterTelefone();
-        cbEstadoCivil1 = new javax.swing.JComboBox<>();
+        txtDataNascimento = new JCustoms.MyFormatterDate();
+        txtCpfCliente = new JCustoms.MyFormatter();
+        TxtTelefoneCliente = new JCustoms.MyFormatterTelefone();
+        cbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,9 +83,9 @@ public class Cliente extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nome Completo");
 
-        txtNome.setBackground(new java.awt.Color(255, 255, 255));
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
-        txtNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNomeCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtNomeCliente.setForeground(new java.awt.Color(0, 0, 0));
+        txtNomeCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -99,8 +99,8 @@ public class Cliente extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Email");
 
-        textFiledCustom1.setBackground(new java.awt.Color(255, 255, 255));
-        textFiledCustom1.setForeground(new java.awt.Color(0, 0, 0));
+        txtEmailCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmailCliente.setForeground(new java.awt.Color(0, 0, 0));
 
         cbEstadoCivil.setBackground(new java.awt.Color(255, 255, 255));
         cbEstadoCivil.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -147,46 +147,51 @@ public class Cliente extends javax.swing.JFrame {
         txtBairro.setBackground(new java.awt.Color(255, 255, 255));
         txtBairro.setForeground(new java.awt.Color(0, 0, 0));
 
-        buttonCustom2.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCustom2.setText("Cancelar");
-        buttonCustom2.setBorderColor(java.awt.Color.red);
-        buttonCustom2.setBorderPainted(false);
-        buttonCustom2.setColorClick(new java.awt.Color(255, 100, 100));
-        buttonCustom2.setColorOver(new java.awt.Color(255, 80, 80));
-        buttonCustom2.setFocusPainted(false);
-        buttonCustom2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        buttonCustom2.setRadius(15);
+        btnCancelarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnCancelarCliente.setText("Cancelar");
+        btnCancelarCliente.setBorderColor(java.awt.Color.red);
+        btnCancelarCliente.setBorderPainted(false);
+        btnCancelarCliente.setColorClick(new java.awt.Color(255, 100, 100));
+        btnCancelarCliente.setColorOver(new java.awt.Color(255, 80, 80));
+        btnCancelarCliente.setFocusPainted(false);
+        btnCancelarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCancelarCliente.setRadius(15);
 
-        buttonCustom1.setForeground(new java.awt.Color(0, 0, 0));
-        buttonCustom1.setText("Confirmar");
-        buttonCustom1.setBorderColor(java.awt.Color.blue);
-        buttonCustom1.setBorderPainted(false);
-        buttonCustom1.setColorClick(new java.awt.Color(101, 101, 252));
-        buttonCustom1.setColorOver(new java.awt.Color(101, 101, 252));
-        buttonCustom1.setFocusPainted(false);
-        buttonCustom1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        buttonCustom1.setRadius(15);
+        btnConfirmarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnConfirmarCliente.setText("Confirmar");
+        btnConfirmarCliente.setBorderColor(java.awt.Color.blue);
+        btnConfirmarCliente.setBorderPainted(false);
+        btnConfirmarCliente.setColorClick(new java.awt.Color(101, 101, 252));
+        btnConfirmarCliente.setColorOver(new java.awt.Color(101, 101, 252));
+        btnConfirmarCliente.setFocusPainted(false);
+        btnConfirmarCliente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnConfirmarCliente.setRadius(15);
+        btnConfirmarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarClienteActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Data de Nascimento");
 
-        myFormatterDate1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatterDate1.setForeground(new java.awt.Color(0, 0, 0));
+        txtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
+        txtDataNascimento.setForeground(new java.awt.Color(0, 0, 0));
 
-        myFormatter1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatter1.setForeground(new java.awt.Color(0, 0, 0));
+        txtCpfCliente.setBackground(new java.awt.Color(255, 255, 255));
+        txtCpfCliente.setForeground(new java.awt.Color(0, 0, 0));
 
-        myFormatterTelefone1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatterTelefone1.setForeground(new java.awt.Color(0, 0, 0));
+        TxtTelefoneCliente.setBackground(new java.awt.Color(255, 255, 255));
+        TxtTelefoneCliente.setForeground(new java.awt.Color(0, 0, 0));
 
-        cbEstadoCivil1.setBackground(new java.awt.Color(255, 255, 255));
-        cbEstadoCivil1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbEstadoCivil1.setForeground(new java.awt.Color(0, 0, 0));
-        cbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
-        cbEstadoCivil1.addActionListener(new java.awt.event.ActionListener() {
+        cbEstado.setBackground(new java.awt.Color(255, 255, 255));
+        cbEstado.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cbEstado.setForeground(new java.awt.Color(0, 0, 0));
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA)", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        cbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstadoCivil1ActionPerformed(evt);
+                cbEstadoActionPerformed(evt);
             }
         });
 
@@ -204,19 +209,19 @@ public class Cliente extends javax.swing.JFrame {
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textFiledCustom1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtEmailCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                                    .addComponent(myFormatterDate1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(140, 140, 140)))
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpFundoLayout.createSequentialGroup()
@@ -234,22 +239,22 @@ public class Cliente extends javax.swing.JFrame {
                                         .addGap(24, 24, 24))))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
-                                .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
-                                .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnConfirmarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(myFormatter1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpFundoLayout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGap(194, 194, 194))
                                     .addGroup(jpFundoLayout.createSequentialGroup()
-                                        .addComponent(myFormatterTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TxtTelefoneCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(62, 62, 62)
@@ -271,15 +276,15 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(6, 6, 6)
-                        .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(myFormatter1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myFormatterTelefone1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtTelefoneCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -289,7 +294,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cbEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFiledCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmailCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -299,19 +304,19 @@ public class Cliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonCustom1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConfirmarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(myFormatterDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -337,9 +342,13 @@ public class Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSexoActionPerformed
 
-    private void cbEstadoCivil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoCivil1ActionPerformed
+    private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbEstadoCivil1ActionPerformed
+    }//GEN-LAST:event_cbEstadoActionPerformed
+
+    private void btnConfirmarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfirmarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,10 +387,11 @@ public class Cliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private JCustoms.ButtonCustom buttonCustom1;
-    private JCustoms.ButtonCustom buttonCustom2;
+    private JCustoms.MyFormatterTelefone TxtTelefoneCliente;
+    private JCustoms.ButtonCustom btnCancelarCliente;
+    private JCustoms.ButtonCustom btnConfirmarCliente;
+    private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbEstadoCivil;
-    private javax.swing.JComboBox<String> cbEstadoCivil1;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -395,12 +405,11 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jpFundo;
-    private JCustoms.MyFormatter myFormatter1;
-    private JCustoms.MyFormatterDate myFormatterDate1;
-    private JCustoms.MyFormatterTelefone myFormatterTelefone1;
-    private JCustoms.TextFiledCustom textFiledCustom1;
     private JCustoms.TextFiledCustom txtBairro;
-    private JCustoms.TextFiledCustom txtNome;
+    private JCustoms.MyFormatter txtCpfCliente;
+    private JCustoms.MyFormatterDate txtDataNascimento;
+    private JCustoms.TextFiledCustom txtEmailCliente;
+    private JCustoms.TextFiledCustom txtNomeCliente;
     private JCustoms.TextFiledCustom txtRua;
     // End of variables declaration//GEN-END:variables
 }

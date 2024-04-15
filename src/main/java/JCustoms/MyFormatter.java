@@ -39,17 +39,9 @@ public class MyFormatter extends JPanel {
             campoCPF.setOpaque(false);
             campoCPF.setBorder(new EmptyBorder(0, 2, 3, 4));
 
-<<<<<<< HEAD
-
-            campoCPF.setColumns(5);
-            campoCPF.setFont(new Font("Arial", Font.PLAIN, 16));
-
-
-=======
             campoCPF.setColumns(10);
             campoCPF.setFont(new Font("Arial", Font.PLAIN, 14));
-           
->>>>>>> 9c972e82abfa49721b49a19e84343e1f7b518c1b
+
             colorClick = new Color(0, 56, 80);
             borderColor = new Color(0, 56, 64);
 
