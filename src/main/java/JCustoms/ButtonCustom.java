@@ -1,6 +1,7 @@
 package JCustoms;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -66,6 +67,7 @@ public class ButtonCustom extends JButton {
         colorClick = new Color(152, 184, 144);
         borderColor = new Color(30, 136, 56);
         setContentAreaFilled(false);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
         //  Add event mouse
         addMouseListener(new MouseAdapter() {
 
@@ -113,7 +115,7 @@ public class ButtonCustom extends JButton {
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), radius, radius);
         g2.setColor(getBackground());
         //  Border set 2 Pix
-        g2.fillRoundRect(2, 2, getWidth() - 4, getHeight() - 4, radius, radius);
+        g2.fillRoundRect(1, 1, getWidth() - 2, getHeight() - 2, radius, radius);
         super.paintComponent(grphcs);
     }
 }

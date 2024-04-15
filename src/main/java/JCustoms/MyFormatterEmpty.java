@@ -23,15 +23,15 @@ import javax.swing.text.MaskFormatter;
  *
  * @author kaiqu
  */
-public class MyFormatter extends JPanel {
+public class MyFormatterEmpty extends JPanel {
 
     private JFormattedTextField campoCPF;
 
-    public MyFormatter() {
+    public MyFormatterEmpty() {
         // Configuração do campo de CPF
         try {
-            MaskFormatter formatter = new MaskFormatter("A##-A#A#");
-            formatter.setPlaceholderCharacter('_'); // Caractere de preenchimento
+            MaskFormatter formatter = new MaskFormatter("##");
+            
             campoCPF = new JFormattedTextField(formatter);
             campoCPF.setValue(""); // Valor inicial (opcional)
 
