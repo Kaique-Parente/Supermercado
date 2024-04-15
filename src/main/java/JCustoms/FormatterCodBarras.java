@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package JCustoms;
 
 import java.awt.Color;
@@ -19,33 +15,28 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-/**
- *
- * @author kaiqu
- */
-public class MyFormatter extends JPanel {
+public class FormatterCodBarras extends JPanel {
+    
+    private JFormattedTextField campoCodBarras;
 
-    private JFormattedTextField campoCPF;
-
-    public MyFormatter() {
-        // Configuração do campo de CPF
+    public FormatterCodBarras() {
+        // Configuração do campo do Código de barras
         try {
-            MaskFormatter formatter = new MaskFormatter("###.###.###-##");
-            formatter.setPlaceholderCharacter('_'); // Caractere de preenchimento
-            campoCPF = new JFormattedTextField(formatter);
-            campoCPF.setValue(""); // Valor inicial (opcional)
+            MaskFormatter formatter = new MaskFormatter("#############");
+             // Caractere de preenchimento
+            campoCodBarras = new JFormattedTextField(formatter);
+            campoCodBarras.setValue(""); // Valor inicial (opcional)
 
             
-            campoCPF.setOpaque(false);
-            campoCPF.setBorder(new EmptyBorder(0, 2, 3, 4));
-
-
-            campoCPF.setColumns(5);
-            campoCPF.setFont(new Font("Arial", Font.PLAIN, 16));
-
-
-            colorClick = new Color(0, 56, 80);
-            borderColor = new Color(0, 56, 64);
+            campoCodBarras.setOpaque(false);
+            campoCodBarras.setBorder(new EmptyBorder(0, 2, 3, 4));
+            
+           
+            campoCodBarras.setColumns(10);
+            campoCodBarras.setFont(new Font("Arial", Font.PLAIN, 16));
+           
+            colorClick = new Color(152, 184, 144);
+            borderColor = new Color(30, 136, 56);
 
             
             
@@ -53,13 +44,13 @@ public class MyFormatter extends JPanel {
             addMouseListener(new MouseAdapter() {
 
                 public void focusGained(FocusEvent fe) {
-                setColor(new Color(0, 56, 80));
+                setColor(new Color(128, 189, 255));
                 repaint();
                 }
                 
                 
                 public void focusLost(FocusEvent fe) {
-                setColor(new Color(0, 56, 64));
+                setColor(new Color(206, 212, 218));
                 repaint();
                 }
                 
@@ -71,7 +62,7 @@ public class MyFormatter extends JPanel {
 
         // Adicionando o campo de CPF ao painel
         this.setLayout(new FlowLayout());
-        this.add(campoCPF);
+        this.add(campoCodBarras);
     }
     
         private Shape shape;
@@ -152,13 +143,14 @@ public class MyFormatter extends JPanel {
 
     
     private Color focusColor = new Color(128, 189, 255);
-    private Color color = new Color(0, 56, 64);
+    private Color color = new Color(206, 212, 218);
     private int round;
    
 
 // Métodos específicos da classe (se necessário)
 // Por exemplo, você pode criar um método para obter o valor do CPF digitado.
     public String getCPF() {
-        return campoCPF.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
+        return campoCodBarras.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
     }
 }
+    
