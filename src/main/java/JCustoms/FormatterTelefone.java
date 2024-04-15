@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package JCustoms;
 
 import java.awt.Color;
@@ -19,18 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
-/**
- *
- * @author kaiqu
- */
-public class MyFormatter extends JPanel {
 
+public class FormatterTelefone extends JPanel {
+    
     private JFormattedTextField campoCPF;
 
-    public MyFormatter() {
+    public FormatterTelefone() {
         // Configuração do campo de CPF
         try {
-            MaskFormatter formatter = new MaskFormatter("###.###.###-##");
+            MaskFormatter formatter = new MaskFormatter("(##)#####-####");
             formatter.setPlaceholderCharacter('_'); // Caractere de preenchimento
             campoCPF = new JFormattedTextField(formatter);
             campoCPF.setValue(""); // Valor inicial (opcional)
@@ -38,15 +31,13 @@ public class MyFormatter extends JPanel {
             
             campoCPF.setOpaque(false);
             campoCPF.setBorder(new EmptyBorder(0, 2, 3, 4));
-
-            campoCPF.setColumns(5);
-            campoCPF.setFont(new Font("Arial", Font.PLAIN, 16));
-
+            
+           
             campoCPF.setColumns(13);
             campoCPF.setFont(new Font("Arial", Font.PLAIN, 14));
            
-            colorClick = new Color(0, 56, 80);
-            borderColor = new Color(0, 56, 64);
+            colorClick = new Color(152, 184, 144);
+            borderColor = new Color(30, 136, 56);
 
             
             
@@ -54,13 +45,13 @@ public class MyFormatter extends JPanel {
             addMouseListener(new MouseAdapter() {
 
                 public void focusGained(FocusEvent fe) {
-                setColor(new Color(0, 56, 80));
+                setColor(new Color(128, 189, 255));
                 repaint();
                 }
                 
                 
                 public void focusLost(FocusEvent fe) {
-                setColor(new Color(0, 56, 64));
+                setColor(new Color(206, 212, 218));
                 repaint();
                 }
                 
@@ -153,7 +144,7 @@ public class MyFormatter extends JPanel {
 
     
     private Color focusColor = new Color(128, 189, 255);
-    private Color color = new Color(0, 56, 64);
+    private Color color = new Color(206, 212, 218);
     private int round;
    
 
