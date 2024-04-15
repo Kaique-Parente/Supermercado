@@ -33,6 +33,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         tVendas = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        pesquisarCustom2 = new JCustoms.PesquisarCustom();
         tProdutos = new javax.swing.JPanel();
         tClientes = new javax.swing.JPanel();
         tRelatorios = new javax.swing.JPanel();
@@ -64,15 +66,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+
+        pesquisarCustom2.setForeground(new java.awt.Color(0, 0, 0));
+        pesquisarCustom2.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
         tVendasLayout.setHorizontalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGroup(tVendasLayout.createSequentialGroup()
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tVendasLayout.createSequentialGroup()
+                        .addGap(292, 292, 292)
+                        .addComponent(jButton1))
+                    .addGroup(tVendasLayout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(pesquisarCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         tVendasLayout.setVerticalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
+            .addGroup(tVendasLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(pesquisarCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115)
+                .addComponent(jButton1)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("    Vendas    ", tVendas);
@@ -88,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tProdutos.setLayout(tProdutosLayout);
         tProdutosLayout.setHorizontalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 702, Short.MAX_VALUE)
         );
         tProdutosLayout.setVerticalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +123,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tClientes.setLayout(tClientesLayout);
         tClientesLayout.setHorizontalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 702, Short.MAX_VALUE)
         );
         tClientesLayout.setVerticalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +138,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tRelatorios.setLayout(tRelatoriosLayout);
         tRelatoriosLayout.setHorizontalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 642, Short.MAX_VALUE)
+            .addGap(0, 702, Short.MAX_VALUE)
         );
         tRelatoriosLayout.setVerticalGroup(
             tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,7 +217,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private JCustoms.PesquisarCustom pesquisarCustom2;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
