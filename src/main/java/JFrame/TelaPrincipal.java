@@ -387,6 +387,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtPesquisarProdutos1.setForeground(new java.awt.Color(0, 0, 0));
         txtPesquisarProdutos1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtPesquisarProdutos1.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        txtPesquisarProdutos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPesquisarProdutos1ActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -696,6 +701,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtPesquisarVenda.setText("");
         txtTotalVenda.setText("");
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void txtPesquisarProdutos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarProdutos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisarProdutos1ActionPerformed
 
     /**
      * @param args the command line arguments
