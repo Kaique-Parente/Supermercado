@@ -108,9 +108,7 @@
                           <Component id="jScrollPane1" min="-2" pref="662" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="myFormatterEmpty1" min="-2" pref="89" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="textFiledCustom5" min="-2" pref="254" max="-2" attributes="0"/>
@@ -139,7 +137,6 @@
                           <Component id="jLabel4" alignment="2" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="2" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="textFiledCustom5" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="myFormatterEmpty1" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="44" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -224,7 +221,6 @@
                       <Dimension value="[10, 5]"/>
                     </Property>
                     <Property name="rowHeight" type="int" value="20"/>
-                    <Property name="rowMargin" type="int" value="5"/>
                     <Property name="showGrid" type="boolean" value="true"/>
                   </Properties>
                 </Component>
@@ -321,16 +317,6 @@
                 </Property>
                 <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="54" green="38" red="6c" type="rgb"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="JCustoms.MyFormatterEmpty" name="myFormatterEmpty1">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="31" green="1e" red="12" type="rgb"/>
                 </Property>
               </Properties>
             </Component>

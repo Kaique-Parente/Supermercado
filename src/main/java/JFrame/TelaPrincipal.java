@@ -44,7 +44,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         buttonCustom2 = new JCustoms.ButtonCustom();
         textFiledCustom5 = new JCustoms.TextFiledCustom();
         textFiledCustom3 = new JCustoms.TextFiledCustom();
-        myFormatterEmpty1 = new JCustoms.MyFormatterEmpty();
         tProdutos = new javax.swing.JPanel();
         pesquisarCustom3 = new JCustoms.PesquisarCustom();
         tClientes = new javax.swing.JPanel();
@@ -115,7 +114,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTable1.setFillsViewportHeight(true);
         jTable1.setIntercellSpacing(new java.awt.Dimension(10, 5));
         jTable1.setRowHeight(20);
-        jTable1.setRowMargin(5);
         jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
@@ -155,9 +153,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         textFiledCustom3.setCaretColor(new java.awt.Color(0, 0, 0));
         textFiledCustom3.setSelectionColor(new java.awt.Color(108, 56, 84));
 
-        myFormatterEmpty1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatterEmpty1.setForeground(new java.awt.Color(18, 30, 49));
-
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
         tVendasLayout.setHorizontalGroup(
@@ -187,9 +182,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tVendasLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(113, 113, 113)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textFiledCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -212,8 +205,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFiledCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myFormatterEmpty1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFiledCustom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCustom2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,7 +372,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
-    private JCustoms.MyFormatterEmpty myFormatterEmpty1;
     private JCustoms.PesquisarCustom pesquisarCustom1;
     private JCustoms.PesquisarCustom pesquisarCustom3;
     private JCustoms.PesquisarCustom pesquisarCustom4;
