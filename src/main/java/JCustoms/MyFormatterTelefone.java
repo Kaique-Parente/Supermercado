@@ -16,11 +16,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
 
-public class FormatterTelefone extends JPanel {
+public class MyFormatterTelefone extends JPanel {
     
     private JFormattedTextField campoCPF;
 
-    public FormatterTelefone() {
+    public MyFormatterTelefone() {
         // Configuração do campo de CPF
         try {
             MaskFormatter formatter = new MaskFormatter("(##)#####-####");
@@ -33,7 +33,7 @@ public class FormatterTelefone extends JPanel {
             campoCPF.setBorder(new EmptyBorder(0, 2, 3, 4));
             
            
-            campoCPF.setColumns(13);
+            campoCPF.setColumns(10);
             campoCPF.setFont(new Font("Arial", Font.PLAIN, 14));
            
             colorClick = new Color(152, 184, 144);
