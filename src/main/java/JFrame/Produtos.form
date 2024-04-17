@@ -83,7 +83,7 @@
                                           <Component id="jLabel10" min="-2" pref="144" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtMarca" max="32767" attributes="0"/>
+                                      <Component id="txtMarcaProduto" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -99,33 +99,33 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cbCategoriaProduto" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtValorProduto" max="32767" attributes="0"/>
+                                              <Component id="lbValor" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel9" min="-2" pref="144" max="-2" attributes="0"/>
                                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtNomeProduto" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="txtDataNascimento" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                      <Component id="txtDataValidade" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                       <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jLabel13" min="-2" pref="90" max="-2" attributes="0"/>
-                                                      <Component id="myFormatterEmpty1" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jLabel13" pref="90" max="32767" attributes="0"/>
+                                                      <Component id="txtQuantidadeProduto" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cbEstadoCivil" alignment="0" min="-2" pref="265" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel12" min="-2" pref="61" max="-2" attributes="0"/>
-                                              <Component id="txtValor" max="32767" attributes="0"/>
-                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -158,17 +158,17 @@
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtMarcaProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbEstadoCivil" min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="cbCategoriaProduto" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbValor" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtValor" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtValorProduto" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -177,9 +177,9 @@
                               <Component id="jLabel13" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtDataNascimento" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDataValidade" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="myFormatterEmpty1" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtQuantidadeProduto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -277,7 +277,7 @@
             <Property name="text" type="java.lang.String" value="Marca"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbEstadoCivil">
+        <Component class="javax.swing.JComboBox" name="cbCategoriaProduto">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -302,7 +302,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEstadoCivilActionPerformed"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cbCategoriaProdutoFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbCategoriaProdutoActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -319,7 +320,7 @@
             <Property name="text" type="java.lang.String" value="Categoria"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JLabel" name="lbValor">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
@@ -354,9 +355,9 @@
         </Component>
         <Component class="JCustoms.TextFiledCustom" name="txtNomeProduto">
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtMarca">
+        <Component class="JCustoms.TextFiledCustom" name="txtMarcaProduto">
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtValor">
+        <Component class="JCustoms.TextFiledCustom" name="txtValorProduto">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel5">
 
@@ -372,7 +373,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterDate" name="txtDataNascimento">
+        <Component class="JCustoms.MyFormatterDate" name="txtDataValidade">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -415,6 +416,9 @@
             </Property>
             <Property name="radius" type="int" value="15"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarProdutoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="JCustoms.ButtonCustom" name="btnConfirmarProduto">
           <Properties>
@@ -442,15 +446,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmarProdutoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="JCustoms.MyFormatterEmpty" name="myFormatterEmpty1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-          </Properties>
+        <Component class="JCustoms.TextFiledCustom" name="txtQuantidadeProduto">
         </Component>
       </SubComponents>
     </Container>
