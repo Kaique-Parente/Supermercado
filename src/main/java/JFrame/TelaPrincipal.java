@@ -5,8 +5,6 @@
 package JFrame;
 
 import java.awt.Color;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -52,7 +50,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtPesquisarProdutos = new JCustoms.PesquisarCustom();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblProdutos2 = new javax.swing.JTable();
+        tblProdutos = new javax.swing.JTable();
         btnNovoProduto = new JCustoms.ButtonCustom();
         btnVisualizarProduto = new JCustoms.ButtonCustom();
         btnExcluirProduto = new JCustoms.ButtonCustom();
@@ -269,23 +267,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jScrollPane2.setBackground(new java.awt.Color(51, 51, 51));
 
-        tblProdutos2.setAutoCreateRowSorter(true);
-        tblProdutos2.setBackground(new java.awt.Color(81, 0, 42));
-        tblProdutos2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        tblProdutos2.setForeground(new java.awt.Color(255, 255, 255));
-        tblProdutos2.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setAutoCreateRowSorter(true);
+        tblProdutos.setBackground(new java.awt.Color(81, 0, 42));
+        tblProdutos.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblProdutos.setForeground(new java.awt.Color(255, 255, 255));
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Código", "Nome", "Marca", "Categoria", "Valor", "Quantidade", "Validade", "Status"
+                "Código", "Nome", "Marca", "Categoria", "Valor", "Validade", "Quantidade", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -296,11 +287,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblProdutos2.setFillsViewportHeight(true);
-        tblProdutos2.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        tblProdutos2.setRowHeight(20);
-        tblProdutos2.setShowGrid(true);
-        jScrollPane2.setViewportView(tblProdutos2);
+        tblProdutos.setFillsViewportHeight(true);
+        tblProdutos.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblProdutos.setRowHeight(20);
+        tblProdutos.setShowGrid(true);
+        tblProdutos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tblProdutos);
+        if (tblProdutos.getColumnModel().getColumnCount() > 0) {
+            tblProdutos.getColumnModel().getColumn(0).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(0).setPreferredWidth(190);
+            tblProdutos.getColumnModel().getColumn(1).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tblProdutos.getColumnModel().getColumn(2).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(2).setPreferredWidth(130);
+            tblProdutos.getColumnModel().getColumn(3).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(3).setPreferredWidth(120);
+            tblProdutos.getColumnModel().getColumn(4).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblProdutos.getColumnModel().getColumn(5).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tblProdutos.getColumnModel().getColumn(6).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(6).setPreferredWidth(110);
+            tblProdutos.getColumnModel().getColumn(7).setResizable(false);
+            tblProdutos.getColumnModel().getColumn(7).setPreferredWidth(100);
+        }
 
         btnNovoProduto.setBackground(new java.awt.Color(174, 107, 107));
         btnNovoProduto.setForeground(new java.awt.Color(0, 0, 0));
@@ -723,8 +733,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarProdutos1ActionPerformed
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
-        Produtos np = new Produtos();
-        np.setVisible(true);
+        Produtos produto = new Produtos();
+        produto.setVisible(true);
+        produto.pack();
+        produto.setLocationRelativeTo(null);
+        produto.setDefaultCloseOperation(Produtos.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     /**
@@ -761,11 +774,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 new TelaPrincipal().setVisible(true);
             }
         });
-        
-        
     }
     
-    
+    public static void AddLinha(Object[] dataRow){
+            DefaultTableModel model = (DefaultTableModel)tblProdutos.getModel();
+            model.addRow(dataRow);
+        }
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JCustoms.ButtonCustom btnBuscar;
@@ -802,7 +817,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
     private javax.swing.JPanel tVendas;
-    private javax.swing.JTable tblProdutos2;
+    private static javax.swing.JTable tblProdutos;
     private JCustoms.TextFiledCustom txtCliente;
     private JCustoms.TextFiledCustom txtDataInicio;
     private JCustoms.TextFiledCustom txtDataTermino;

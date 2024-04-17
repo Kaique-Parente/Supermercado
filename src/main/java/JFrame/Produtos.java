@@ -5,12 +5,12 @@
 package JFrame;
 
 import com.mycompany.supermercado.models.Produto;
-import com.mycompany.supermercado.utils.TableProdutosUtil;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class Produtos extends javax.swing.JFrame {
 
@@ -51,7 +51,7 @@ public class Produtos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         btnCancelarProduto = new JCustoms.ButtonCustom();
         btnConfirmarProduto = new JCustoms.ButtonCustom();
-        txtQuantidadeProduto = new JCustoms.MyFormatterEmpty();
+        txtQuantidadeProduto = new JCustoms.TextFiledCustom();
 
         btnConfirmar.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmar.setText("Confirmar");
@@ -180,9 +180,6 @@ public class Produtos extends javax.swing.JFrame {
             }
         });
 
-        txtQuantidadeProduto.setBackground(new java.awt.Color(255, 255, 255));
-        txtQuantidadeProduto.setForeground(new java.awt.Color(0, 0, 0));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -211,6 +208,14 @@ public class Produtos extends javax.swing.JFrame {
                                         .addComponent(btnConfirmarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(cbCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtValorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lbValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel8)
                                             .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,18 +224,10 @@ public class Produtos extends javax.swing.JFrame {
                                                     .addComponent(txtDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel14))
                                                 .addGap(18, 18, 18)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtQuantidadeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addComponent(cbCategoriaProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtValorProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lbValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                                    .addComponent(txtQuantidadeProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -346,10 +343,16 @@ public class Produtos extends javax.swing.JFrame {
         
         //Validar Valor
         double valor = 0.0;
+        String aux = "";
         if(txtValorProduto.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Digite o valor do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }else {
-            valor = Double.parseDouble(txtValorProduto.getText());
+            try {
+                aux = txtValorProduto.getText().replace(",", ".");
+                valor = Double.parseDouble(aux);
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(rootPane, "Digite o valor corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            }
         }
         
         //Validade
@@ -360,7 +363,6 @@ public class Produtos extends javax.swing.JFrame {
         } else {
             try{
                 validade = LocalDate.parse(txtDataValidade.getCPF(), fm2);
-                System.out.println(validade);
             }catch(DateTimeParseException e){
                 JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
@@ -368,25 +370,57 @@ public class Produtos extends javax.swing.JFrame {
 
         //Quantidade
         int quantidade = 0;
-        if(txtQuantidadeProduto.getCPF().equals("")){
+        if(txtQuantidadeProduto.getText().equals("")){
             quantidade = 0;
         }else {
-            quantidade = Integer.parseInt(txtQuantidadeProduto.getCPF());
+            try {
+                quantidade = Integer.parseInt(txtQuantidadeProduto.getText());
+            }catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(rootPane, "Digite a quantidade corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                quantidade = -1;
+            }
+            
         }
         
         //Status
         boolean status = true;
         
-        Produto p = new Produto(codBarras, nome, marca, categoria, valor, validade, quantidade, status);
         
+        //Lista de Produtos
+        List<Produto> produtos = new ArrayList<>();
+        
+        produtos.add(new Produto(codBarras, nome, marca, categoria, valor, validade, quantidade, status));
+
         //Tabela
-        
-        
-        
+        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String codigoS = "", valorS = "", validadeS = "", quantidadeS = "";
+
+        for(Produto p : produtos) {
+            codigoS = Long.toString(p.getCodigo());
+            
+            if(!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0){
+                
+                //Conversão de valores do Produto para String
+                valorS = (String.format("%.2f", p.getValor())); 
+                validadeS = p.getValidade().format(fm1); 
+                quantidadeS = Integer.toString(p.getQuantidade());
+ 
+                //Adicionar Linha
+                TelaPrincipal.AddLinha(new Object[]{
+                     codigoS,
+                     p.getNome(),
+                     p.getMarca(),
+                     p.getCategoria(),
+                     valorS,
+                     validadeS,
+                     quantidadeS,
+                     status
+                 });
+                dispose();
+            }
+
+        }
        
-        
-       
-        
     }//GEN-LAST:event_btnConfirmarProdutoActionPerformed
 
     private void btnCancelarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarProdutoActionPerformed
@@ -460,7 +494,7 @@ public class Produtos extends javax.swing.JFrame {
     private JCustoms.MyFormatterDate txtDataValidade;
     private JCustoms.TextFiledCustom txtMarcaProduto;
     private JCustoms.TextFiledCustom txtNomeProduto;
-    private JCustoms.MyFormatterEmpty txtQuantidadeProduto;
+    private JCustoms.TextFiledCustom txtQuantidadeProduto;
     private JCustoms.TextFiledCustom txtValorProduto;
     // End of variables declaration//GEN-END:variables
 }
