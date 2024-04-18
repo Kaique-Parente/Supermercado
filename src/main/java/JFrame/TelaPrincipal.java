@@ -6,7 +6,6 @@ package JFrame;
 
 import java.awt.Color;
 import java.util.Arrays;
-import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
