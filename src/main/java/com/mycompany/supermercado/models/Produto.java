@@ -20,6 +20,8 @@ public class Produto {
         this.categoria = categoria;
         this.valor = valor;
         this.validade = validade;
+        quantidade = 0;
+        status = true;
     }
 
     public Produto(long codigo, String nome, String marca, String categoria, Double valor, LocalDate validade, Integer quantidade, boolean status) {

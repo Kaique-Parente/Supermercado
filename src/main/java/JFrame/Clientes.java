@@ -4,21 +4,25 @@
  */
 package JFrame;
 
+import com.mycompany.supermercado.models.Produto;
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
+import com.mycompany.supermercado.models.Cliente;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author digol
  */
-public class Cliente extends javax.swing.JFrame {
+public class Clientes extends javax.swing.JFrame {
 
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public Clientes() {
         initComponents();
     }
 
@@ -126,6 +130,7 @@ public class Cliente extends javax.swing.JFrame {
         jLabel7.setText("Sexo");
 
         cbSexo.setBackground(new java.awt.Color(255, 255, 255));
+        cbSexo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cbSexo.setForeground(new java.awt.Color(0, 0, 0));
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "------------", "Masculino", "Feminino", "Prefiro não informar" }));
         cbSexo.addActionListener(new java.awt.event.ActionListener() {
@@ -366,19 +371,19 @@ public class Cliente extends javax.swing.JFrame {
         }
         
         //Validar CPF
-        double Cpf = 0;
+        long Cpf = 0;
         if (txtCpfCliente.getCPF().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
-            Cpf = Double.parseDouble(txtCpfCliente.getCPF());
+            Cpf = Long.parseLong(txtCpfCliente.getCPF());
         }
         
         //Validar Telefone
-        double telefone = 0;
+        long telefone = 0;
         if (txtTelefone.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
-            telefone = Double.parseDouble(txtTelefone.getCPF());
+            telefone = Long.parseLong(txtTelefone.getCPF());
         }
         
         //validar Endereço
@@ -414,10 +419,13 @@ public class Cliente extends javax.swing.JFrame {
         }
         
         //Validar email
-        boolean email = ValidarEmail.validar(txtEmailCliente.getText());
-        if (!email) {
+        boolean emailTest = ValidarEmail.validar(txtEmailCliente.getText());
+        String email = "";
+        if (!emailTest) {
             JOptionPane.showMessageDialog(rootPane, "Digite um email válido", "ERRO", JOptionPane.WARNING_MESSAGE);
-        } 
+        } else {
+            email = txtEmailCliente.getText();
+        }
         
         //Validade
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
@@ -432,7 +440,40 @@ public class Cliente extends javax.swing.JFrame {
             }
         }
         
-        
+        //Lista de Clientes
+        List<Cliente> clientes = new ArrayList<>();
+        clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
+
+        //Tabela
+        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String cpfS = "", telefoneS = "", dataNascimentoS = "";
+
+       for(Cliente c : clientes) {
+            cpfS = Long.toString(c.getCpf());
+
+            if(!cpfS.equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
+               !c.getRua().equals("") && !c.getEstado().equals("")&& !c.getBairro().equals("") && c.getDataNascimento() != null){
+                
+                //Conversão de valores do Produto para String
+                dataNascimentoS = c.getDataNascimento().format(fm1); 
+                telefoneS = Long.toString(c.getTelefone());
+ 
+                //Adicionar Linha
+                TelaPrincipal.AddLinhaCliente(new Object[]{
+                    cpfS,
+                    nome,
+                    telefoneS,
+                    email,
+                    estCivil,
+                    sexo,
+                    rua,
+                    estado,
+                    bairro,
+                    dataNascimentoS
+                 });
+                dispose();
+           }
+        }
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
 
     private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
@@ -456,21 +497,22 @@ public class Cliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Clientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cliente().setVisible(true);
+                new Clientes().setVisible(true);
             }
         });
     }

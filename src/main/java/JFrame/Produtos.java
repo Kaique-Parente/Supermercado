@@ -406,7 +406,7 @@ public class Produtos extends javax.swing.JFrame {
                 quantidadeS = Integer.toString(p.getQuantidade());
  
                 //Adicionar Linha
-                TelaPrincipal.AddLinha(new Object[]{
+                TelaPrincipal.AddLinhaProduto(new Object[]{
                      codigoS,
                      p.getNome(),
                      p.getMarca(),
@@ -418,7 +418,6 @@ public class Produtos extends javax.swing.JFrame {
                  });
                 dispose();
             }
-
         }
        
     }//GEN-LAST:event_btnConfirmarProdutoActionPerformed

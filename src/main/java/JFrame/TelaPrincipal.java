@@ -59,7 +59,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtPesquisarProdutos1 = new JCustoms.PesquisarCustom();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTabelaProduto1 = new javax.swing.JTable();
+        tblClientes = new javax.swing.JTable();
         btnNovoCliente = new JCustoms.ButtonCustom();
         btnVisualizarCliente = new JCustoms.ButtonCustom();
         btnEditarCliente = new JCustoms.ButtonCustom();
@@ -421,30 +421,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jScrollPane3.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTabelaProduto1.setAutoCreateRowSorter(true);
-        jTabelaProduto1.setBackground(new java.awt.Color(81, 0, 42));
-        jTabelaProduto1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTabelaProduto1.setForeground(new java.awt.Color(255, 255, 255));
-        jTabelaProduto1.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setAutoCreateRowSorter(true);
+        tblClientes.setBackground(new java.awt.Color(81, 0, 42));
+        tblClientes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblClientes.setForeground(new java.awt.Color(255, 255, 255));
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CPF", "Nome", "Telefone", "Email", "Estado Civil", "Sexo", "Rua", "Estado", "Bairro", "Data de Nascimento"
             }
-        ));
-        jTabelaProduto1.setFillsViewportHeight(true);
-        jTabelaProduto1.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        jTabelaProduto1.setRowHeight(20);
-        jTabelaProduto1.setShowGrid(true);
-        jScrollPane3.setViewportView(jTabelaProduto1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblClientes.setFillsViewportHeight(true);
+        tblClientes.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblClientes.setRowHeight(20);
+        tblClientes.setShowGrid(true);
+        jScrollPane3.setViewportView(tblClientes);
+        if (tblClientes.getColumnModel().getColumnCount() > 0) {
+            tblClientes.getColumnModel().getColumn(0).setResizable(false);
+            tblClientes.getColumnModel().getColumn(1).setResizable(false);
+            tblClientes.getColumnModel().getColumn(2).setResizable(false);
+            tblClientes.getColumnModel().getColumn(3).setResizable(false);
+            tblClientes.getColumnModel().getColumn(4).setResizable(false);
+            tblClientes.getColumnModel().getColumn(5).setResizable(false);
+            tblClientes.getColumnModel().getColumn(6).setResizable(false);
+            tblClientes.getColumnModel().getColumn(7).setResizable(false);
+            tblClientes.getColumnModel().getColumn(8).setResizable(false);
+            tblClientes.getColumnModel().getColumn(9).setResizable(false);
+        }
 
         btnNovoCliente.setBackground(new java.awt.Color(174, 107, 107));
         btnNovoCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -712,7 +725,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     private void btnNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClienteActionPerformed
-        Cliente cl = new Cliente();
+        Clientes cl = new Clientes();
         cl.setVisible(true);
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
@@ -776,8 +789,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
     
-    public static void AddLinha(Object[] dataRow){
+    public static void AddLinhaProduto(Object[] dataRow){
             DefaultTableModel model = (DefaultTableModel)tblProdutos.getModel();
+            model.addRow(dataRow);
+        }
+    
+    public static void AddLinhaCliente(Object[] dataRow){
+            DefaultTableModel model = (DefaultTableModel)tblClientes.getModel();
             model.addRow(dataRow);
         }
  
@@ -810,13 +828,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTabelaProduto1;
     private javax.swing.JTable jTabelaRelatorio;
     private javax.swing.JTable jTabelaVenda;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
     private javax.swing.JPanel tVendas;
+    private static javax.swing.JTable tblClientes;
     private static javax.swing.JTable tblProdutos;
     private JCustoms.TextFiledCustom txtCliente;
     private JCustoms.TextFiledCustom txtDataInicio;
