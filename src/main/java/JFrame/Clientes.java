@@ -4,7 +4,6 @@
  */
 package JFrame;
 
-import com.mycompany.supermercado.models.Produto;
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
 import com.mycompany.supermercado.models.Cliente;
@@ -365,7 +364,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar nome
         String nome = "";
         if (txtNomeCliente.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um nome", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um nome!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             nome = txtNomeCliente.getText();
         }
@@ -373,7 +372,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar CPF
         long Cpf = 0;
         if (txtCpfCliente.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             Cpf = Long.parseLong(txtCpfCliente.getCPF());
         }
@@ -381,7 +380,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar Telefone
         long telefone = 0;
         if (txtTelefone.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             telefone = Long.parseLong(txtTelefone.getCPF());
         }
@@ -390,7 +389,7 @@ public class Clientes extends javax.swing.JFrame {
         String bairro = "";
         String rua = "";
         if (txtRua.getText().equals("") || txtBairro.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             rua = txtRua.getText();
             bairro = txtBairro.getText();
@@ -399,21 +398,21 @@ public class Clientes extends javax.swing.JFrame {
         //Validar combo-box
         String estado = "";
         if (cbEstado.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             estado = cbEstado.getSelectedItem().toString();
         }
 
         String estCivil = "";
         if (cbEstadoCivil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             estCivil = cbEstadoCivil.getSelectedItem().toString();
         }
 
         String sexo = "";
         if (cbSexo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             sexo = cbSexo.getSelectedItem().toString();
         }
@@ -422,7 +421,7 @@ public class Clientes extends javax.swing.JFrame {
         boolean emailTest = ValidarEmail.validar(txtEmailCliente.getText());
         String email = "";
         if (!emailTest) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um email válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um email válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             email = txtEmailCliente.getText();
         }
