@@ -75,7 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnBuscar = new JCustoms.ButtonCustom();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTabelaRelatorio = new javax.swing.JTable();
+        tblRelatorio = new javax.swing.JTable();
         txtTotalRelatorio = new JCustoms.TextFiledCustom();
         jLabel10 = new javax.swing.JLabel();
         btnDetalhes = new JCustoms.ButtonCustom();
@@ -640,30 +640,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jScrollPane4.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTabelaRelatorio.setAutoCreateRowSorter(true);
-        jTabelaRelatorio.setBackground(new java.awt.Color(81, 0, 42));
-        jTabelaRelatorio.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTabelaRelatorio.setForeground(new java.awt.Color(255, 255, 255));
-        jTabelaRelatorio.setModel(new javax.swing.table.DefaultTableModel(
+        tblRelatorio.setAutoCreateRowSorter(true);
+        tblRelatorio.setBackground(new java.awt.Color(81, 0, 42));
+        tblRelatorio.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblRelatorio.setForeground(new java.awt.Color(255, 255, 255));
+        tblRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Data", "Cliente", "Valor"
             }
-        ));
-        jTabelaRelatorio.setFillsViewportHeight(true);
-        jTabelaRelatorio.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        jTabelaRelatorio.setRowHeight(20);
-        jTabelaRelatorio.setShowGrid(true);
-        jScrollPane4.setViewportView(jTabelaRelatorio);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblRelatorio.setFillsViewportHeight(true);
+        tblRelatorio.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblRelatorio.setRowHeight(20);
+        tblRelatorio.setShowGrid(true);
+        jScrollPane4.setViewportView(tblRelatorio);
+        if (tblRelatorio.getColumnModel().getColumnCount() > 0) {
+            tblRelatorio.getColumnModel().getColumn(0).setResizable(false);
+            tblRelatorio.getColumnModel().getColumn(1).setResizable(false);
+            tblRelatorio.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         txtTotalRelatorio.setForeground(new java.awt.Color(0, 0, 0));
         txtTotalRelatorio.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -923,13 +929,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTabelaRelatorio;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
     private javax.swing.JPanel tVendas;
     private static javax.swing.JTable tblClientes;
     private static javax.swing.JTable tblProdutos;
+    private javax.swing.JTable tblRelatorio;
     private static javax.swing.JTable tblVendas;
     private JCustoms.TextFiledCustom txtCliente;
     private JCustoms.TextFiledCustom txtDataInicio;

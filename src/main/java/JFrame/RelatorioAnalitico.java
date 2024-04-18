@@ -29,7 +29,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         Cabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTabelaProduto2 = new javax.swing.JTable();
+        tblDetalhes = new javax.swing.JTable();
         btnCancelar = new JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -60,30 +60,44 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
         jScrollPane4.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTabelaProduto2.setAutoCreateRowSorter(true);
-        jTabelaProduto2.setBackground(new java.awt.Color(81, 0, 42));
-        jTabelaProduto2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jTabelaProduto2.setForeground(new java.awt.Color(255, 255, 255));
-        jTabelaProduto2.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetalhes.setAutoCreateRowSorter(true);
+        tblDetalhes.setBackground(new java.awt.Color(81, 0, 42));
+        tblDetalhes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblDetalhes.setForeground(new java.awt.Color(255, 255, 255));
+        tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Codigo de Barras", "Valor", "QTD"
             }
-        ));
-        jTabelaProduto2.setFillsViewportHeight(true);
-        jTabelaProduto2.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        jTabelaProduto2.setRowHeight(20);
-        jTabelaProduto2.setShowGrid(true);
-        jScrollPane4.setViewportView(jTabelaProduto2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDetalhes.setFillsViewportHeight(true);
+        tblDetalhes.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblDetalhes.setRowHeight(20);
+        tblDetalhes.setShowGrid(true);
+        jScrollPane4.setViewportView(tblDetalhes);
+        if (tblDetalhes.getColumnModel().getColumnCount() > 0) {
+            tblDetalhes.getColumnModel().getColumn(0).setResizable(false);
+            tblDetalhes.getColumnModel().getColumn(1).setResizable(false);
+            tblDetalhes.getColumnModel().getColumn(2).setResizable(false);
+            tblDetalhes.getColumnModel().getColumn(2).setPreferredWidth(20);
+        }
 
         btnCancelar.setBackground(new java.awt.Color(174, 107, 107));
         btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
@@ -170,6 +184,6 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
     private JCustoms.ButtonCustom btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTabelaProduto2;
+    private javax.swing.JTable tblDetalhes;
     // End of variables declaration//GEN-END:variables
 }
