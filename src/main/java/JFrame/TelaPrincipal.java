@@ -387,6 +387,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnExcluirProduto.setFocusPainted(false);
         btnExcluirProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnExcluirProduto.setRadius(15);
+        btnExcluirProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirProdutoActionPerformed(evt);
+            }
+        });
 
         btnEditarProduto.setForeground(new java.awt.Color(0, 0, 0));
         btnEditarProduto.setText("Editar");
@@ -544,6 +549,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnExcluirCliente.setFocusPainted(false);
         btnExcluirCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnExcluirCliente.setRadius(15);
+        btnExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
         tClientes.setLayout(tClientesLayout);
@@ -801,6 +811,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtQuantidadeVenda.setText("");
         txtTotalVenda.setText("");
     }//GEN-LAST:event_btnCancelarVendaActionPerformed
+
+    private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
+        int indice = tblProdutos.getSelectedRow();
+        
+        if(indice >= 0) {
+            //Resgatar o modelo da tabela para exlcuir a linha
+            DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
+            model.removeRow(indice);
+            
+            DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
+            model2.removeRow(indice);
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirProdutoActionPerformed
+
+    private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
+        int indice = tblClientes.getSelectedRow();
+        
+        if(indice >= 0) {
+            //Resgatar o modelo da tabela para exlcuir a linha
+            DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
+            model.removeRow(indice);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
