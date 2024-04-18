@@ -6,6 +6,9 @@ package JFrame;
 
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 /**
  *
  * @author digol
@@ -52,7 +55,7 @@ public class Cliente extends javax.swing.JFrame {
         txtCpfCliente = new JCustoms.MyFormatter();
         cbEstado = new javax.swing.JComboBox<>();
         txtTelefone = new JCustoms.MyFormatterTelefone();
-        myFormatterDate1 = new JCustoms.MyFormatterDate();
+        txtDataNascimento = new JCustoms.MyFormatterDate();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -199,8 +202,8 @@ public class Cliente extends javax.swing.JFrame {
         txtTelefone.setBackground(new java.awt.Color(255, 255, 255));
         txtTelefone.setForeground(new java.awt.Color(0, 0, 0));
 
-        myFormatterDate1.setBackground(new java.awt.Color(255, 255, 255));
-        myFormatterDate1.setForeground(new java.awt.Color(0, 0, 0));
+        txtDataNascimento.setBackground(new java.awt.Color(255, 255, 255));
+        txtDataNascimento.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jpFundoLayout = new javax.swing.GroupLayout(jpFundo);
         jpFundo.setLayout(jpFundoLayout);
@@ -228,7 +231,7 @@ public class Cliente extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(myFormatterDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(140, 140, 140)))
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpFundoLayout.createSequentialGroup()
@@ -323,7 +326,7 @@ public class Cliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(myFormatterDate1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -405,13 +408,31 @@ public class Cliente extends javax.swing.JFrame {
 
         String sexo = "";
         if (cbSexo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo", "ERRO", JOptionPane.WARNING_MESSAGE);
         } else {
             sexo = cbSexo.getSelectedItem().toString();
         }
         
-        String email = ValidarEmail.validar(txtEmailCliente.getText());
-        JOptionPane.showMessageDialog(rootPane, email);
+        //Validar email
+        boolean email = ValidarEmail.validar(txtEmailCliente.getText());
+        if (!email) {
+            JOptionPane.showMessageDialog(rootPane, "Digite um email válido", "ERRO", JOptionPane.WARNING_MESSAGE);
+        } 
+        
+        //Validade
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+        LocalDate dataNascimento = null;
+        if(txtDataNascimento.getCPF().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Digite a sua data de nascimento!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try{
+                dataNascimento = LocalDate.parse(txtDataNascimento.getCPF(), fm2);
+            }catch(DateTimeParseException e){
+                JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        
+        
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
 
     private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
@@ -473,9 +494,9 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jpFundo;
-    private JCustoms.MyFormatterDate myFormatterDate1;
     private JCustoms.TextFiledCustom txtBairro;
     private JCustoms.MyFormatter txtCpfCliente;
+    private JCustoms.MyFormatterDate txtDataNascimento;
     private JCustoms.TextFiledCustom txtEmailCliente;
     private JCustoms.TextFiledCustom txtNomeCliente;
     private JCustoms.TextFiledCustom txtRua;

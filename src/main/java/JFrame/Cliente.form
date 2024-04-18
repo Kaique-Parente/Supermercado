@@ -69,7 +69,7 @@
                                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                      <Component id="myFormatterDate1" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="txtDataNascimento" min="-2" pref="192" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
@@ -198,7 +198,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="myFormatterDate1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDataNascimento" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="36" max="32767" attributes="0"/>
@@ -576,7 +576,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterDate" name="myFormatterDate1">
+        <Component class="JCustoms.MyFormatterDate" name="txtDataNascimento">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
