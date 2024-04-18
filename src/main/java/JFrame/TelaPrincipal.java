@@ -295,9 +295,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblProdutos);
         if (tblProdutos.getColumnModel().getColumnCount() > 0) {
             tblProdutos.getColumnModel().getColumn(0).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(0).setPreferredWidth(190);
+            tblProdutos.getColumnModel().getColumn(0).setPreferredWidth(140);
             tblProdutos.getColumnModel().getColumn(1).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tblProdutos.getColumnModel().getColumn(1).setPreferredWidth(170);
             tblProdutos.getColumnModel().getColumn(2).setResizable(false);
             tblProdutos.getColumnModel().getColumn(2).setPreferredWidth(130);
             tblProdutos.getColumnModel().getColumn(3).setResizable(false);
