@@ -1,6 +1,8 @@
 package com.mycompany.supermercado.models;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Cliente {
     
@@ -106,5 +108,9 @@ public class Cliente {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
-    } 
+    }
+    
+    public static Date converterDate(LocalDate data) {
+        return Date.from(data.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
 }

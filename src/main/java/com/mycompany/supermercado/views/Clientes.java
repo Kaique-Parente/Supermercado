@@ -4,6 +4,7 @@
  */
 package com.mycompany.supermercado.views;
 
+import com.mycompany.supermercado.dao.ClienteDAO;
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
 import com.mycompany.supermercado.models.Cliente;
@@ -426,7 +427,7 @@ public class Clientes extends javax.swing.JFrame {
             email = txtEmailCliente.getText();
         }
         
-        //Validade
+        //Data de Nascimento
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
         LocalDate dataNascimento = null;
         if(txtDataNascimento.getCPF().equals("")){
@@ -441,27 +442,36 @@ public class Clientes extends javax.swing.JFrame {
 
         //Lista de Clientes
         List<Cliente> clientes = new ArrayList<>();
-        clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
+        
+        Cliente novoCliente = new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento);
+        clientes.add(novoCliente);
 
-        //Tabela
+        //Banco e Tabela
         DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        String cpfS = "", telefoneS = "", dataNascimentoS = "";
+        String dataNascimentoS = "";
 
-       for(Cliente c : clientes) {
-            cpfS = Long.toString(c.getCpf());
-
-            if(!cpfS.equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
+        for(Cliente c : clientes) {
+            
+            if(!String.valueOf(Cpf).equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
                !c.getRua().equals("") && !c.getEstado().equals("")&& !c.getBairro().equals("") && c.getDataNascimento() != null){
                 
-                //Conversão de valores do Produto para String
+                //Adicionar ao Banco de Dados
+                boolean retorno = ClienteDAO.salvar(c);
+        
+                if(retorno) {
+                    JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Erro!");
+                }
+                
+                //Formatando Data
                 dataNascimentoS = c.getDataNascimento().format(fm1); 
-                telefoneS = Long.toString(c.getTelefone());
- 
-                //Adicionar Linha
+
+                //Adicionar Linha Tabela
                 TelaPrincipal.AddLinhaCliente(new Object[]{
-                    cpfS,
+                    String.valueOf(Cpf),
                     nome,
-                    telefoneS,
+                    String.valueOf(telefone),
                     email,
                     estCivil,
                     sexo,
@@ -470,9 +480,10 @@ public class Clientes extends javax.swing.JFrame {
                     bairro,
                     dataNascimentoS
                  });
-                dispose();
+                this.dispose();
            }
-        }
+        } 
+ 
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
 
     private void btnCancelarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClienteActionPerformed
