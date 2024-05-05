@@ -259,7 +259,7 @@
             <Property name="text" type="java.lang.String" value="Nome Completo"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtNomeCliente">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtNomeCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -305,7 +305,7 @@
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtEmailCliente">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtEmailCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -403,7 +403,7 @@
             <Property name="text" type="java.lang.String" value="Rua"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtRua">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtRua">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -435,7 +435,7 @@
             <Property name="text" type="java.lang.String" value="Bairro"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtBairro">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtBairro">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -445,7 +445,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="btnCancelarCliente">
+        <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnCancelarCliente">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -471,7 +471,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarClienteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="btnConfirmarCliente">
+        <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnConfirmarCliente">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -508,7 +508,7 @@
             <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatter" name="txtCpfCliente">
+        <Component class="com.mycompany.supermercado.JCustoms.MyFormatter" name="txtCpfCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -569,7 +569,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="JCustoms.MyFormatterTelefone" name="txtTelefone">
+        <Component class="com.mycompany.supermercado.JCustoms.MyFormatterTelefone" name="txtTelefone">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -579,7 +579,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterDate" name="txtDataNascimento">
+        <Component class="com.mycompany.supermercado.JCustoms.MyFormatterDate" name="txtDataNascimento">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

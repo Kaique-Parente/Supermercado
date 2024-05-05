@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package JFrame;
+package com.mycompany.supermercado.views;
 
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
@@ -38,27 +38,27 @@ public class Clientes extends javax.swing.JFrame {
         Cabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNomeCliente = new JCustoms.TextFiledCustom();
+        txtNomeCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtEmailCliente = new JCustoms.TextFiledCustom();
+        txtEmailCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         cbEstadoCivil = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cbSexo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        txtRua = new JCustoms.TextFiledCustom();
+        txtRua = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtBairro = new JCustoms.TextFiledCustom();
-        btnCancelarCliente = new JCustoms.ButtonCustom();
-        btnConfirmarCliente = new JCustoms.ButtonCustom();
+        txtBairro = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        btnCancelarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnConfirmarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         jLabel11 = new javax.swing.JLabel();
-        txtCpfCliente = new JCustoms.MyFormatter();
+        txtCpfCliente = new com.mycompany.supermercado.JCustoms.MyFormatter();
         cbEstado = new javax.swing.JComboBox<>();
-        txtTelefone = new JCustoms.MyFormatterTelefone();
-        txtDataNascimento = new JCustoms.MyFormatterDate();
+        txtTelefone = new com.mycompany.supermercado.JCustoms.MyFormatterTelefone();
+        txtDataNascimento = new com.mycompany.supermercado.JCustoms.MyFormatterDate();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -438,7 +438,7 @@ public class Clientes extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
         }
-        
+
         //Lista de Clientes
         List<Cliente> clientes = new ArrayList<>();
         clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
@@ -518,8 +518,8 @@ public class Clientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private JCustoms.ButtonCustom btnCancelarCliente;
-    private JCustoms.ButtonCustom btnConfirmarCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelarCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmarCliente;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbEstadoCivil;
     private javax.swing.JComboBox<String> cbSexo;
@@ -535,12 +535,12 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jpFundo;
-    private JCustoms.TextFiledCustom txtBairro;
-    private JCustoms.MyFormatter txtCpfCliente;
-    private JCustoms.MyFormatterDate txtDataNascimento;
-    private JCustoms.TextFiledCustom txtEmailCliente;
-    private JCustoms.TextFiledCustom txtNomeCliente;
-    private JCustoms.TextFiledCustom txtRua;
-    private JCustoms.MyFormatterTelefone txtTelefone;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtBairro;
+    private com.mycompany.supermercado.JCustoms.MyFormatter txtCpfCliente;
+    private com.mycompany.supermercado.JCustoms.MyFormatterDate txtDataNascimento;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtEmailCliente;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtNomeCliente;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtRua;
+    private com.mycompany.supermercado.JCustoms.MyFormatterTelefone txtTelefone;
     // End of variables declaration//GEN-END:variables
 }

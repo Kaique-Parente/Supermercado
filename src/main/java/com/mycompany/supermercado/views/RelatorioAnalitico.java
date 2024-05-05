@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package JFrame;
+package com.mycompany.supermercado.views;
 
 /**
  *
@@ -30,10 +30,9 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblDetalhes = new javax.swing.JTable();
-        btnCancelar = new JCustoms.ButtonCustom();
+        btnCancelar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 550));
 
         Cabecalho.setBackground(new java.awt.Color(134, 83, 83));
 
@@ -181,7 +180,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private JCustoms.ButtonCustom btnCancelar;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblDetalhes;

@@ -181,7 +181,7 @@
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.PesquisarCustom" name="txtPesquisarVenda">
+            <Component class="com.mycompany.supermercado.JCustoms.PesquisarCustom" name="txtPesquisarVenda">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -217,7 +217,7 @@
                 <Property name="text" type="java.lang.String" value="R$"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnConfirmar">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnConfirmar">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -243,7 +243,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnCancelarVenda">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnCancelarVenda">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -269,7 +269,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarVendaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="JCustoms.TextFiledCustom" name="txtTotalVenda">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtTotalVenda">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -285,7 +285,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="JCustoms.TextFiledCustom" name="txtCliente">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtCliente">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -301,7 +301,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="JCustoms.TextFiledCustom" name="txtQuantidadeVenda">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtQuantidadeVenda">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -491,7 +491,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="JCustoms.PesquisarCustom" name="txtPesquisarProdutos">
+            <Component class="com.mycompany.supermercado.JCustoms.PesquisarCustom" name="txtPesquisarProdutos">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -611,7 +611,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="JCustoms.ButtonCustom" name="btnNovoProduto">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnNovoProduto">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="6b" red="ae" type="rgb"/>
@@ -641,7 +641,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoProdutoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnVisualizarProduto">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnVisualizarProduto">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -664,7 +664,7 @@
                 <Property name="radius" type="int" value="15"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnExcluirProduto">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnExcluirProduto">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -690,7 +690,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirProdutoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnEditarProduto">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnEditarProduto">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -799,7 +799,7 @@
                 <Property name="text" type="java.lang.String" value="Lista de Clientes"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.PesquisarCustom" name="txtPesquisarProdutos1">
+            <Component class="com.mycompany.supermercado.JCustoms.PesquisarCustom" name="txtPesquisarProdutos1">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -923,7 +923,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="JCustoms.ButtonCustom" name="btnNovoCliente">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnNovoCliente">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="6b" red="ae" type="rgb"/>
@@ -953,7 +953,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNovoClienteActionPerformed"/>
               </Events>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnVisualizarCliente">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnVisualizarCliente">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -976,7 +976,7 @@
                 <Property name="radius" type="int" value="15"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnEditarCliente">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnEditarCliente">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -999,7 +999,7 @@
                 <Property name="radius" type="int" value="15"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnExcluirCliente">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnExcluirCliente">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1120,7 +1120,7 @@
                 <Property name="text" type="java.lang.String" value="Data In&#xed;cio"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.TextFiledCustom" name="txtDataInicio">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtDataInicio">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1147,7 +1147,7 @@
                 <Property name="text" type="java.lang.String" value="Data Termino"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.TextFiledCustom" name="txtDataTermino">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtDataTermino">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1163,7 +1163,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnBuscar">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnBuscar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="6b" red="ae" type="rgb"/>
@@ -1266,7 +1266,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="JCustoms.TextFiledCustom" name="txtTotalRelatorio">
+            <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtTotalRelatorio">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1293,7 +1293,7 @@
                 <Property name="text" type="java.lang.String" value="Valor Total"/>
               </Properties>
             </Component>
-            <Component class="JCustoms.ButtonCustom" name="btnDetalhes">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnDetalhes">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="6b" red="ae" type="rgb"/>

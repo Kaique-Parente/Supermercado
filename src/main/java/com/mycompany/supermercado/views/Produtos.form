@@ -2,7 +2,7 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="JCustoms.ButtonCustom" name="btnConfirmar">
+    <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnConfirmar">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -353,17 +353,17 @@
             <Property name="text" type="java.lang.String" value="Data de Validade"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtNomeProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtNomeProduto">
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtMarcaProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtMarcaProduto">
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtValorProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtValorProduto">
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel5">
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
         </Container>
-        <Component class="JCustoms.FormatterCodBarras" name="txtCodBarras">
+        <Component class="com.mycompany.supermercado.JCustoms.FormatterCodBarras" name="txtCodBarras">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -373,7 +373,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="JCustoms.MyFormatterDate" name="txtDataValidade">
+        <Component class="com.mycompany.supermercado.JCustoms.MyFormatterDate" name="txtDataValidade">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -394,7 +394,7 @@
             <Property name="text" type="java.lang.String" value="Status"/>
           </Properties>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="btnCancelarProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnCancelarProduto">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -420,7 +420,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarProdutoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="JCustoms.ButtonCustom" name="btnConfirmarProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnConfirmarProduto">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -446,7 +446,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmarProdutoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="JCustoms.TextFiledCustom" name="txtQuantidadeProduto">
+        <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtQuantidadeProduto">
         </Component>
       </SubComponents>
     </Container>

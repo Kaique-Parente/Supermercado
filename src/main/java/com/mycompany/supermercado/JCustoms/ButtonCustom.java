@@ -1,4 +1,4 @@
-package JCustoms;
+package com.mycompany.supermercado.JCustoms;
 
 import java.awt.Color;
 import java.awt.Cursor;

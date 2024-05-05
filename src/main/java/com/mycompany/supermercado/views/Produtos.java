@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package JFrame;
+package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.models.Produto;
 import java.time.LocalDate;
@@ -30,7 +30,7 @@ public class Produtos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnConfirmar = new JCustoms.ButtonCustom();
+        btnConfirmar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -42,16 +42,16 @@ public class Produtos extends javax.swing.JFrame {
         lbValor = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtNomeProduto = new JCustoms.TextFiledCustom();
-        txtMarcaProduto = new JCustoms.TextFiledCustom();
-        txtValorProduto = new JCustoms.TextFiledCustom();
+        txtNomeProduto = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        txtMarcaProduto = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        txtValorProduto = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jPanel5 = new javax.swing.JPanel();
-        txtCodBarras = new JCustoms.FormatterCodBarras();
-        txtDataValidade = new JCustoms.MyFormatterDate();
+        txtCodBarras = new com.mycompany.supermercado.JCustoms.FormatterCodBarras();
+        txtDataValidade = new com.mycompany.supermercado.JCustoms.MyFormatterDate();
         jLabel15 = new javax.swing.JLabel();
-        btnCancelarProduto = new JCustoms.ButtonCustom();
-        btnConfirmarProduto = new JCustoms.ButtonCustom();
-        txtQuantidadeProduto = new JCustoms.TextFiledCustom();
+        btnCancelarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnConfirmarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtQuantidadeProduto = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
 
         btnConfirmar.setForeground(new java.awt.Color(0, 0, 0));
         btnConfirmar.setText("Confirmar");
@@ -473,9 +473,9 @@ public class Produtos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JCustoms.ButtonCustom btnCancelarProduto;
-    private JCustoms.ButtonCustom btnConfirmar;
-    private JCustoms.ButtonCustom btnConfirmarProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelarProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmar;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmarProduto;
     private javax.swing.JComboBox<String> cbCategoriaProduto;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -489,11 +489,11 @@ public class Produtos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lbValor;
-    private JCustoms.FormatterCodBarras txtCodBarras;
-    private JCustoms.MyFormatterDate txtDataValidade;
-    private JCustoms.TextFiledCustom txtMarcaProduto;
-    private JCustoms.TextFiledCustom txtNomeProduto;
-    private JCustoms.TextFiledCustom txtQuantidadeProduto;
-    private JCustoms.TextFiledCustom txtValorProduto;
+    private com.mycompany.supermercado.JCustoms.FormatterCodBarras txtCodBarras;
+    private com.mycompany.supermercado.JCustoms.MyFormatterDate txtDataValidade;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtMarcaProduto;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtNomeProduto;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeProduto;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtValorProduto;
     // End of variables declaration//GEN-END:variables
 }

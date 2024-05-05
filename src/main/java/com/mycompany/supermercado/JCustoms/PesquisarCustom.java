@@ -1,16 +1,19 @@
-package JCustoms;
+package com.mycompany.supermercado.JCustoms;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class TextFiledCustom extends JTextField {
+public class PesquisarCustom extends JTextField {
 
     public int getRound() {
         return round;
@@ -21,27 +24,53 @@ public class TextFiledCustom extends JTextField {
         border.setRound(round);
         repaint();
     }
+    
+    public Icon getPrefixIcon() {
+        return prefixIcon;
+    }
+
+    public void setPrefixIcon(Icon prefixIcon) {
+        this.prefixIcon = prefixIcon;
+    }
+
+    public Icon getSuffixIcon() {
+        return suffixIcon;
+    }
+
+    public void setSuffixIcon(Icon suffixIcon) {
+        this.suffixIcon = suffixIcon;
+    }
+
+    private Icon prefixIcon;
+    private Icon suffixIcon;
 
     private Border border;
     private int round = 15;
 
-    public TextFiledCustom() {
+    public PesquisarCustom() {
         border = new Border(8);
         border.setRound(round);
         setBorder(border);
         setOpaque(false);
+        setText("   Pesquisar");
         setSelectedTextColor(Color.WHITE);
-        setSelectionColor(new Color(54, 189, 248));
+        setSelectionColor(new Color(0, 0, 0));
         addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent fe) {
-                border.setColor(new Color(0, 56, 80));
+                border.setColor(new Color(0, 0, 0));
+                if(getText().equals("   Pesquisar")) {
+                    setText("");
+                }
                 repaint();
             }
 
             @Override
             public void focusLost(FocusEvent fe) {
-                border.setColor(new Color(0, 56, 64));
+                border.setColor(new Color(0, 0, 0));
+                if(getText().equals("")) {
+                    setText("   Pesquisar");
+                }
                 repaint();
             }
         });
@@ -73,8 +102,8 @@ public class TextFiledCustom extends JTextField {
             this.color = color;
         }
 
-        private Color focusColor = new Color(0, 56, 80);
-        private Color color = new Color(0, 56, 64);
+        private Color focusColor = new Color(0, 0, 0);
+        private Color color = new Color(0, 0, 0);
         private int round;
 
         public Border(int border) {
@@ -99,5 +128,31 @@ public class TextFiledCustom extends JTextField {
         }
         
         
+    }
+    
+     @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        paintIcon(g);
+        //  paint border
+        if (isFocusOwner()) {
+            g.setColor(new Color(4, 88, 167));
+        } else {
+            g.setColor(new Color(142, 142, 142));
+        }
+    }
+
+    private void paintIcon(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        if (prefixIcon != null) {
+            Image prefix = ((ImageIcon) prefixIcon).getImage();
+            int y = (getHeight() - prefixIcon.getIconHeight()) / 2;
+            g2.drawImage(prefix, 3, y, this);
+        }
+        if (suffixIcon != null) {
+            Image suffix = ((ImageIcon) suffixIcon).getImage();
+            int y = (getHeight() - suffixIcon.getIconHeight()) / 2;
+            g2.drawImage(suffix, getWidth() - suffixIcon.getIconWidth() - 3, y, this);
+        }
     }
 }

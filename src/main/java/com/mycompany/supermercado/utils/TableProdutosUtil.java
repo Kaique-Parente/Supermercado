@@ -1,6 +1,6 @@
 package com.mycompany.supermercado.utils;
 
-import JFrame.TelaPrincipal;
+import com.mycompany.supermercado.views.TelaPrincipal;
 import javax.swing.JFrame;
 
 public class TableProdutosUtil extends JFrame{

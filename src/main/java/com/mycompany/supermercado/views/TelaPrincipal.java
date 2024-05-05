@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package JFrame;
+package com.mycompany.supermercado.views;
 
 import java.awt.Color;
 import java.util.Arrays;
@@ -38,46 +38,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tVendas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtPesquisarVenda = new JCustoms.PesquisarCustom();
+        txtPesquisarVenda = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnConfirmar = new JCustoms.ButtonCustom();
-        btnCancelarVenda = new JCustoms.ButtonCustom();
-        txtTotalVenda = new JCustoms.TextFiledCustom();
-        txtCliente = new JCustoms.TextFiledCustom();
-        txtQuantidadeVenda = new JCustoms.TextFiledCustom();
+        btnConfirmar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnCancelarVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtTotalVenda = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        txtCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        txtQuantidadeVenda = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
         tProdutos = new javax.swing.JPanel();
-        txtPesquisarProdutos = new JCustoms.PesquisarCustom();
+        txtPesquisarProdutos = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
-        btnNovoProduto = new JCustoms.ButtonCustom();
-        btnVisualizarProduto = new JCustoms.ButtonCustom();
-        btnExcluirProduto = new JCustoms.ButtonCustom();
-        btnEditarProduto = new JCustoms.ButtonCustom();
+        btnNovoProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnVisualizarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnExcluirProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnEditarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         tClientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txtPesquisarProdutos1 = new JCustoms.PesquisarCustom();
+        txtPesquisarProdutos1 = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
-        btnNovoCliente = new JCustoms.ButtonCustom();
-        btnVisualizarCliente = new JCustoms.ButtonCustom();
-        btnEditarCliente = new JCustoms.ButtonCustom();
-        btnExcluirCliente = new JCustoms.ButtonCustom();
+        btnNovoCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnVisualizarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnEditarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnExcluirCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         tRelatorios = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txtDataInicio = new JCustoms.TextFiledCustom();
+        txtDataInicio = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel8 = new javax.swing.JLabel();
-        txtDataTermino = new JCustoms.TextFiledCustom();
-        btnBuscar = new JCustoms.ButtonCustom();
+        txtDataTermino = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        btnBuscar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
-        txtTotalRelatorio = new JCustoms.TextFiledCustom();
+        txtTotalRelatorio = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel10 = new javax.swing.JLabel();
-        btnDetalhes = new JCustoms.ButtonCustom();
+        btnDetalhes = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -901,18 +901,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JCustoms.ButtonCustom btnBuscar;
-    private JCustoms.ButtonCustom btnCancelarVenda;
-    private JCustoms.ButtonCustom btnConfirmar;
-    private JCustoms.ButtonCustom btnDetalhes;
-    private JCustoms.ButtonCustom btnEditarCliente;
-    private JCustoms.ButtonCustom btnEditarProduto;
-    private JCustoms.ButtonCustom btnExcluirCliente;
-    private JCustoms.ButtonCustom btnExcluirProduto;
-    private JCustoms.ButtonCustom btnNovoCliente;
-    private JCustoms.ButtonCustom btnNovoProduto;
-    private JCustoms.ButtonCustom btnVisualizarCliente;
-    private JCustoms.ButtonCustom btnVisualizarProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnBuscar;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelarVenda;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmar;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnDetalhes;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnEditarCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnEditarProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -936,14 +936,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static javax.swing.JTable tblProdutos;
     private javax.swing.JTable tblRelatorio;
     private static javax.swing.JTable tblVendas;
-    private JCustoms.TextFiledCustom txtCliente;
-    private JCustoms.TextFiledCustom txtDataInicio;
-    private JCustoms.TextFiledCustom txtDataTermino;
-    private JCustoms.PesquisarCustom txtPesquisarProdutos;
-    private JCustoms.PesquisarCustom txtPesquisarProdutos1;
-    private JCustoms.PesquisarCustom txtPesquisarVenda;
-    private JCustoms.TextFiledCustom txtQuantidadeVenda;
-    private JCustoms.TextFiledCustom txtTotalRelatorio;
-    private JCustoms.TextFiledCustom txtTotalVenda;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtCliente;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtDataInicio;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtDataTermino;
+    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos;
+    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos1;
+    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarVenda;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeVenda;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalRelatorio;
+    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalVenda;
     // End of variables declaration//GEN-END:variables
 }
