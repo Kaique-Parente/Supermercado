@@ -4,7 +4,11 @@
  */
 package com.mycompany.supermercado.views;
 
+import com.mycompany.supermercado.dao.ClienteDAO;
+import com.mycompany.supermercado.models.Cliente;
 import java.awt.Color;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -23,6 +27,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Aba selecionada cor
         UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
         initComponents();
+        atualizarTabelaClientes();
     }
 
     /**
@@ -894,10 +899,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     
-    public static void AddLinhaCliente(Object[] dataRow){
-            DefaultTableModel model = (DefaultTableModel)tblClientes.getModel();
-            model.addRow(dataRow);
+    public static void atualizarTabelaClientes(){
+        
+        ArrayList<Cliente> lstRetorno = ClienteDAO.listar();
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+        
+        modelo.setRowCount(0);
+        
+        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String dataNascimentoS = "";
+        
+        for(Cliente obj : lstRetorno) {
+            dataNascimentoS = obj.getDataNascimento().format(fm1); 
+            
+            modelo.addRow(new String[]{
+                String.valueOf(obj.getCpf()),
+                obj.getNome(),
+                String.valueOf(obj.getTelefone()),
+                obj.getEmail(),
+                obj.getEstadoCivil(),
+                obj.getSexo(),
+                obj.getRua(),   
+                obj.getEstado(),           
+                obj.getBairro(),
+                dataNascimentoS
+            });
         }
+    }
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

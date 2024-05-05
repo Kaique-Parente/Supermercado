@@ -4,7 +4,10 @@ import com.mycompany.supermercado.models.Cliente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +38,7 @@ public class ClienteDAO {
             comandoSQL.setString(7, obj.getRua());            
             comandoSQL.setString(8, obj.getEstado());            
             comandoSQL.setString(9, obj.getBairro());
-            comandoSQL.setObject(10, Cliente.converterDate(obj.getDataNascimento()));
+            comandoSQL.setObject(10, Cliente.convertToDate(obj.getDataNascimento()));
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             
@@ -53,4 +56,43 @@ public class ClienteDAO {
         
     }
     
+    public static ArrayList<Cliente> listar(){
+        
+        ArrayList<Cliente> lstClientes = new ArrayList<Cliente>();
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" SELECT * FROM `Cliente` ");
+            
+        ResultSet rs = comandoSQL.executeQuery();
+        
+        while(rs.next()) {
+            int clienteID = rs.getInt("ClienteID");
+            String nome = rs.getString("Nome");
+            long cpf = Long.parseLong(rs.getString("CPF"));
+            long telefone = Long.parseLong(rs.getString("Telefone"));
+            String email = rs.getString("Email");
+            String estadoCivil = rs.getString("EstadoCivil");
+            String sexo = rs.getString("Sexo");
+            String rua = rs.getString("Rua");
+            String estado = rs.getString("Estado");
+            String bairro = rs.getString("Bairro");
+            LocalDate data = Cliente.convertToLocalDate(rs.getDate("DataNascimento"));
+            
+            Cliente novoCliente = new Cliente(clienteID, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, data);
+            lstClientes.add(novoCliente);
+        }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lstClientes;
+    }
 }

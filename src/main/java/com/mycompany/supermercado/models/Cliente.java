@@ -1,11 +1,13 @@
 package com.mycompany.supermercado.models;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
 public class Cliente {
     
+    private Integer clienteID;
     private String nome;
     private Long cpf;
     private Long telefone;
@@ -16,6 +18,20 @@ public class Cliente {
     private String estado;
     private String bairro;
     private LocalDate dataNascimento;
+
+    public Cliente(Integer clienteID, String nome, Long cpf, Long telefone, String email, String estadoCivil, String sexo, String rua, String estado, String bairro, LocalDate dataNascimento) {
+        this.clienteID = clienteID;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.email = email;
+        this.estadoCivil = estadoCivil;
+        this.sexo = sexo;
+        this.rua = rua;
+        this.estado = estado;
+        this.bairro = bairro;
+        this.dataNascimento = dataNascimento;
+    }
 
     public Cliente(String nome, Long cpf, Long telefone, String email, String estadoCivil, String sexo, String rua, String estado, String bairro, LocalDate dataNascimento) {
         this.nome = nome;
@@ -28,6 +44,14 @@ public class Cliente {
         this.estado = estado;
         this.bairro = bairro;
         this.dataNascimento = dataNascimento;
+    }
+
+    public Integer getClienteID() {
+        return clienteID;
+    }
+
+    public void setClienteID(Integer clienteID) {
+        this.clienteID = clienteID;
     }
 
     public String getNome() {
@@ -110,7 +134,11 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
     
-    public static Date converterDate(LocalDate data) {
+    public static Date convertToDate(LocalDate data) {
         return Date.from(data.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+    
+    public static LocalDate convertToLocalDate(Date data) {
+        return Instant.ofEpochMilli(data.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 }

@@ -365,7 +365,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar nome
         String nome = "";
         if (txtNomeCliente.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um nome!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um nome!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             nome = txtNomeCliente.getText();
         }
@@ -373,7 +373,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar CPF
         long Cpf = 0;
         if (txtCpfCliente.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             Cpf = Long.parseLong(txtCpfCliente.getCPF());
         }
@@ -381,7 +381,7 @@ public class Clientes extends javax.swing.JFrame {
         //Validar Telefone
         long telefone = 0;
         if (txtTelefone.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             telefone = Long.parseLong(txtTelefone.getCPF());
         }
@@ -390,7 +390,7 @@ public class Clientes extends javax.swing.JFrame {
         String bairro = "";
         String rua = "";
         if (txtRua.getText().equals("") || txtBairro.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             rua = txtRua.getText();
             bairro = txtBairro.getText();
@@ -399,21 +399,21 @@ public class Clientes extends javax.swing.JFrame {
         //Validar combo-box
         String estado = "";
         if (cbEstado.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             estado = cbEstado.getSelectedItem().toString();
         }
 
         String estCivil = "";
         if (cbEstadoCivil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             estCivil = cbEstadoCivil.getSelectedItem().toString();
         }
 
         String sexo = "";
         if (cbSexo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             sexo = cbSexo.getSelectedItem().toString();
         }
@@ -422,7 +422,7 @@ public class Clientes extends javax.swing.JFrame {
         boolean emailTest = ValidarEmail.validar(txtEmailCliente.getText());
         String email = "";
         if (!emailTest) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um email válido!", "ERRO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Digite um email válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             email = txtEmailCliente.getText();
         }
@@ -443,13 +443,9 @@ public class Clientes extends javax.swing.JFrame {
         //Lista de Clientes
         List<Cliente> clientes = new ArrayList<>();
         
-        Cliente novoCliente = new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento);
-        clientes.add(novoCliente);
+        clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
 
         //Banco e Tabela
-        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        String dataNascimentoS = "";
-
         for(Cliente c : clientes) {
             
             if(!String.valueOf(Cpf).equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
@@ -463,23 +459,9 @@ public class Clientes extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Erro!");
                 }
-                
-                //Formatando Data
-                dataNascimentoS = c.getDataNascimento().format(fm1); 
 
-                //Adicionar Linha Tabela
-                TelaPrincipal.AddLinhaCliente(new Object[]{
-                    String.valueOf(Cpf),
-                    nome,
-                    String.valueOf(telefone),
-                    email,
-                    estCivil,
-                    sexo,
-                    rua,
-                    estado,
-                    bairro,
-                    dataNascimentoS
-                 });
+                //Adicionar a Tabela
+                TelaPrincipal.atualizarTabelaClientes();
                 this.dispose();
            }
         } 
