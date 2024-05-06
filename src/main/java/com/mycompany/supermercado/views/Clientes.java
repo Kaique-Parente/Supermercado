@@ -19,11 +19,32 @@ import java.util.List;
  */
 public class Clientes extends javax.swing.JFrame {
 
+    Cliente clienteAlterar = null;
     /**
      * Creates new form Cliente
      */
     public Clientes() {
         initComponents();
+    }
+    
+    public Clientes(Cliente obj){
+        
+        initComponents();
+        clienteAlterar = obj;
+        
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+        
+        txtNomeCliente.setText(clienteAlterar.getNome());
+        txtCpfCliente.setCPF(String.valueOf(clienteAlterar.getCpf()));
+        txtTelefone.setTelefone(String.valueOf(clienteAlterar.getTelefone()));
+        txtEmailCliente.setText(clienteAlterar.getEmail());
+        cbEstadoCivil.getModel().setSelectedItem(clienteAlterar.getEstadoCivil());
+        cbSexo.getModel().setSelectedItem(clienteAlterar.getSexo());
+        txtRua.setText(clienteAlterar.getRua());
+        cbEstado.getModel().setSelectedItem(clienteAlterar.getEstado());
+        txtBairro.setText(clienteAlterar.getBairro());
+        txtDataNascimento.setDate(fm2.format(clienteAlterar.getDataNascimento()));
+        
     }
 
     /**
@@ -347,6 +368,7 @@ public class Clientes extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoCivilActionPerformed
@@ -362,109 +384,151 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_cbEstadoActionPerformed
 
     private void btnConfirmarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarClienteActionPerformed
-        //Validar nome
-        String nome = "";
-        if (txtNomeCliente.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um nome!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            nome = txtNomeCliente.getText();
-        }
         
-        //Validar CPF
-        long Cpf = 0;
-        if (txtCpfCliente.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            Cpf = Long.parseLong(txtCpfCliente.getCPF());
-        }
-        
-        //Validar Telefone
-        long telefone = 0;
-        if (txtTelefone.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            telefone = Long.parseLong(txtTelefone.getCPF());
-        }
-        
-        //validar Endereço
-        String bairro = "";
-        String rua = "";
-        if (txtRua.getText().equals("") || txtBairro.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            rua = txtRua.getText();
-            bairro = txtBairro.getText();
-        }
+        if(clienteAlterar == null){
+            //Validar nome
+            String nome = "";
+            if (txtNomeCliente.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite um nome!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                nome = txtNomeCliente.getText();
+            }
 
-        //Validar combo-box
-        String estado = "";
-        if (cbEstado.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            estado = cbEstado.getSelectedItem().toString();
-        }
+            //Validar CPF
+            long Cpf = 0;
+            if (txtCpfCliente.getCPF().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite um CPF válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                Cpf = Long.parseLong(txtCpfCliente.getCPF());
+            }
 
-        String estCivil = "";
-        if (cbEstadoCivil.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            estCivil = cbEstadoCivil.getSelectedItem().toString();
-        }
+            //Validar Telefone
+            long telefone = 0;
+            if (txtTelefone.getTelefone().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite um Telefone válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                telefone = Long.parseLong(txtTelefone.getTelefone());
+            }
 
-        String sexo = "";
-        if (cbSexo.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            sexo = cbSexo.getSelectedItem().toString();
-        }
+            //validar Endereço
+            String bairro = "";
+            String rua = "";
+            if (txtRua.getText().equals("") || txtBairro.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite um endereço válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                rua = txtRua.getText();
+                bairro = txtBairro.getText();
+            }
+
+            //Validar combo-box
+            String estado = "";
+            if (cbEstado.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um estado!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                estado = cbEstado.getSelectedItem().toString();
+            }
+
+            String estCivil = "";
+            if (cbEstadoCivil.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um estado civil!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                estCivil = cbEstadoCivil.getSelectedItem().toString();
+            }
+
+            String sexo = "";
+            if (cbSexo.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione um Sexo!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                sexo = cbSexo.getSelectedItem().toString();
+            }
+
+            //Validar email
+            boolean emailTest = ValidarEmail.validar(txtEmailCliente.getText());
+            String email = "";
+            if (!emailTest) {
+                JOptionPane.showMessageDialog(rootPane, "Digite um email válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                email = txtEmailCliente.getText();
+            }
+
+            //Data de Nascimento
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+            LocalDate dataNascimento = null;
+            if(txtDataNascimento.getDate().equals("")){
+                JOptionPane.showMessageDialog(rootPane, "Digite a sua data de nascimento!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                try{
+                    dataNascimento = LocalDate.parse(txtDataNascimento.getDate(), fm2);
+                }catch(DateTimeParseException e){
+                    JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+
+            //Lista de Clientes
+            List<Cliente> clientes = new ArrayList<>();
+
+            clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
+
+            //Banco e Tabela
+            for(Cliente c : clientes) {
+
+                if(!String.valueOf(Cpf).equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
+                   !c.getRua().equals("") && !c.getEstado().equals("")&& !c.getBairro().equals("") && c.getDataNascimento() != null){
+
+                    //Adicionar ao Banco de Dados
+                    boolean retorno = ClienteDAO.salvar(c);
+
+                    if(retorno) {
+                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Erro!");
+                    }
+
+                    //Adicionar a Tabela
+                    TelaPrincipal.atualizarTabelaClientes();
+                    this.dispose();
+               }
+            }
+        } 
         
-        //Validar email
-        boolean emailTest = ValidarEmail.validar(txtEmailCliente.getText());
-        String email = "";
-        if (!emailTest) {
-            JOptionPane.showMessageDialog(rootPane, "Digite um email válido!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            email = txtEmailCliente.getText();
-        }
-        
-        //Data de Nascimento
-        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
-        LocalDate dataNascimento = null;
-        if(txtDataNascimento.getCPF().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Digite a sua data de nascimento!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try{
-                dataNascimento = LocalDate.parse(txtDataNascimento.getCPF(), fm2);
-            }catch(DateTimeParseException e){
-                JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        else { //Modo de Alteração
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+
+            String nome = txtNomeCliente.getText();
+            long cpf = Long.parseLong(txtCpfCliente.getCPF());
+            long telefone = Long.parseLong(txtTelefone.getTelefone());
+            String email = txtEmailCliente.getText();
+            String estadoCivil = cbEstadoCivil.getSelectedItem().toString();
+            String sexo = cbSexo.getSelectedItem().toString();
+            String rua = txtRua.getText();
+            String estado = cbEstado.getSelectedItem().toString();
+            String bairro = txtBairro.getText();
+            LocalDate dataNascimento = LocalDate.parse(txtDataNascimento.getDate(), fm2);
+            
+            clienteAlterar.setNome(nome);
+            clienteAlterar.setCpf(cpf);
+            clienteAlterar.setTelefone(telefone);
+            clienteAlterar.setEmail(email);
+            clienteAlterar.setEstadoCivil(estadoCivil);
+            clienteAlterar.setSexo(sexo);
+            clienteAlterar.setRua(rua);
+            clienteAlterar.setEstado(estado);
+            clienteAlterar.setBairro(bairro);
+            clienteAlterar.setDataNascimento(dataNascimento);
+            
+            boolean retorno = ClienteDAO.alterar(clienteAlterar);
+            
+            if(retorno) {
+                JOptionPane.showMessageDialog(rootPane, "Sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                TelaPrincipal.atualizarTabelaClientes();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Erro!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
         }
 
-        //Lista de Clientes
-        List<Cliente> clientes = new ArrayList<>();
         
-        clientes.add(new Cliente(nome, Cpf, telefone, email, estCivil, sexo, rua, estado, bairro, dataNascimento));
-
-        //Banco e Tabela
-        for(Cliente c : clientes) {
-            
-            if(!String.valueOf(Cpf).equals("0") && !c.getNome().equals("") && c.getTelefone() != 0 && emailTest == true && !c.getEstadoCivil().equals("") && !c.getSexo().equals("") && 
-               !c.getRua().equals("") && !c.getEstado().equals("")&& !c.getBairro().equals("") && c.getDataNascimento() != null){
-                
-                //Adicionar ao Banco de Dados
-                boolean retorno = ClienteDAO.salvar(c);
-        
-                if(retorno) {
-                    JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Erro!");
-                }
-
-                //Adicionar a Tabela
-                TelaPrincipal.atualizarTabelaClientes();
-                this.dispose();
-           }
-        } 
+        //Alterar
  
     }//GEN-LAST:event_btnConfirmarClienteActionPerformed
 

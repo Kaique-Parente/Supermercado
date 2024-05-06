@@ -46,11 +46,11 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getClienteID() {
+    public Integer getID() {
         return clienteID;
     }
 
-    public void setClienteID(Integer clienteID) {
+    public void setID(Integer clienteID) {
         this.clienteID = clienteID;
     }
 

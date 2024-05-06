@@ -7,6 +7,7 @@ package com.mycompany.supermercado.views;
 import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.models.Cliente;
 import java.awt.Color;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -480,11 +481,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CPF", "Nome", "Telefone", "Email", "Estado Civil", "Sexo", "Rua", "Estado", "Bairro", "Data de Nascimento"
+                "ID", "CPF", "Nome", "Telefone", "Email", "Estado Civil", "Sexo", "Rua", "Estado", "Bairro", "Data de Nascimento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -498,6 +499,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblClientes);
         if (tblClientes.getColumnModel().getColumnCount() > 0) {
             tblClientes.getColumnModel().getColumn(0).setResizable(false);
+            tblClientes.getColumnModel().getColumn(0).setPreferredWidth(40);
             tblClientes.getColumnModel().getColumn(1).setResizable(false);
             tblClientes.getColumnModel().getColumn(2).setResizable(false);
             tblClientes.getColumnModel().getColumn(3).setResizable(false);
@@ -507,6 +509,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblClientes.getColumnModel().getColumn(7).setResizable(false);
             tblClientes.getColumnModel().getColumn(8).setResizable(false);
             tblClientes.getColumnModel().getColumn(9).setResizable(false);
+            tblClientes.getColumnModel().getColumn(10).setResizable(false);
         }
 
         btnNovoCliente.setBackground(new java.awt.Color(174, 107, 107));
@@ -543,6 +546,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnEditarCliente.setFocusPainted(false);
         btnEditarCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnEditarCliente.setRadius(15);
+        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarClienteActionPerformed(evt);
+            }
+        });
 
         btnExcluirCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluirCliente.setText("Excluir");
@@ -850,6 +858,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
+    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
+        
+        int linhaSelecionada = tblClientes.getSelectedRow();
+        if(linhaSelecionada >= 0){
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDate dataNascimento = null;
+            
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+            int id = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            long cpf = Long.parseLong(modelo.getValueAt(linhaSelecionada, 1).toString());
+            String nome = modelo.getValueAt(linhaSelecionada, 2).toString();
+            long telefone = Long.parseLong(modelo.getValueAt(linhaSelecionada, 3).toString());
+            String email = modelo.getValueAt(linhaSelecionada, 4).toString();
+            String estadoCivil = modelo.getValueAt(linhaSelecionada, 5).toString();
+            String sexo = modelo.getValueAt(linhaSelecionada, 6).toString();
+            String rua = modelo.getValueAt(linhaSelecionada, 7).toString();
+            String estado = modelo.getValueAt(linhaSelecionada, 8).toString();
+            String bairro = modelo.getValueAt(linhaSelecionada, 9).toString();
+            dataNascimento = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 10).toString(), fm2);
+            
+            Cliente clienteAlterar = new Cliente(id, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, dataNascimento);
+            Clientes telaCadastro = new Clientes(clienteAlterar);
+            telaCadastro.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnEditarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -914,6 +951,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             dataNascimentoS = obj.getDataNascimento().format(fm1); 
             
             modelo.addRow(new String[]{
+                String.valueOf(obj.getID()),
                 String.valueOf(obj.getCpf()),
                 obj.getNome(),
                 String.valueOf(obj.getTelefone()),

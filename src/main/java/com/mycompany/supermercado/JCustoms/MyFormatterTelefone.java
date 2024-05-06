@@ -150,7 +150,11 @@ public class MyFormatterTelefone extends JPanel {
 
 // Métodos específicos da classe (se necessário)
 // Por exemplo, você pode criar um método para obter o valor do CPF digitado.
-    public String getCPF() {
+    public String getTelefone() {
         return campoCPF.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
+    }
+    
+    public void setTelefone(String txt){
+        campoCPF.setText(txt);
     }
 }

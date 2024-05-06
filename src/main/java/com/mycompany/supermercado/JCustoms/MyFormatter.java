@@ -159,4 +159,8 @@ public class MyFormatter extends JPanel {
     public String getCPF() {
         return campoCPF.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
     }
+    
+    public void setCPF(String txt){
+        campoCPF.setText(txt);
+    }
 }

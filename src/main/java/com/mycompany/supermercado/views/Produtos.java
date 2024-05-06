@@ -358,11 +358,11 @@ public class Produtos extends javax.swing.JFrame {
         //Validade
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
         LocalDate validade = null;
-        if(txtDataValidade.getCPF().equals("")){
+        if(txtDataValidade.getDate().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Digite a validade do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             try{
-                validade = LocalDate.parse(txtDataValidade.getCPF(), fm2);
+                validade = LocalDate.parse(txtDataValidade.getDate(), fm2);
             }catch(DateTimeParseException e){
                 JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }

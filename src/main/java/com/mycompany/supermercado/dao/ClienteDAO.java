@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ClienteDAO {
     
@@ -94,5 +95,44 @@ public class ClienteDAO {
         }
         
         return lstClientes;
+    }
+    
+    public static boolean alterar(Cliente obj){
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" UPDATE Cliente SET Nome = ?, CPF = ?, Telefone = ?, Email = ?, EstadoCivil = ?, Sexo = ?, Rua = ?, Estado = ?, Bairro = ?, DataNascimento = ? "
+                    + "WHERE ClienteID = ?");
+            
+            comandoSQL.setString(1, obj.getNome());
+            comandoSQL.setLong(2, obj.getCpf());
+            comandoSQL.setLong(3, obj.getTelefone());
+            comandoSQL.setString(4, obj.getEmail());
+            comandoSQL.setString(5, obj.getEstadoCivil());
+            comandoSQL.setString(6, obj.getSexo());
+            comandoSQL.setString(7, obj.getRua());            
+            comandoSQL.setString(8, obj.getEstado());            
+            comandoSQL.setString(9, obj.getBairro());
+            comandoSQL.setObject(10, Cliente.convertToDate(obj.getDataNascimento()));
+            comandoSQL.setInt(11, obj.getID());
+            
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas>=0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
     }
 }
