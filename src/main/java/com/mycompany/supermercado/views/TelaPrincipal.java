@@ -536,6 +536,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVisualizarCliente.setFocusPainted(false);
         btnVisualizarCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnVisualizarCliente.setRadius(15);
+        btnVisualizarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarClienteActionPerformed(evt);
+            }
+        });
 
         btnEditarCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnEditarCliente.setText("Editar");
@@ -886,6 +891,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnEditarClienteActionPerformed
+
+    private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
+        
+        int linhaSelecionada = tblClientes.getSelectedRow();
+        if(linhaSelecionada >= 0){
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDate dataNascimento = null;
+            
+            DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+            int id = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+            long cpf = Long.parseLong(modelo.getValueAt(linhaSelecionada, 1).toString());
+            String nome = modelo.getValueAt(linhaSelecionada, 2).toString();
+            long telefone = Long.parseLong(modelo.getValueAt(linhaSelecionada, 3).toString());
+            String email = modelo.getValueAt(linhaSelecionada, 4).toString();
+            String estadoCivil = modelo.getValueAt(linhaSelecionada, 5).toString();
+            String sexo = modelo.getValueAt(linhaSelecionada, 6).toString();
+            String rua = modelo.getValueAt(linhaSelecionada, 7).toString();
+            String estado = modelo.getValueAt(linhaSelecionada, 8).toString();
+            String bairro = modelo.getValueAt(linhaSelecionada, 9).toString();
+            dataNascimento = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 10).toString(), fm2);
+            
+            Cliente clienteVisualizar = new Cliente(id, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, dataNascimento);
+            Clientes telaCadastro = new Clientes(clienteVisualizar, true);
+            telaCadastro.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnVisualizarClienteActionPerformed
 
     /**
      * @param args the command line arguments

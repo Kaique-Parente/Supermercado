@@ -157,4 +157,8 @@ public class MyFormatterTelefone extends JPanel {
     public void setTelefone(String txt){
         campoCPF.setText(txt);
     }
+    
+    public void setEditableTelefone(boolean t){
+        campoCPF.setEditable(t);
+    } 
 }

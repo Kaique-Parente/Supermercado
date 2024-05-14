@@ -8,6 +8,8 @@ import com.mycompany.supermercado.dao.ClienteDAO;
 import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
 import com.mycompany.supermercado.models.Cliente;
+import java.awt.Color;
+import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -44,6 +46,42 @@ public class Clientes extends javax.swing.JFrame {
         cbEstado.getModel().setSelectedItem(clienteAlterar.getEstado());
         txtBairro.setText(clienteAlterar.getBairro());
         txtDataNascimento.setDate(fm2.format(clienteAlterar.getDataNascimento()));
+        
+    }
+    
+    public Clientes(Cliente obj, boolean t) {
+        initComponents();
+        clienteAlterar = obj;
+        
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+        
+        txtNomeCliente.setText(clienteAlterar.getNome());
+        txtCpfCliente.setCPF(String.valueOf(clienteAlterar.getCpf()));
+        txtTelefone.setTelefone(String.valueOf(clienteAlterar.getTelefone()));
+        txtEmailCliente.setText(clienteAlterar.getEmail());
+        cbEstadoCivil.getModel().setSelectedItem(clienteAlterar.getEstadoCivil());
+        cbSexo.getModel().setSelectedItem(clienteAlterar.getSexo());
+        txtRua.setText(clienteAlterar.getRua());
+        cbEstado.getModel().setSelectedItem(clienteAlterar.getEstado());
+        txtBairro.setText(clienteAlterar.getBairro());
+        txtDataNascimento.setDate(fm2.format(clienteAlterar.getDataNascimento()));
+
+        //TODO:
+        btnConfirmarCliente.setVisible(!t);
+        btnCancelarCliente.setText("Voltar");
+        btnCancelarCliente.setBackground(new Color(255,80,80));
+        btnCancelarCliente.setColor(new Color(255,80,80));
+        
+        txtNomeCliente.setEditable(!t);
+        txtCpfCliente.setEditableCPF(!t);
+        txtTelefone.setEditableTelefone(!t);
+        txtEmailCliente.setEditable(!t);
+        cbEstadoCivil.setEnabled(!t);
+        cbSexo.setEnabled(!t);
+        txtRua.setEditable(!t);
+        cbEstado.setEnabled(!t);
+        txtBairro.setEditable(!t);
+        txtDataNascimento.setEditableDate(!t);
         
     }
 
@@ -180,6 +218,7 @@ public class Clientes extends javax.swing.JFrame {
 
         btnCancelarCliente.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelarCliente.setText("Cancelar");
+        btnCancelarCliente.setAlignmentY(30.0F);
         btnCancelarCliente.setBorderColor(java.awt.Color.red);
         btnCancelarCliente.setBorderPainted(false);
         btnCancelarCliente.setColorClick(new java.awt.Color(255, 100, 100));

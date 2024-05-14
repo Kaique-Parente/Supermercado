@@ -160,4 +160,8 @@ public class MyFormatterDate extends JPanel {
     public void setDate(String txt){
         campoCPF.setText(txt);
     }
+    
+    public void setEditableDate(boolean t){
+        campoCPF.setEditable(t);
+    }
 }

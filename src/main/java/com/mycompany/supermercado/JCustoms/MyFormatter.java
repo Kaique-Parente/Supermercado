@@ -163,4 +163,8 @@ public class MyFormatter extends JPanel {
     public void setCPF(String txt){
         campoCPF.setText(txt);
     }
+    
+    public void setEditableCPF(boolean t){
+        campoCPF.setEditable(t);
+    }
 }
