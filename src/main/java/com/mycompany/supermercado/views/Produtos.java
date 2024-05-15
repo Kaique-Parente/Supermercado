@@ -8,6 +8,8 @@ import com.mycompany.supermercado.JCustoms.EventSwitchSelected;
 import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Produto;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -79,16 +81,23 @@ public class Produtos extends javax.swing.JFrame {
         txtValorProduto.setText(String.valueOf(produtoAlterar.getValor()));
         txtDataValidade.setDate(fm2.format(produtoAlterar.getValidade()));
         txtQuantidadeProduto.setText(String.valueOf(produtoAlterar.getQuantidade()));
-        btnStatus.activeButton(produtoAlterar.getStatus());
         txtStatus.setText(produtoAlterar.getStatus() ? "Em estoque" : "Sem estoque");
 
+        btnConfirmarProduto.setVisible(!t);
+        btnCancelarProduto.setText("Voltar");
+        btnCancelarProduto.setFont(new Font("Arial", 0, 16));
+        btnCancelarProduto.setBackground(new Color(255,80,80));
+        btnCancelarProduto.setColor(new Color(255,80,80));
+        
         txtCodBarras.setEditableCod(!t);
         txtNomeProduto.setEditable(!t);
         txtMarcaProduto.setEditable(!t);
-        cbCategoriaProduto.setEditable(!t);
+        cbCategoriaProduto.setEnabled(!t);
         txtValorProduto.setEditable(!t);
         txtDataValidade.setEditableDate(!t);
         txtQuantidadeProduto.setEditable(!t);
+        
+        btnStatus.activeButton(produtoAlterar.getStatus());
     }
 
     /**

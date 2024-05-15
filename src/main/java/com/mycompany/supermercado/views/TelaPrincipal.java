@@ -959,11 +959,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
             dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
             int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
-            boolean status = Boolean.parseBoolean(modelo.getValueAt(linhaSelecionada, 7).toString());
+            
+            String txtStatus = modelo.getValueAt(linhaSelecionada, 7).toString();
+            boolean status = txtStatus.equals("Em estoque");
 
             Produto produtoVisualizar = new Produto(codigo, nome, marca, categoria, valor, dataValidade, quantidade, status);
-            //Produtos telaCadastro = new Produtos(produtoVisualizar, true);
-            //telaCadastro.setVisible(true);
+            Produtos telaCadastro = new Produtos(produtoVisualizar, true);
+            telaCadastro.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
