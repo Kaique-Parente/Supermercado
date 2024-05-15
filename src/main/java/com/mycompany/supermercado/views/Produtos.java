@@ -5,6 +5,7 @@
 package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.JCustoms.EventSwitchSelected;
+import com.mycompany.supermercado.dao.ProdutosDAO;
 import com.mycompany.supermercado.models.Produto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -18,19 +19,19 @@ public class Produtos extends javax.swing.JFrame {
     /**
      * Creates new form Produtos
      */
-    
     static boolean status = false;
-    
+
     public Produtos() {
         initComponents();
         btnStatus.addEventSelected(new EventSwitchSelected() {
             @Override
             public void onSelected(boolean selected) {
                 status = selected;
-                if(status)
+                if (status) {
                     txtStatus.setText("Em estoque");
-                else
+                } else {
                     txtStatus.setText("Sem estoque");
+                }
             }
         });
     }
@@ -324,18 +325,18 @@ public class Produtos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValorActionPerformed
 
     private void buttonCustom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCustom2ActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_buttonCustom2ActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-       
+
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarProdutoActionPerformed
 
         //Validar Código de Barras
         long codBarras = 0;
-        if(txtCodBarras.getCPF().equals("")){
+        if (txtCodBarras.getCPF().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Digite o Código de Barras!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             codBarras = Long.parseLong(txtCodBarras.getCPF());
@@ -343,9 +344,9 @@ public class Produtos extends javax.swing.JFrame {
 
         //Validar Nome
         String nome = "";
-        if(txtNomeProduto.getText().equals("")){
+        if (txtNomeProduto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Digite o Nome do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        }else {
+        } else {
             nome = txtNomeProduto.getText();
         }
 
@@ -354,7 +355,7 @@ public class Produtos extends javax.swing.JFrame {
 
         //Validar Categoria
         String categoria = "";
-        if(cbCategoriaProduto.getSelectedIndex() == 0) {
+        if (cbCategoriaProduto.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Selecione a Categoria!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             categoria = cbCategoriaProduto.getSelectedItem().toString();
@@ -363,13 +364,13 @@ public class Produtos extends javax.swing.JFrame {
         //Validar Valor
         double valor = 0.0;
         String aux = "";
-        if(txtValorProduto.getText().equals("")){
+        if (txtValorProduto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Digite o valor do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        }else {
+        } else {
             try {
                 aux = txtValorProduto.getText().replace(",", ".");
                 valor = Double.parseDouble(aux);
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(rootPane, "Digite o valor corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -377,24 +378,24 @@ public class Produtos extends javax.swing.JFrame {
         //Validade
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
         LocalDate validade = null;
-        if(txtDataValidade.getDate().equals("")){
+        if (txtDataValidade.getDate().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Digite a validade do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
-            try{
+            try {
                 validade = LocalDate.parse(txtDataValidade.getDate(), fm2);
-            }catch(DateTimeParseException e){
+            } catch (DateTimeParseException e) {
                 JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
         }
 
         //Quantidade
         int quantidade = 0;
-        if(txtQuantidadeProduto.getText().equals("")){
+        if (txtQuantidadeProduto.getText().equals("")) {
             quantidade = 0;
-        }else {
+        } else {
             try {
                 quantidade = Integer.parseInt(txtQuantidadeProduto.getText());
-            }catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(rootPane, "Digite a quantidade corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
                 quantidade = -1;
             }
@@ -410,10 +411,18 @@ public class Produtos extends javax.swing.JFrame {
         DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String codigoS = "", valorS = "", validadeS = "", quantidadeS = "";
 
-        for(Produto p : produtos) {
+        for (Produto p : produtos) {
             codigoS = Long.toString(p.getCodigo());
 
-            if(!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0){
+            if (!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0) {
+
+                boolean retorno = ProdutosDAO.salvar(p);
+
+                if (retorno) {
+                    JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Erro!");
+                }
 
                 //Conversão de valores do Produto para String
                 valorS = (String.format("%.2f", p.getValor()));
@@ -450,7 +459,7 @@ public class Produtos extends javax.swing.JFrame {
 
         String categoria = cbCategoriaProduto.getSelectedItem().toString();
 
-        if(categoria.equals("Açougue") || categoria.equals("Padaria") || categoria.equals("Horti-Fruti")){
+        if (categoria.equals("Açougue") || categoria.equals("Padaria") || categoria.equals("Horti-Fruti")) {
             lbValor.setText("Valor por KG:");
         } else {
             lbValor.setText("Valor por Unidade:");

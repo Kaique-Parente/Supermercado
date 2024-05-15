@@ -1,6 +1,8 @@
 package com.mycompany.supermercado.dao;
 
 import com.mycompany.supermercado.models.Cliente;
+import static com.mycompany.supermercado.models.ConverterData.convertToDate;
+import static com.mycompany.supermercado.models.ConverterData.convertToLocalDate;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,7 +12,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class ClienteDAO {
     
@@ -39,7 +40,7 @@ public class ClienteDAO {
             comandoSQL.setString(7, obj.getRua());            
             comandoSQL.setString(8, obj.getEstado());            
             comandoSQL.setString(9, obj.getBairro());
-            comandoSQL.setObject(10, Cliente.convertToDate(obj.getDataNascimento()));
+            comandoSQL.setObject(10, convertToDate(obj.getDataNascimento()));
             
             int linhasAfetadas = comandoSQL.executeUpdate();
             
@@ -82,7 +83,7 @@ public class ClienteDAO {
             String rua = rs.getString("Rua");
             String estado = rs.getString("Estado");
             String bairro = rs.getString("Bairro");
-            LocalDate data = Cliente.convertToLocalDate(rs.getDate("DataNascimento"));
+            LocalDate data = convertToLocalDate(rs.getDate("DataNascimento"));
             
             Cliente novoCliente = new Cliente(clienteID, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, data);
             lstClientes.add(novoCliente);
@@ -118,7 +119,7 @@ public class ClienteDAO {
             comandoSQL.setString(7, obj.getRua());            
             comandoSQL.setString(8, obj.getEstado());            
             comandoSQL.setString(9, obj.getBairro());
-            comandoSQL.setObject(10, Cliente.convertToDate(obj.getDataNascimento()));
+            comandoSQL.setObject(10, convertToDate(obj.getDataNascimento()));
             comandoSQL.setInt(11, obj.getID());
             
             int linhasAfetadas = comandoSQL.executeUpdate();

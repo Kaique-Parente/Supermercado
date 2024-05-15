@@ -91,7 +91,7 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
