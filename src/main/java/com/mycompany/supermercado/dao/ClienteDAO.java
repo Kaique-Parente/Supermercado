@@ -135,4 +135,31 @@ public class ClienteDAO {
         
         return retorno;
     }
+    
+    public static boolean excluir(int idExcluir){
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" DELETE FROM `Cliente` WHERE ClienteID = ?");
+            comandoSQL.setInt(1, idExcluir);
+            
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas>0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }
 }

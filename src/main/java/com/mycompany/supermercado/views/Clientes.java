@@ -66,7 +66,7 @@ public class Clientes extends javax.swing.JFrame {
         txtBairro.setText(clienteAlterar.getBairro());
         txtDataNascimento.setDate(fm2.format(clienteAlterar.getDataNascimento()));
 
-        //TODO:
+        
         btnConfirmarCliente.setVisible(!t);
         btnCancelarCliente.setText("Voltar");
         btnCancelarCliente.setBackground(new Color(255,80,80));

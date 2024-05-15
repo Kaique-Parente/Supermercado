@@ -857,7 +857,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if(indice >= 0) {
             //Resgatar o modelo da tabela para exlcuir a linha
             DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
-            model.removeRow(indice);
+
+            //DAO
+            int idExcluir = Integer.parseInt(model.getValueAt(indice, 0).toString());
+            boolean retorno = ClienteDAO.excluir(idExcluir);
+            if(retorno){
+                JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "Falha!");
+            }
+            
+             model.removeRow(indice);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
