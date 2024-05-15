@@ -353,9 +353,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblProdutos.getColumnModel().getColumn(5).setResizable(false);
             tblProdutos.getColumnModel().getColumn(5).setPreferredWidth(100);
             tblProdutos.getColumnModel().getColumn(6).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(6).setPreferredWidth(110);
+            tblProdutos.getColumnModel().getColumn(6).setPreferredWidth(120);
             tblProdutos.getColumnModel().getColumn(7).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(7).setPreferredWidth(100);
+            tblProdutos.getColumnModel().getColumn(7).setPreferredWidth(130);
         }
 
         btnNovoProduto.setBackground(new java.awt.Color(174, 107, 107));
