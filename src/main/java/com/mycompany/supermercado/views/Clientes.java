@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import com.mycompany.supermercado.utils.ValidarEmail;
 import com.mycompany.supermercado.models.Cliente;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,6 +34,7 @@ public class Clientes extends javax.swing.JFrame {
         
         initComponents();
         clienteAlterar = obj;
+        txtTituloCliente.setText("Editar Cliente");
         
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
         
@@ -52,6 +54,7 @@ public class Clientes extends javax.swing.JFrame {
     public Clientes(Cliente obj, boolean t) {
         initComponents();
         clienteAlterar = obj;
+        txtTituloCliente.setText("Visualizar Cliente");
         
         DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
         
@@ -69,6 +72,7 @@ public class Clientes extends javax.swing.JFrame {
         
         btnConfirmarCliente.setVisible(!t);
         btnCancelarCliente.setText("Voltar");
+        btnCancelarCliente.setFont(new Font("Arial", 0, 16));
         btnCancelarCliente.setBackground(new Color(255,80,80));
         btnCancelarCliente.setColor(new Color(255,80,80));
         
@@ -96,7 +100,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jpFundo = new javax.swing.JPanel();
         Cabecalho = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        txtTituloCliente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNomeCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel3 = new javax.swing.JLabel();
@@ -126,9 +130,9 @@ public class Clientes extends javax.swing.JFrame {
 
         Cabecalho.setBackground(new java.awt.Color(134, 83, 83));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText(" Novo Cliente");
+        txtTituloCliente.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        txtTituloCliente.setForeground(new java.awt.Color(255, 255, 255));
+        txtTituloCliente.setText(" Novo Cliente");
 
         javax.swing.GroupLayout CabecalhoLayout = new javax.swing.GroupLayout(Cabecalho);
         Cabecalho.setLayout(CabecalhoLayout);
@@ -136,14 +140,14 @@ public class Clientes extends javax.swing.JFrame {
             CabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CabecalhoLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CabecalhoLayout.setVerticalGroup(
             CabecalhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CabecalhoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -619,7 +623,6 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbEstadoCivil;
     private javax.swing.JComboBox<String> cbSexo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -638,5 +641,6 @@ public class Clientes extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtNomeCliente;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtRua;
     private com.mycompany.supermercado.JCustoms.MyFormatterTelefone txtTelefone;
+    private javax.swing.JLabel txtTituloCliente;
     // End of variables declaration//GEN-END:variables
 }

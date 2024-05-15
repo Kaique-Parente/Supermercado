@@ -905,7 +905,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
         
         int linhaSelecionada = tblClientes.getSelectedRow();
-        if(linhaSelecionada >= 0){
+        if(linhaSelecionada >= 0){           
             DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate dataNascimento = null;
             
