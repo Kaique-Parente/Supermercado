@@ -852,12 +852,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int indice = tblProdutos.getSelectedRow();
 
         if (indice >= 0) {
-            //Resgatar o modelo da tabela para exlcuir a linha
+            //DAO
+            //Tabela Produtos
             DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
-            model.removeRow(indice);
-
+            long idExcluir = Long.parseLong(model.getValueAt(indice, 0).toString());
+            boolean retorno = ProdutoDAO.excluir(idExcluir);
+            
+            /*Tabela Vendas
             DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
-            model2.removeRow(indice);
+            long idExcluir2 = Long.parseLong(model2.getValueAt(indice, 0).toString());
+            boolean retorno2 = ProdutoDAO.excluir(idExcluir2);
+            */
+            
+            if (retorno) {
+                JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Falha!");
+            }
+   
+            model.removeRow(indice);
+            //model2.removeRow(indice);
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);

@@ -1,5 +1,8 @@
 package com.mycompany.supermercado.dao;
 
+import static com.mycompany.supermercado.dao.ClienteDAO.login;
+import static com.mycompany.supermercado.dao.ClienteDAO.password;
+import static com.mycompany.supermercado.dao.ClienteDAO.url;
 import static com.mycompany.supermercado.models.ConverterData.convertToDate;
 import static com.mycompany.supermercado.models.ConverterData.convertToLocalDate;
 import com.mycompany.supermercado.models.Produto;
@@ -123,6 +126,33 @@ public class ProdutoDAO {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }
+    
+    public static boolean excluir(long idExcluir){
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" DELETE FROM `produto` WHERE CodigoProduto = ?");
+            comandoSQL.setLong(1, idExcluir);
+            
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas>0){
+                retorno = true;
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return retorno;
