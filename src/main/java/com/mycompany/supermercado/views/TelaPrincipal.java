@@ -5,7 +5,10 @@
 package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.dao.ClienteDAO;
+import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Cliente;
+import com.mycompany.supermercado.models.Produto;
+import static com.mycompany.supermercado.views.Produtos.status;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
         initComponents();
         atualizarTabelaClientes();
+        atualizarTabelaProdutos();
     }
 
     /**
@@ -1006,6 +1010,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 obj.getEstado(),           
                 obj.getBairro(),
                 dataNascimentoS
+            });
+        }
+    }
+    
+    public static void atualizarTabelaProdutos(){
+        
+        ArrayList<Produto> lstRetorno = ProdutoDAO.listar();
+        
+        DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+        
+        modelo.setRowCount(0);
+        
+        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String dataValidade = "";
+        
+        for(Produto obj : lstRetorno) {
+            dataValidade = obj.getValidade().format(fm1); 
+            
+            modelo.addRow(new String[]{
+                String.valueOf(obj.getCodigo()),
+                obj.getNome(),
+                obj.getMarca(),
+                obj.getCategoria(),
+                String.valueOf(obj.getValor()),
+                dataValidade,
+                String.valueOf(obj.getQuantidade()),
+                obj.getStatus() == true ? "Em estoque" : "Sem estoque"
             });
         }
     }

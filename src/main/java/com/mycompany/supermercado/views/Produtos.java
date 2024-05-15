@@ -5,7 +5,7 @@
 package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.JCustoms.EventSwitchSelected;
-import com.mycompany.supermercado.dao.ProdutosDAO;
+import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Produto;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -416,7 +416,7 @@ public class Produtos extends javax.swing.JFrame {
 
             if (!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0) {
 
-                boolean retorno = ProdutosDAO.salvar(p);
+                boolean retorno = ProdutoDAO.salvar(p);
 
                 if (retorno) {
                     JOptionPane.showMessageDialog(rootPane, "Sucesso!");
@@ -424,24 +424,9 @@ public class Produtos extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Erro!");
                 }
 
-                //Conversão de valores do Produto para String
-                valorS = (String.format("%.2f", p.getValor()));
-                validadeS = p.getValidade().format(fm1);
-                quantidadeS = Integer.toString(p.getQuantidade());
-
-                //Adicionar Linha
-                TelaPrincipal.AddLinhaProduto(new Object[]{
-                    codigoS,
-                    p.getNome(),
-                    p.getMarca(),
-                    p.getCategoria(),
-                    valorS,
-                    validadeS,
-                    quantidadeS,
-                    status == true ? "Em estoque" : "Sem estoque"
-                });
+                TelaPrincipal.atualizarTabelaProdutos();
                 status = false;
-                dispose();
+                this.dispose();
             }
         }
 
