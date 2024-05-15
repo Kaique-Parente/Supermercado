@@ -92,4 +92,40 @@ public class ProdutoDAO {
         return lstProdutos;
     }
     
+    public static boolean alterar(Produto obj) {
+        boolean retorno = false;
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" UPDATE produto SET Nome = ?, Marca = ?, Categoria = ?, Valor = ?, DataValidade = ?, Quantidade = ?, Status = ? "
+                    + "WHERE CodigoProduto = ?");
+            
+            comandoSQL.setString(1, obj.getNome());
+            comandoSQL.setString(2, obj.getMarca());
+            comandoSQL.setString(3, obj.getCategoria());
+            comandoSQL.setDouble(4, obj.getValor());
+            comandoSQL.setObject(5, convertToDate(obj.getValidade()));
+            comandoSQL.setInt(6, obj.getQuantidade());
+            comandoSQL.setBoolean(7, obj.getStatus());
+            comandoSQL.setLong(8, obj.getCodigo());
+            
+            int linhasAfetadas = comandoSQL.executeUpdate();
+            
+            if(linhasAfetadas>=0){
+                retorno = true;
+            }
+           
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return retorno;
+    }
+    
 }

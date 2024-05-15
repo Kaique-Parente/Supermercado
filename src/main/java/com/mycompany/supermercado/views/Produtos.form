@@ -227,7 +227,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" pref="259" max="-2" attributes="0"/>
+                      <Component id="txtTituloProduto" min="-2" pref="259" max="-2" attributes="0"/>
                       <EmptySpace pref="299" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -236,14 +236,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="txtTituloProduto" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="txtTituloProduto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="36" style="1"/>

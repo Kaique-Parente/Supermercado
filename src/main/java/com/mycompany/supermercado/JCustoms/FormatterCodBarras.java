@@ -149,8 +149,16 @@ public class FormatterCodBarras extends JPanel {
 
 // Métodos específicos da classe (se necessário)
 // Por exemplo, você pode criar um método para obter o valor do CPF digitado.
-    public String getCPF() {
+    public String getCod() {
         return campoCodBarras.getText().replaceAll("[^0-9]", ""); // Remove caracteres não numéricos
+    }
+    
+    public void setCod(String txt){
+        campoCodBarras.setText(txt);
+    }
+    
+    public void setEditableCod(boolean t){
+        campoCodBarras.setEditable(t);
     }
 }
     

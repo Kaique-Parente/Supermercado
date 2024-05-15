@@ -49,7 +49,7 @@ public class SwitchButton extends Component {
                 if (isSelected()) {
                     int endLocation = getWidth() - getHeight() + 2;
                     if (location < endLocation) {
-                        location += speed+0.8f;
+                        location += speed + 0.8f;
                         repaint();
                     } else {
                         timer.stop();
@@ -59,7 +59,7 @@ public class SwitchButton extends Component {
                 } else {
                     int endLocation = 2;
                     if (location > endLocation) {
-                        location -= speed+0.8f;
+                        location -= speed + 0.8f;
                         repaint();
                     } else {
                         timer.stop();
@@ -126,12 +126,20 @@ public class SwitchButton extends Component {
     }
 
     private void runEvent() {
-        for(EventSwitchSelected event : events) {
+        for (EventSwitchSelected event : events) {
             event.onSelected(selected);
         }
     }
 
     public void addEventSelected(EventSwitchSelected event) {
         events.add(event);
+    }
+
+    public void activeButton(boolean status) {
+        if (status) {
+            selected = !selected;
+            timer.start();
+            runEvent();
+        }
     }
 }

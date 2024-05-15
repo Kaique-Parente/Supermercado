@@ -663,6 +663,9 @@
                 </Property>
                 <Property name="radius" type="int" value="15"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarProdutoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnExcluirProduto">
               <Properties>
@@ -712,6 +715,9 @@
                 </Property>
                 <Property name="radius" type="int" value="15"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarProdutoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

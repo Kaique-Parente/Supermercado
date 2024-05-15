@@ -13,17 +13,6 @@ public class Produto {
     private Integer quantidade;
     private boolean status;
 
-    public Produto(long codigo, String nome, String marca, String categoria, Double valor, LocalDate validade) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.marca = marca;
-        this.categoria = categoria;
-        this.valor = valor;
-        this.validade = validade;
-        quantidade = 0;
-        status = false;
-    }
-
     public Produto(long codigo, String nome, String marca, String categoria, Double valor, LocalDate validade, Integer quantidade, boolean status) {
         this.codigo = codigo;
         this.nome = nome;

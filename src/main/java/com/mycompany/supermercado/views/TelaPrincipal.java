@@ -8,7 +8,6 @@ import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Cliente;
 import com.mycompany.supermercado.models.Produto;
-import static com.mycompany.supermercado.views.Produtos.status;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -386,6 +385,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVisualizarProduto.setFocusPainted(false);
         btnVisualizarProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnVisualizarProduto.setRadius(15);
+        btnVisualizarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarProdutoActionPerformed(evt);
+            }
+        });
 
         btnExcluirProduto.setForeground(new java.awt.Color(0, 0, 0));
         btnExcluirProduto.setText("Excluir");
@@ -411,6 +415,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnEditarProduto.setFocusPainted(false);
         btnEditarProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnEditarProduto.setRadius(15);
+        btnEditarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarProdutoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tProdutosLayout = new javax.swing.GroupLayout(tProdutos);
         tProdutos.setLayout(tProdutosLayout);
@@ -791,15 +800,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_tProdutosMouseClicked
 
     private void tVendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tVendasMouseClicked
-       
+
     }//GEN-LAST:event_tVendasMouseClicked
 
     private void tVendasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tVendasFocusGained
-        
+
     }//GEN-LAST:event_tVendasFocusGained
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
-      
+
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     private void btnNovoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoClienteActionPerformed
@@ -841,15 +850,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnExcluirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirProdutoActionPerformed
         int indice = tblProdutos.getSelectedRow();
-        
-        if(indice >= 0) {
+
+        if (indice >= 0) {
             //Resgatar o modelo da tabela para exlcuir a linha
             DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
             model.removeRow(indice);
-            
+
             DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
             model2.removeRow(indice);
-            
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
@@ -857,33 +866,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
         int indice = tblClientes.getSelectedRow();
-        
-        if(indice >= 0) {
+
+        if (indice >= 0) {
             //Resgatar o modelo da tabela para exlcuir a linha
             DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
 
             //DAO
             int idExcluir = Integer.parseInt(model.getValueAt(indice, 0).toString());
             boolean retorno = ClienteDAO.excluir(idExcluir);
-            if(retorno){
+            if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Falha!");
             }
-            
-             model.removeRow(indice);
+
+            model.removeRow(indice);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
-        
+
         int linhaSelecionada = tblClientes.getSelectedRow();
-        if(linhaSelecionada >= 0){
+        if (linhaSelecionada >= 0) {
             DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate dataNascimento = null;
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
             int id = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
             long cpf = Long.parseLong(modelo.getValueAt(linhaSelecionada, 1).toString());
@@ -896,23 +905,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String estado = modelo.getValueAt(linhaSelecionada, 8).toString();
             String bairro = modelo.getValueAt(linhaSelecionada, 9).toString();
             dataNascimento = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 10).toString(), fm2);
-            
+
             Cliente clienteAlterar = new Cliente(id, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, dataNascimento);
             Clientes telaCadastro = new Clientes(clienteAlterar);
             telaCadastro.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnEditarClienteActionPerformed
 
     private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
-        
+
         int linhaSelecionada = tblClientes.getSelectedRow();
-        if(linhaSelecionada >= 0){           
+        if (linhaSelecionada >= 0) {
             DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate dataNascimento = null;
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
             int id = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
             long cpf = Long.parseLong(modelo.getValueAt(linhaSelecionada, 1).toString());
@@ -925,15 +934,67 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String estado = modelo.getValueAt(linhaSelecionada, 8).toString();
             String bairro = modelo.getValueAt(linhaSelecionada, 9).toString();
             dataNascimento = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 10).toString(), fm2);
-            
+
             Cliente clienteVisualizar = new Cliente(id, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, dataNascimento);
             Clientes telaCadastro = new Clientes(clienteVisualizar, true);
             telaCadastro.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnVisualizarClienteActionPerformed
+
+    private void btnVisualizarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarProdutoActionPerformed
+        int linhaSelecionada = tblProdutos.getSelectedRow();
+        
+        if (linhaSelecionada >= 0) {
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDate dataValidade = null;
+
+            DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+            long codigo = Long.parseLong(modelo.getValueAt(linhaSelecionada, 0).toString());
+            String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
+            String marca = modelo.getValueAt(linhaSelecionada, 2).toString();
+            String categoria = modelo.getValueAt(linhaSelecionada, 3).toString();
+            Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
+            dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
+            int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
+            boolean status = Boolean.parseBoolean(modelo.getValueAt(linhaSelecionada, 7).toString());
+
+            Produto produtoVisualizar = new Produto(codigo, nome, marca, categoria, valor, dataValidade, quantidade, status);
+            //Produtos telaCadastro = new Produtos(produtoVisualizar, true);
+            //telaCadastro.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnVisualizarProdutoActionPerformed
+
+    private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed
+        int linhaSelecionada = tblProdutos.getSelectedRow();
+        
+        if (linhaSelecionada >= 0) {
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+            LocalDate dataValidade = null;
+
+            DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+            long codigo = Long.parseLong(modelo.getValueAt(linhaSelecionada, 0).toString());
+            String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
+            String marca = modelo.getValueAt(linhaSelecionada, 2).toString();
+            String categoria = modelo.getValueAt(linhaSelecionada, 3).toString();
+            Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
+            dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
+            int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
+            
+            String txtStatus = modelo.getValueAt(linhaSelecionada, 7).toString();
+            boolean status = txtStatus.equals("Em estoque");
+
+            Produto produtoVisualizar = new Produto(codigo, nome, marca, categoria, valor, dataValidade, quantidade, status);
+            Produtos telaCadastro = new Produtos(produtoVisualizar);
+            telaCadastro.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma Linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -970,34 +1031,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
-    public static void AddLinhaProduto(Object[] dataRow){
-            DefaultTableModel model = (DefaultTableModel)tblProdutos.getModel();
-            model.addRow(dataRow);
-            
-            String frase = Arrays.toString(dataRow);
-            boolean teste = frase.contains("true");
-            
-            if(teste) {
-                DefaultTableModel model2 = (DefaultTableModel)tblVendas.getModel();
-                model2.addRow(dataRow);
-            }
+
+    public static void AddLinhaProduto(Object[] dataRow) {
+        DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
+        model.addRow(dataRow);
+
+        String frase = Arrays.toString(dataRow);
+        boolean teste = frase.contains("true");
+
+        if (teste) {
+            DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
+            model2.addRow(dataRow);
         }
-    
-    public static void atualizarTabelaClientes(){
-        
+    }
+
+    public static void atualizarTabelaClientes() {
+
         ArrayList<Cliente> lstRetorno = ClienteDAO.listar();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
-        
+
         modelo.setRowCount(0);
-        
+
         DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String dataNascimentoS = "";
-        
-        for(Cliente obj : lstRetorno) {
-            dataNascimentoS = obj.getDataNascimento().format(fm1); 
-            
+
+        for (Cliente obj : lstRetorno) {
+            dataNascimentoS = obj.getDataNascimento().format(fm1);
+
             modelo.addRow(new String[]{
                 String.valueOf(obj.getID()),
                 String.valueOf(obj.getCpf()),
@@ -1006,28 +1067,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 obj.getEmail(),
                 obj.getEstadoCivil(),
                 obj.getSexo(),
-                obj.getRua(),   
-                obj.getEstado(),           
+                obj.getRua(),
+                obj.getEstado(),
                 obj.getBairro(),
                 dataNascimentoS
             });
         }
     }
-    
-    public static void atualizarTabelaProdutos(){
-        
+
+    public static void atualizarTabelaProdutos() {
+
         ArrayList<Produto> lstRetorno = ProdutoDAO.listar();
-        
+
         DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
-        
+
         modelo.setRowCount(0);
-        
+
         DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String dataValidade = "";
-        
-        for(Produto obj : lstRetorno) {
-            dataValidade = obj.getValidade().format(fm1); 
-            
+
+        for (Produto obj : lstRetorno) {
+            dataValidade = obj.getValidade().format(fm1);
+
             modelo.addRow(new String[]{
                 String.valueOf(obj.getCodigo()),
                 obj.getNome(),
@@ -1040,7 +1101,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             });
         }
     }
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnBuscar;

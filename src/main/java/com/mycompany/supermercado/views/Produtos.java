@@ -5,21 +5,26 @@
 package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.JCustoms.EventSwitchSelected;
+import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Produto;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Produtos extends javax.swing.JFrame {
 
     /**
      * Creates new form Produtos
      */
-    static boolean status = false;
+    boolean status = false;
+    Produto produtoAlterar = null;
 
     public Produtos() {
         initComponents();
@@ -27,13 +32,63 @@ public class Produtos extends javax.swing.JFrame {
             @Override
             public void onSelected(boolean selected) {
                 status = selected;
-                if (status) {
-                    txtStatus.setText("Em estoque");
-                } else {
-                    txtStatus.setText("Sem estoque");
-                }
+                txtStatus.setText(status == true ? "Em estoque" : "Sem estoque");
             }
         });
+    }
+
+    public Produtos(Produto obj) {
+        initComponents();
+
+        produtoAlterar = obj;
+        txtTituloProduto.setText("Editar Produto");
+
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+
+        txtCodBarras.setCod(String.valueOf(produtoAlterar.getCodigo()));
+        txtNomeProduto.setText(produtoAlterar.getNome());
+        txtMarcaProduto.setText(produtoAlterar.getMarca());
+        cbCategoriaProduto.getModel().setSelectedItem(produtoAlterar.getCategoria());
+        txtValorProduto.setText(String.valueOf(produtoAlterar.getValor()));
+        txtDataValidade.setDate(fm2.format(produtoAlterar.getValidade()));
+        txtQuantidadeProduto.setText(String.valueOf(produtoAlterar.getQuantidade()));
+        btnStatus.activeButton(produtoAlterar.getStatus());
+        txtStatus.setText(produtoAlterar.getStatus() ? "Em estoque" : "Sem estoque");
+
+        btnStatus.addEventSelected(new EventSwitchSelected() {
+            @Override
+            public void onSelected(boolean selected) {
+                status = selected;
+                txtStatus.setText(status == true ? "Em estoque" : "Sem estoque");
+            }
+        });
+    }
+
+    public Produtos(Produto obj, boolean t) {
+        initComponents();
+
+        produtoAlterar = obj;
+        txtTituloProduto.setText("Editar Produto");
+
+        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+
+        txtCodBarras.setCod(String.valueOf(produtoAlterar.getCodigo()));
+        txtNomeProduto.setText(produtoAlterar.getNome());
+        txtMarcaProduto.setText(produtoAlterar.getMarca());
+        cbCategoriaProduto.getModel().setSelectedItem(produtoAlterar.getCategoria());
+        txtValorProduto.setText(String.valueOf(produtoAlterar.getValor()));
+        txtDataValidade.setDate(fm2.format(produtoAlterar.getValidade()));
+        txtQuantidadeProduto.setText(String.valueOf(produtoAlterar.getQuantidade()));
+        btnStatus.activeButton(produtoAlterar.getStatus());
+        txtStatus.setText(produtoAlterar.getStatus() ? "Em estoque" : "Sem estoque");
+
+        txtCodBarras.setEditableCod(!t);
+        txtNomeProduto.setEditable(!t);
+        txtMarcaProduto.setEditable(!t);
+        cbCategoriaProduto.setEditable(!t);
+        txtValorProduto.setEditable(!t);
+        txtDataValidade.setEditableDate(!t);
+        txtQuantidadeProduto.setEditable(!t);
     }
 
     /**
@@ -48,7 +103,7 @@ public class Produtos extends javax.swing.JFrame {
         btnConfirmar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        txtTituloProduto = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -90,9 +145,9 @@ public class Produtos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(134, 83, 83));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Novo Produto");
+        txtTituloProduto.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        txtTituloProduto.setForeground(new java.awt.Color(255, 255, 255));
+        txtTituloProduto.setText("Novo Produto");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,14 +155,14 @@ public class Produtos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(299, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTituloProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -334,99 +389,133 @@ public class Produtos extends javax.swing.JFrame {
 
     private void btnConfirmarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarProdutoActionPerformed
 
-        //Validar Código de Barras
-        long codBarras = 0;
-        if (txtCodBarras.getCPF().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite o Código de Barras!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            codBarras = Long.parseLong(txtCodBarras.getCPF());
-        }
-
-        //Validar Nome
-        String nome = "";
-        if (txtNomeProduto.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite o Nome do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            nome = txtNomeProduto.getText();
-        }
-
-        //Marca
-        String marca = txtMarcaProduto.getText();
-
-        //Validar Categoria
-        String categoria = "";
-        if (cbCategoriaProduto.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Selecione a Categoria!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            categoria = cbCategoriaProduto.getSelectedItem().toString();
-        }
-
-        //Validar Valor
-        double valor = 0.0;
-        String aux = "";
-        if (txtValorProduto.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite o valor do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try {
-                aux = txtValorProduto.getText().replace(",", ".");
-                valor = Double.parseDouble(aux);
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(rootPane, "Digite o valor corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-
-        //Validade
-        DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
-        LocalDate validade = null;
-        if (txtDataValidade.getDate().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Digite a validade do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            try {
-                validade = LocalDate.parse(txtDataValidade.getDate(), fm2);
-            } catch (DateTimeParseException e) {
-                JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-
-        //Quantidade
-        int quantidade = 0;
-        if (txtQuantidadeProduto.getText().equals("")) {
-            quantidade = 0;
-        } else {
-            try {
-                quantidade = Integer.parseInt(txtQuantidadeProduto.getText());
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(rootPane, "Digite a quantidade corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
-                quantidade = -1;
+        if (produtoAlterar == null) {
+            //Validar Código de Barras
+            long codBarras = 0;
+            if (txtCodBarras.getCod().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite o Código de Barras!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                codBarras = Long.parseLong(txtCodBarras.getCod());
             }
 
-        }
+            //Validar Nome
+            String nome = "";
+            if (txtNomeProduto.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite o Nome do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                nome = txtNomeProduto.getText();
+            }
 
-        //Lista de Produtos
-        List<Produto> produtos = new ArrayList<>();
+            //Marca
+            String marca = txtMarcaProduto.getText();
 
-        produtos.add(new Produto(codBarras, nome, marca, categoria, valor, validade, quantidade, status));
+            //Validar Categoria
+            String categoria = "";
+            if (cbCategoriaProduto.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione a Categoria!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                categoria = cbCategoriaProduto.getSelectedItem().toString();
+            }
 
-        //Tabela
-        DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-        String codigoS = "", valorS = "", validadeS = "", quantidadeS = "";
+            //Validar Valor
+            double valor = 0.0;
+            String aux = "";
+            if (txtValorProduto.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite o valor do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                try {
+                    aux = txtValorProduto.getText().replace(",", ".");
+                    valor = Double.parseDouble(aux);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(rootPane, "Digite o valor corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                }
+            }
 
-        for (Produto p : produtos) {
-            codigoS = Long.toString(p.getCodigo());
+            //Validade
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+            LocalDate validade = null;
+            if (txtDataValidade.getDate().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Digite a validade do Produto!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                try {
+                    validade = LocalDate.parse(txtDataValidade.getDate(), fm2);
+                } catch (DateTimeParseException e) {
+                    JOptionPane.showMessageDialog(rootPane, "Digite uma data válida!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                }
+            }
 
-            if (!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0) {
-
-                boolean retorno = ProdutoDAO.salvar(p);
-
-                if (retorno) {
-                    JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Erro!");
+            //Quantidade
+            int quantidade = 0;
+            if (txtQuantidadeProduto.getText().equals("")) {
+                quantidade = 0;
+            } else {
+                try {
+                    quantidade = Integer.parseInt(txtQuantidadeProduto.getText());
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(rootPane, "Digite a quantidade corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                    quantidade = -1;
                 }
 
+            }
+
+            //Lista de Produtos
+            List<Produto> produtos = new ArrayList<>();
+
+            produtos.add(new Produto(codBarras, nome, marca, categoria, valor, validade, quantidade, status));
+
+            //Tabela
+            String codigoS = "";
+
+            for (Produto p : produtos) {
+                codigoS = Long.toString(p.getCodigo());
+
+                if (!codigoS.equals("0") && !p.getNome().equals("") && !p.getCategoria().equals("") && p.getValor() != 0.0 && p.getValidade() != null && p.getQuantidade() != -1 && p.getQuantidade() >= 0) {
+
+                    boolean retorno = ProdutoDAO.salvar(p);
+
+                    if (retorno) {
+                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Erro!");
+                    }
+
+                    TelaPrincipal.atualizarTabelaProdutos();
+                    status = false;
+                    this.dispose();
+                }
+            }
+        } 
+        else { //Modo de Alteração
+            DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("ddMMuuuu");
+            
+            long codigo = Long.parseLong(txtCodBarras.getCod());
+            String nome = txtNomeProduto.getText();
+            String marca = txtMarcaProduto.getText();
+            String categoria = cbCategoriaProduto.getSelectedItem().toString();
+            double valor = Double.parseDouble(txtValorProduto.getText());
+            LocalDate validade = LocalDate.parse(txtDataValidade.getDate(), fm2);
+            int quantidade = Integer.parseInt(txtQuantidadeProduto.getText());
+            
+            String tStatus = txtStatus.getText();
+            boolean status = tStatus.equals("Em estoque");
+            
+            produtoAlterar.setCodigo(codigo);
+            produtoAlterar.setNome(nome);
+            produtoAlterar.setMarca(marca);
+            produtoAlterar.setCategoria(categoria);
+            produtoAlterar.setValor(valor);
+            produtoAlterar.setValidade(validade);
+            produtoAlterar.setQuantidade(quantidade);
+            produtoAlterar.setStatus(status);
+            
+            boolean retorno = ProdutoDAO.alterar(produtoAlterar);
+            
+            if(retorno) {
+                JOptionPane.showMessageDialog(rootPane, "Sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
                 TelaPrincipal.atualizarTabelaProdutos();
-                status = false;
                 this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Erro!", "Erro!", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -496,7 +585,6 @@ public class Produtos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -509,6 +597,7 @@ public class Produtos extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtNomeProduto;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeProduto;
     private javax.swing.JLabel txtStatus;
+    private javax.swing.JLabel txtTituloProduto;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtValorProduto;
     // End of variables declaration//GEN-END:variables
 }
