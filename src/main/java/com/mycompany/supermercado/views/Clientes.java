@@ -75,6 +75,7 @@ public class Clientes extends javax.swing.JFrame {
         btnCancelarCliente.setFont(new Font("Arial", 0, 16));
         btnCancelarCliente.setBackground(new Color(255,80,80));
         btnCancelarCliente.setColor(new Color(255,80,80));
+        btnCancelarCliente.setForeground(Color.WHITE);
         
         txtNomeCliente.setEditable(!t);
         txtCpfCliente.setEditableCPF(!t);
@@ -318,10 +319,10 @@ public class Clientes extends javax.swing.JFrame {
                                         .addGap(24, 24, 24))))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
-                                .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCancelarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(49, 49, 49)
                                 .addComponent(btnConfirmarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(79, 79, 79))
                             .addGroup(jpFundoLayout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,14 +390,14 @@ public class Clientes extends javax.swing.JFrame {
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(jpFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConfirmarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCancelarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConfirmarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpFundoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

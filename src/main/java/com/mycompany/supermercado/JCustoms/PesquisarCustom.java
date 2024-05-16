@@ -52,14 +52,14 @@ public class PesquisarCustom extends JTextField {
         border.setRound(round);
         setBorder(border);
         setOpaque(false);
-        setText("   Pesquisar");
+        setText("   Pesquisar Produto");
         setSelectedTextColor(Color.WHITE);
         setSelectionColor(new Color(0, 0, 0));
         addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent fe) {
                 border.setColor(new Color(0, 0, 0));
-                if(getText().equals("   Pesquisar")) {
+                if(getText().equals("   Pesquisar Produto")) {
                     setText("");
                 }
                 repaint();
@@ -69,7 +69,7 @@ public class PesquisarCustom extends JTextField {
             public void focusLost(FocusEvent fe) {
                 border.setColor(new Color(0, 0, 0));
                 if(getText().equals("")) {
-                    setText("   Pesquisar");
+                    setText("   Pesquisar Produto");
                 }
                 repaint();
             }

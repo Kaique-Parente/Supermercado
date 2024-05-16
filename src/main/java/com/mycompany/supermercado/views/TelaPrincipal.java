@@ -47,16 +47,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tVendas = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtPesquisarVenda = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnConfirmar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnCancelarVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         txtTotalVenda = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
-        txtCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         txtQuantidadeVenda = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
+        btnPesquisarVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtCPFVenda = new com.mycompany.supermercado.JCustoms.MyFormatter();
+        btnPesquisarClienteVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtPesquisarVenda = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
+        lbClienteVenda = new javax.swing.JLabel();
         tProdutos = new javax.swing.JPanel();
         txtPesquisarProdutos = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jLabel2 = new javax.swing.JLabel();
@@ -66,6 +69,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVisualizarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnExcluirProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnEditarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnPesquisarVenda3 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         tClientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtPesquisarProdutos1 = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
@@ -75,18 +79,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVisualizarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnEditarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnExcluirCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnPesquisarVenda2 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         tRelatorios = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txtDataInicio = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel8 = new javax.swing.JLabel();
-        txtDataTermino = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
-        btnBuscar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
         txtTotalRelatorio = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel10 = new javax.swing.JLabel();
         btnDetalhes = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        btnPesquisarVenda1 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,12 +126,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Cliente");
-
-        txtPesquisarVenda.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisarVenda.setText("");
-        txtPesquisarVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPesquisarVenda.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jLabel3.setText("CPF:");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -166,15 +166,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        txtTotalVenda.setEditable(false);
         txtTotalVenda.setForeground(new java.awt.Color(0, 0, 0));
         txtTotalVenda.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTotalVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtTotalVenda.setSelectionColor(new java.awt.Color(108, 56, 84));
-
-        txtCliente.setForeground(new java.awt.Color(0, 0, 0));
-        txtCliente.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtCliente.setSelectionColor(new java.awt.Color(108, 56, 84));
 
         txtQuantidadeVenda.setForeground(new java.awt.Color(0, 0, 0));
         txtQuantidadeVenda.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -223,10 +219,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblVendas.getColumnModel().getColumn(5).setResizable(false);
             tblVendas.getColumnModel().getColumn(5).setPreferredWidth(100);
             tblVendas.getColumnModel().getColumn(6).setResizable(false);
-            tblVendas.getColumnModel().getColumn(6).setPreferredWidth(110);
+            tblVendas.getColumnModel().getColumn(6).setPreferredWidth(120);
             tblVendas.getColumnModel().getColumn(7).setResizable(false);
-            tblVendas.getColumnModel().getColumn(7).setPreferredWidth(100);
+            tblVendas.getColumnModel().getColumn(7).setPreferredWidth(130);
         }
+
+        btnPesquisarVenda.setBackground(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda.setBorder(null);
+        btnPesquisarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarVenda.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarVenda.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarVenda.setFocusPainted(false);
+        btnPesquisarVenda.setRadius(15);
+
+        txtCPFVenda.setBackground(new java.awt.Color(255, 255, 255));
+        txtCPFVenda.setForeground(new java.awt.Color(0, 0, 0));
+
+        btnPesquisarClienteVenda.setBackground(new java.awt.Color(174, 107, 107));
+        btnPesquisarClienteVenda.setBorder(null);
+        btnPesquisarClienteVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarClienteVenda.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarClienteVenda.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarClienteVenda.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarClienteVenda.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarClienteVenda.setFocusPainted(false);
+        btnPesquisarClienteVenda.setRadius(15);
+
+        txtPesquisarVenda.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesquisarVenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        lbClienteVenda.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lbClienteVenda.setForeground(new java.awt.Color(0, 0, 0));
+        lbClienteVenda.setText("usuário");
 
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
@@ -239,11 +265,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(tVendasLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
+                    .addGroup(tVendasLayout.createSequentialGroup()
+                        .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tVendasLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
-                    .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtCPFVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisarClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbClienteVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
                 .addGap(152, 152, 152)
@@ -252,7 +285,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(11, 11, 11)
                 .addComponent(txtQuantidadeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -263,9 +296,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(153, 153, 153))
             .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tVendasLayout.createSequentialGroup()
-                    .addContainerGap(25, Short.MAX_VALUE)
+                    .addContainerGap(28, Short.MAX_VALUE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(25, Short.MAX_VALUE)))
+                    .addContainerGap(29, Short.MAX_VALUE)))
         );
         tVendasLayout.setVerticalGroup(
             tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,16 +308,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCPFVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(324, 324, 324)
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(325, 325, 325)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtQuantidadeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -308,7 +345,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtPesquisarProdutos.setForeground(new java.awt.Color(0, 0, 0));
         txtPesquisarProdutos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPesquisarProdutos.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -421,30 +457,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisarVenda3.setBorder(null);
+        btnPesquisarVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarVenda3.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarVenda3.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda3.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda3.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarVenda3.setFocusPainted(false);
+        btnPesquisarVenda3.setRadius(15);
+
         javax.swing.GroupLayout tProdutosLayout = new javax.swing.GroupLayout(tProdutos);
         tProdutos.setLayout(tProdutosLayout);
         tProdutosLayout.setHorizontalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tProdutosLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tProdutosLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addGroup(tProdutosLayout.createSequentialGroup()
-                        .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(tProdutosLayout.createSequentialGroup()
-                                .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVisualizarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisarVenda3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tProdutosLayout.createSequentialGroup()
+                            .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnVisualizarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnEditarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnExcluirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         tProdutosLayout.setVerticalGroup(
             tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,7 +497,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarVenda3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -476,7 +522,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtPesquisarProdutos1.setForeground(new java.awt.Color(0, 0, 0));
         txtPesquisarProdutos1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPesquisarProdutos1.setSuffixIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         txtPesquisarProdutos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPesquisarProdutos1ActionPerformed(evt);
@@ -585,30 +630,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisarVenda2.setBorder(null);
+        btnPesquisarVenda2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarVenda2.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarVenda2.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda2.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda2.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarVenda2.setFocusPainted(false);
+        btnPesquisarVenda2.setRadius(15);
+
         javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
         tClientes.setLayout(tClientesLayout);
         tClientesLayout.setHorizontalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tClientesLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tClientesLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addGroup(tClientesLayout.createSequentialGroup()
-                        .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(tClientesLayout.createSequentialGroup()
-                                .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVisualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisarVenda2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(tClientesLayout.createSequentialGroup()
+                            .addComponent(btnNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnVisualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnExcluirCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         tClientesLayout.setVerticalGroup(
             tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +670,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarVenda2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -638,31 +693,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Data Início");
 
-        txtDataInicio.setForeground(new java.awt.Color(0, 0, 0));
-        txtDataInicio.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtDataInicio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDataInicio.setSelectionColor(new java.awt.Color(108, 56, 84));
-
         jLabel8.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Data Termino");
-
-        txtDataTermino.setForeground(new java.awt.Color(0, 0, 0));
-        txtDataTermino.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtDataTermino.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDataTermino.setSelectionColor(new java.awt.Color(108, 56, 84));
-
-        btnBuscar.setBackground(new java.awt.Color(174, 107, 107));
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        btnBuscar.setText("Buscar");
-        btnBuscar.setBorderColor(new java.awt.Color(255, 255, 255));
-        btnBuscar.setBorderPainted(false);
-        btnBuscar.setColor(new java.awt.Color(174, 107, 107));
-        btnBuscar.setColorClick(new java.awt.Color(255, 100, 100));
-        btnBuscar.setColorOver(new java.awt.Color(255, 80, 80));
-        btnBuscar.setFocusPainted(false);
-        btnBuscar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnBuscar.setRadius(15);
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -701,6 +734,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblRelatorio.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        txtTotalRelatorio.setEditable(false);
         txtTotalRelatorio.setForeground(new java.awt.Color(0, 0, 0));
         txtTotalRelatorio.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTotalRelatorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -725,6 +759,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
+        jDateChooser1.setAlignmentY(3.0F);
+        jDateChooser1.setDateFormatString("dd/MM/yyyy");
+        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooser2.setForeground(new java.awt.Color(0, 0, 0));
+        jDateChooser2.setDateFormatString("dd/MM/yyyy");
+        jDateChooser2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        btnPesquisarVenda1.setBackground(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda1.setBorder(null);
+        btnPesquisarVenda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarVenda1.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarVenda1.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda1.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarVenda1.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarVenda1.setFocusPainted(false);
+        btnPesquisarVenda1.setRadius(15);
+
         javax.swing.GroupLayout tRelatoriosLayout = new javax.swing.GroupLayout(tRelatorios);
         tRelatorios.setLayout(tRelatoriosLayout);
         tRelatoriosLayout.setHorizontalGroup(
@@ -741,18 +796,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(tRelatoriosLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPesquisarVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tRelatoriosLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtTotalRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                                 .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(21, 21, 21))))
         );
@@ -761,21 +816,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(tRelatoriosLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(8, 8, 8)
                 .addGroup(tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataTermino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisarVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtTotalRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Relátorios", tRelatorios);
@@ -792,6 +847,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -823,7 +879,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
-        txtCliente.setText("");
+        txtCPFVenda.setCPF("");
         txtPesquisarVenda.setText("");
         txtQuantidadeVenda.setText("");
         txtTotalVenda.setText("");
@@ -842,7 +898,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVendaActionPerformed
-        txtCliente.setText("");
+        txtCPFVenda.setCPF("");
         txtPesquisarVenda.setText("");
         txtQuantidadeVenda.setText("");
         txtTotalVenda.setText("");
@@ -1096,8 +1152,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ArrayList<Produto> lstRetorno = ProdutoDAO.listar();
 
         DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+        DefaultTableModel modelo2 = (DefaultTableModel) tblVendas.getModel();
 
         modelo.setRowCount(0);
+        modelo2.setRowCount(0);
 
         DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         String dataValidade = "";
@@ -1115,12 +1173,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 String.valueOf(obj.getQuantidade()),
                 obj.getStatus() == true ? "Em estoque" : "Sem estoque"
             });
+            
+            modelo2.addRow(new String[]{
+                String.valueOf(obj.getCodigo()),
+                obj.getNome(),
+                obj.getMarca(),
+                obj.getCategoria(),
+                String.valueOf(obj.getValor()),
+                dataValidade,
+                String.valueOf(obj.getQuantidade()),
+                obj.getStatus() == true ? "Em estoque" : "Sem estoque"
+            });
         }
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.mycompany.supermercado.JCustoms.ButtonCustom btnBuscar;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelarVenda;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmar;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnDetalhes;
@@ -1130,8 +1198,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirProduto;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoCliente;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarClienteVenda;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda1;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda2;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda3;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarProduto;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -1147,6 +1222,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JLabel lbClienteVenda;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
     private javax.swing.JPanel tRelatorios;
@@ -1154,10 +1230,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static javax.swing.JTable tblClientes;
     private static javax.swing.JTable tblProdutos;
     private javax.swing.JTable tblRelatorio;
-    private static javax.swing.JTable tblVendas;
-    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtCliente;
-    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtDataInicio;
-    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtDataTermino;
+    public static javax.swing.JTable tblVendas;
+    private com.mycompany.supermercado.JCustoms.MyFormatter txtCPFVenda;
     private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos;
     private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos1;
     private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarVenda;
