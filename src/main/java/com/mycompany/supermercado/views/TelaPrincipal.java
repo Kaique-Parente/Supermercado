@@ -6,8 +6,11 @@ package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
+import com.mycompany.supermercado.dao.VendaDAO;
 import com.mycompany.supermercado.models.Cliente;
+import com.mycompany.supermercado.models.ItemVenda;
 import com.mycompany.supermercado.models.Produto;
+import com.mycompany.supermercado.models.Venda;
 import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.Carrinho.tblCarrinho;
 import java.awt.Color;
@@ -1156,6 +1159,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             //Verificação do Pesquisar ID Cliente       
             DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+            long id = Long.parseLong(modelo.getValueAt(linhaSelecionada, 0).toString());
             String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
             String marca = modelo.getValueAt(linhaSelecionada, 2).toString();
             double valor = Conversor.converterValor(modelo.getValueAt(linhaSelecionada, 4).toString());
@@ -1171,7 +1175,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
 
             ArrayList<Produto> verificar = new ArrayList<>();
-            verificar.add(new Produto(nome, marca, valor, qtdPedido));
+            verificar.add(new Produto(id, nome, marca, valor, qtdPedido));
 
             ArrayList<Produto> carrinho = new ArrayList<>();
 
@@ -1182,12 +1186,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         if (!Carrinho.atualizarCarrinho(carrinho)) {
                             JOptionPane.showMessageDialog(rootPane, "Produto existente no Carrinho!", "Erro!", JOptionPane.WARNING_MESSAGE);
                         }
-                        
+
                         lbTotalVenda.setText(String.format("%.2f", Carrinho.totalVenda()));
                     }
-                } else if(obj.getQuantidade() <= 0){
+                } else if (obj.getQuantidade() <= 0) {
                     JOptionPane.showMessageDialog(rootPane, "Digite a quantidade corretamente!", "Erro!", JOptionPane.WARNING_MESSAGE);
-                }else if(obj.getQuantidade() > 0){
+                } else if (obj.getQuantidade() > 0) {
                     JOptionPane.showMessageDialog(rootPane, "Sem estoque suficiente!", "Erro!", JOptionPane.WARNING_MESSAGE);
                 }
             }
@@ -1305,6 +1309,48 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtQuantidadeVendaActionPerformed
 
     private void btnConfirmarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarVendaActionPerformed
+
+        String retorno = "";
+
+        if (txtIdCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite o ID do Cliente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int id = Integer.parseInt(txtIdCliente.getText());
+
+            retorno = ClienteDAO.buscarPorID(id);
+            if (retorno.equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Cliente não encontrado!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                lbClienteVenda.setText("usuário");
+            } else {
+
+                if (lbTotalVenda.getText().equals("0,00")) {
+                    JOptionPane.showMessageDialog(rootPane, "Adicione Itens ao carrinho!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+                    //Venda
+                    double valorVenda = Double.parseDouble(lbTotalVenda.getText().replace(',', '.'));
+                    Venda venda = new Venda(valorVenda, id);
+
+                    //ItemVenda - Carrinho
+                    ArrayList<ItemVenda> itens = Carrinho.itensCarrinho();
+
+                    for (ItemVenda item : itens) {
+                        venda.addItens(item);
+                    }
+
+                    boolean verificar = VendaDAO.salvar(venda);
+
+                    if (verificar) {
+                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Falha!");
+                    }
+                }
+
+            }
+        }
+
+        /*
         JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
         txtPesquisarProdutoVenda.setText("   Pesquisar Nome de Produto");
         lbTotalVenda.setText("0,00");
@@ -1312,6 +1358,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         atualizarTabelaProdutos();
         DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
         modelo.setRowCount(0);
+         */
     }//GEN-LAST:event_btnConfirmarVendaActionPerformed
 
     private void btnPesquisarClienteVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteVendaActionPerformed

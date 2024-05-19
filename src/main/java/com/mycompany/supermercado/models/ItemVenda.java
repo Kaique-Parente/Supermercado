@@ -4,11 +4,11 @@ public class ItemVenda {
     
     private Integer idItemVenda;
     private Integer idVenda;
-    private Integer idProduto;
+    private long idProduto;
     private Integer qtProduto;
     private Double vlrUnitario;
 
-    public ItemVenda(Integer idItemVenda, Integer idVenda, Integer idProduto, Integer qtProduto, Double vlrUnitario) {
+    public ItemVenda(Integer idItemVenda, Integer idVenda, long idProduto, Integer qtProduto, Double vlrUnitario) {
         this.idItemVenda = idItemVenda;
         this.idVenda = idVenda;
         this.idProduto = idProduto;
@@ -16,8 +16,14 @@ public class ItemVenda {
         this.vlrUnitario = vlrUnitario;
     }
 
-    public ItemVenda(Integer idVenda, Integer idProduto, Integer qtProduto, Double vlrUnitario) {
+    public ItemVenda(Integer idVenda, long idProduto, Integer qtProduto, Double vlrUnitario) {
         this.idVenda = idVenda;
+        this.idProduto = idProduto;
+        this.qtProduto = qtProduto;
+        this.vlrUnitario = vlrUnitario;
+    }
+
+    public ItemVenda(long idProduto, Integer qtProduto, Double vlrUnitario) {
         this.idProduto = idProduto;
         this.qtProduto = qtProduto;
         this.vlrUnitario = vlrUnitario;
@@ -39,11 +45,11 @@ public class ItemVenda {
         this.idVenda = idVenda;
     }
 
-    public Integer getIdProduto() {
+    public long getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(Integer idProduto) {
+    public void setIdProduto(long idProduto) {
         this.idProduto = idProduto;
     }
 

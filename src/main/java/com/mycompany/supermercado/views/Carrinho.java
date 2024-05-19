@@ -4,6 +4,7 @@
  */
 package com.mycompany.supermercado.views;
 
+import com.mycompany.supermercado.models.ItemVenda;
 import com.mycompany.supermercado.models.Produto;
 import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.TelaPrincipal.lbTotalVenda;
@@ -76,11 +77,11 @@ public class Carrinho extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Marca", "Valor", "Quantidade"
+                "Código", "Produto", "Marca", "Valor", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -97,7 +98,8 @@ public class Carrinho extends javax.swing.JFrame {
             tblCarrinho.getColumnModel().getColumn(1).setResizable(false);
             tblCarrinho.getColumnModel().getColumn(2).setResizable(false);
             tblCarrinho.getColumnModel().getColumn(3).setResizable(false);
-            tblCarrinho.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tblCarrinho.getColumnModel().getColumn(4).setResizable(false);
+            tblCarrinho.getColumnModel().getColumn(4).setPreferredWidth(20);
         }
 
         btnExcluirCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -175,7 +177,7 @@ public class Carrinho extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
-        
+
         lbTotalVenda.setText(String.format("%.2f", totalVenda()));
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
@@ -227,6 +229,7 @@ public class Carrinho extends javax.swing.JFrame {
             if (verificarCarrinho(obj)) {
                 DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
                 modelo2.addRow(new String[]{
+                    String.valueOf(obj.getCodigo()),
                     obj.getNome(),
                     obj.getMarca(),
                     "R$ " + String.format("%.2f", soma),
@@ -245,7 +248,7 @@ public class Carrinho extends javax.swing.JFrame {
         DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
 
         for (int i = 0; i < modelo2.getRowCount(); i++) {
-            if (obj.getNome().equals(modelo2.getValueAt(i, 0)) && obj.getMarca().equals(modelo2.getValueAt(i, 1))) {
+            if (obj.getNome().equals(modelo2.getValueAt(i, 1)) && obj.getMarca().equals(modelo2.getValueAt(i, 2))) {
                 return false;
             } else {
                 retorno = true;
@@ -253,16 +256,30 @@ public class Carrinho extends javax.swing.JFrame {
         }
         return retorno;
     }
-    
+
     public static double totalVenda() {
         double total = 0.0;
         DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
 
         for (int i = 0; i < modelo2.getRowCount(); i++) {
-            total += Conversor.converterValor(modelo2.getValueAt(i, 2).toString());
+            total += Conversor.converterValor(modelo2.getValueAt(i, 3).toString());
         }
         return total;
     }
+
+    public static ArrayList<ItemVenda> itensCarrinho() {
+        ArrayList<ItemVenda> lstItens = new ArrayList<ItemVenda>();
+        
+        DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
+        for (int i = 0; i < modelo2.getRowCount(); i++) {
+            long codigo = Long.parseLong(modelo2.getValueAt(i, 0).toString());
+            double valor = Conversor.converterValor(modelo2.getValueAt(i, 3).toString());
+            int qtd = Integer.parseInt(modelo2.getValueAt(i, 4).toString());
+            lstItens.add(new ItemVenda(codigo, qtd, valor));
+        }
+        return lstItens;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirCliente;

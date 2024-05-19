@@ -13,15 +13,15 @@ public class Venda {
     
     List<ItemVenda> itens = new ArrayList<>(); 
 
-    public Venda(LocalDate dataVenda, Double valorVenda, Integer idCliente) {
-        this.dataVenda = dataVenda;
+    public Venda(Double valorVenda, Integer idCliente) {
+        this.dataVenda = LocalDate.now();
         this.valorVenda = valorVenda;
         this.idCliente = idCliente;
     }
 
-    public Venda(Integer idVenda, LocalDate dataVenda, Double valorVenda, Integer idCliente) {
+    public Venda(Integer idVenda, Double valorVenda, Integer idCliente) {
         this.idVenda = idVenda;
-        this.dataVenda = dataVenda;
+        this.dataVenda = LocalDate.now();
         this.valorVenda = valorVenda;
         this.idCliente = idCliente;
     }
@@ -60,5 +60,9 @@ public class Venda {
 
     public List<ItemVenda> getItens() {
         return itens;
+    }
+    
+    public void addItens(ItemVenda item) {
+        itens.add(item);
     }
 }

@@ -34,7 +34,8 @@ public class Produto {
         this.status = status;
     }
 
-    public Produto(String nome, String marca, Double valor, Integer quantidade) {
+    public Produto(long codigo, String nome, String marca, Double valor, Integer quantidade) {
+        this.codigo = codigo;
         this.nome = nome;
         this.marca = marca;
         this.valor = valor;
