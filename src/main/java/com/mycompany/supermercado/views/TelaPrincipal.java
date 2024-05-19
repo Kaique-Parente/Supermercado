@@ -14,6 +14,7 @@ import com.mycompany.supermercado.models.Venda;
 import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.Carrinho.tblCarrinho;
 import java.awt.Color;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -975,22 +976,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Tabela Produtos
             DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
             long idExcluir = Long.parseLong(model.getValueAt(indice, 0).toString());
+           
             boolean retorno = ProdutoDAO.excluir(idExcluir);
 
-            /*Tabela Vendas
-            DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
-            long idExcluir2 = Long.parseLong(model2.getValueAt(indice, 0).toString());
-            boolean retorno2 = ProdutoDAO.excluir(idExcluir2);
-             */
             if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Falha!");
+                model.removeRow(indice);
             }
-
-            model.removeRow(indice);
-            //model2.removeRow(indice);
-
+            
+            atualizarTabelaProdutos();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
@@ -1008,11 +1002,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             boolean retorno = ClienteDAO.excluir(idExcluir);
             if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Falha!");
+                model.removeRow(indice);
             }
 
-            model.removeRow(indice);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
@@ -1088,7 +1080,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
             String marca = modelo.getValueAt(linhaSelecionada, 2).toString();
             String categoria = modelo.getValueAt(linhaSelecionada, 3).toString();
-            Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
+            Double valor = Conversor.converterValor(modelo.getValueAt(linhaSelecionada, 4).toString());
             dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
             int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
 
@@ -1115,7 +1107,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
             String marca = modelo.getValueAt(linhaSelecionada, 2).toString();
             String categoria = modelo.getValueAt(linhaSelecionada, 3).toString();
-            Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
+            Double valor = Conversor.converterValor(modelo.getValueAt(linhaSelecionada, 4).toString());
             dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
             int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
 
@@ -1505,6 +1497,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     }
+    
+    public static void exibirMensagemItemVendido(char letra){
+        
+        if(letra == 'p'){
+            JOptionPane.showMessageDialog(tblProdutos, "Não é possível excluir Produto já vendido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(tblClientes, "Não é possível excluir Cliente que realizou uma compra!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+   
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
