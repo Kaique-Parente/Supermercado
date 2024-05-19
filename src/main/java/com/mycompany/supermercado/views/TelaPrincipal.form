@@ -84,9 +84,9 @@
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="txtPesquisarVenda" min="-2" pref="600" max="-2" attributes="0"/>
+                                      <Component id="txtPesquisarProdutoVenda" min="-2" pref="600" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnPesquisarVenda" min="-2" pref="51" max="-2" attributes="0"/>
+                                      <Component id="btnPesquisarProdutoVenda" min="-2" pref="51" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -153,9 +153,9 @@
                           <Component id="txtIdCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnPesquisarVenda" min="-2" pref="33" max="-2" attributes="0"/>
-                          <Component id="txtPesquisarVenda" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnPesquisarProdutoVenda" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="txtPesquisarProdutoVenda" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="325" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
@@ -409,7 +409,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnPesquisarVenda">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnPesquisarProdutoVenda">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="6b" green="6b" red="ae" type="rgb"/>
@@ -435,6 +435,9 @@
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="radius" type="int" value="15"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarProdutoVendaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnPesquisarClienteVenda">
               <Properties>
@@ -461,16 +464,6 @@
                 </Property>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="radius" type="int" value="15"/>
-              </Properties>
-            </Component>
-            <Component class="com.mycompany.supermercado.JCustoms.PesquisarCustom" name="txtPesquisarVenda">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbClienteVenda">
@@ -552,6 +545,16 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="com.mycompany.supermercado.JCustoms.PesquisarProduto" name="txtPesquisarProdutoVenda">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tProdutos">
@@ -582,10 +585,10 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtPesquisarProdutos" min="-2" pref="267" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtPesquisarProduto" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnPesquisarVenda3" min="-2" pref="66" max="-2" attributes="0"/>
+                              <Component id="btnPesquisarProduto" min="-2" pref="66" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
@@ -610,8 +613,8 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="jLabel2" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPesquisarProdutos" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPesquisarVenda3" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="btnPesquisarProduto" alignment="2" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="txtPesquisarProduto" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="439" max="-2" attributes="0"/>
@@ -630,16 +633,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="com.mycompany.supermercado.JCustoms.PesquisarCustom" name="txtPesquisarProdutos">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -855,7 +848,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarProdutoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnPesquisarVenda3">
+            <Component class="com.mycompany.supermercado.JCustoms.ButtonCustom" name="btnPesquisarProduto">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -877,6 +870,19 @@
                 </Property>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="radius" type="int" value="15"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarProdutoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="com.mycompany.supermercado.JCustoms.PesquisarProduto" name="txtPesquisarProduto">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -1218,6 +1224,9 @@
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>

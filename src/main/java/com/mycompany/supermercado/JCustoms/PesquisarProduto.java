@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class PesquisarCustom extends JTextField {
+public class PesquisarProduto extends JTextField {
 
     public int getRound() {
         return round;
@@ -47,19 +47,19 @@ public class PesquisarCustom extends JTextField {
     private Border border;
     private int round = 15;
 
-    public PesquisarCustom() {
+    public PesquisarProduto() {
         border = new Border(8);
         border.setRound(round);
         setBorder(border);
         setOpaque(false);
-        setText("   Pesquisar Produto");
+        setText("   Pesquisar Nome de Produto");
         setSelectedTextColor(Color.WHITE);
         setSelectionColor(new Color(0, 0, 0));
         addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent fe) {
                 border.setColor(new Color(0, 0, 0));
-                if(getText().equals("   Pesquisar Produto")) {
+                if(getText().equals("   Pesquisar Nome de Produto")) {
                     setText("");
                 }
                 repaint();
@@ -69,7 +69,7 @@ public class PesquisarCustom extends JTextField {
             public void focusLost(FocusEvent fe) {
                 border.setColor(new Color(0, 0, 0));
                 if(getText().equals("")) {
-                    setText("   Pesquisar Produto");
+                    setText("   Pesquisar Nome de Produto");
                 }
                 repaint();
             }

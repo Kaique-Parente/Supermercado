@@ -55,15 +55,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtIdCliente = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
-        btnPesquisarVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnPesquisarProdutoVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnPesquisarClienteVenda = new com.mycompany.supermercado.JCustoms.ButtonCustom();
-        txtPesquisarVenda = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         lbClienteVenda = new javax.swing.JLabel();
         btnVisualizarCliente1 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnVisualizarCliente2 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         txtQuantidadeVenda1 = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
+        txtPesquisarProdutoVenda = new com.mycompany.supermercado.JCustoms.PesquisarProduto();
         tProdutos = new javax.swing.JPanel();
-        txtPesquisarProdutos = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
@@ -71,7 +70,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVisualizarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnExcluirProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnEditarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
-        btnPesquisarVenda3 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        btnPesquisarProduto = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtPesquisarProduto = new com.mycompany.supermercado.JCustoms.PesquisarProduto();
         tClientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -226,15 +226,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblVendas.getColumnModel().getColumn(7).setPreferredWidth(130);
         }
 
-        btnPesquisarVenda.setBackground(new java.awt.Color(174, 107, 107));
-        btnPesquisarVenda.setBorder(null);
-        btnPesquisarVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        btnPesquisarVenda.setBorderColor(new java.awt.Color(0, 0, 0));
-        btnPesquisarVenda.setColor(new java.awt.Color(174, 107, 107));
-        btnPesquisarVenda.setColorClick(new java.awt.Color(174, 107, 107));
-        btnPesquisarVenda.setColorOver(new java.awt.Color(153, 94, 94));
-        btnPesquisarVenda.setFocusPainted(false);
-        btnPesquisarVenda.setRadius(15);
+        btnPesquisarProdutoVenda.setBackground(new java.awt.Color(174, 107, 107));
+        btnPesquisarProdutoVenda.setBorder(null);
+        btnPesquisarProdutoVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarProdutoVenda.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarProdutoVenda.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarProdutoVenda.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarProdutoVenda.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarProdutoVenda.setFocusPainted(false);
+        btnPesquisarProdutoVenda.setRadius(15);
+        btnPesquisarProdutoVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarProdutoVendaActionPerformed(evt);
+            }
+        });
 
         btnPesquisarClienteVenda.setBackground(new java.awt.Color(174, 107, 107));
         btnPesquisarClienteVenda.setBorder(null);
@@ -245,9 +250,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPesquisarClienteVenda.setColorOver(new java.awt.Color(153, 94, 94));
         btnPesquisarClienteVenda.setFocusPainted(false);
         btnPesquisarClienteVenda.setRadius(15);
-
-        txtPesquisarVenda.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisarVenda.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         lbClienteVenda.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         lbClienteVenda.setForeground(new java.awt.Color(0, 0, 0));
@@ -288,6 +290,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtQuantidadeVenda1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtQuantidadeVenda1.setSelectionColor(new java.awt.Color(108, 56, 84));
 
+        txtPesquisarProdutoVenda.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesquisarProdutoVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout tVendasLayout = new javax.swing.GroupLayout(tVendas);
         tVendas.setLayout(tVendasLayout);
         tVendasLayout.setHorizontalGroup(
@@ -298,9 +303,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(tVendasLayout.createSequentialGroup()
-                                .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPesquisarProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnPesquisarProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(tVendasLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(3, 3, 3)
@@ -352,9 +357,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(lbClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPesquisarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPesquisarProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisarProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(325, 325, 325)
                 .addGroup(tVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,9 +389,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 tProdutosMouseClicked(evt);
             }
         });
-
-        txtPesquisarProdutos.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisarProdutos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -499,14 +501,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnPesquisarVenda3.setBorder(null);
-        btnPesquisarVenda3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        btnPesquisarVenda3.setBorderColor(new java.awt.Color(0, 0, 0));
-        btnPesquisarVenda3.setColor(new java.awt.Color(174, 107, 107));
-        btnPesquisarVenda3.setColorClick(new java.awt.Color(174, 107, 107));
-        btnPesquisarVenda3.setColorOver(new java.awt.Color(153, 94, 94));
-        btnPesquisarVenda3.setFocusPainted(false);
-        btnPesquisarVenda3.setRadius(15);
+        btnPesquisarProduto.setBorder(null);
+        btnPesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnPesquisarProduto.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnPesquisarProduto.setColor(new java.awt.Color(174, 107, 107));
+        btnPesquisarProduto.setColorClick(new java.awt.Color(174, 107, 107));
+        btnPesquisarProduto.setColorOver(new java.awt.Color(153, 94, 94));
+        btnPesquisarProduto.setFocusPainted(false);
+        btnPesquisarProduto.setRadius(15);
+        btnPesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarProdutoActionPerformed(evt);
+            }
+        });
+
+        txtPesquisarProduto.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesquisarProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout tProdutosLayout = new javax.swing.GroupLayout(tProdutos);
         tProdutos.setLayout(tProdutosLayout);
@@ -517,10 +527,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tProdutosLayout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPesquisarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPesquisarVenda3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(tProdutosLayout.createSequentialGroup()
                             .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,8 +549,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(tProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
-                    .addComponent(txtPesquisarProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarVenda3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -679,6 +689,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
 
         txtPesquisarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        txtPesquisarCliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
         tClientes.setLayout(tClientesLayout);
@@ -921,7 +932,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
         txtIdCliente.setText("");
-        txtPesquisarVenda.setText("");
+        txtPesquisarProdutoVenda.setText("");
         txtIdCliente.setText("");
         txtTotalVenda.setText("");
     }//GEN-LAST:event_btnConfirmarActionPerformed
@@ -936,7 +947,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVendaActionPerformed
         txtIdCliente.setText("");
-        txtPesquisarVenda.setText("");
+        txtPesquisarProdutoVenda.setText("");
         txtIdCliente.setText("");
         txtTotalVenda.setText("");
     }//GEN-LAST:event_btnCancelarVendaActionPerformed
@@ -1123,7 +1134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             if (retorno != null) {
                 DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
                 modelo.setRowCount(0);
-                
+
                 DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
                 String dataNascimentoS = "";
 
@@ -1144,8 +1155,76 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     });
                 }
             }
-        }  
+        }
     }//GEN-LAST:event_btnPesquisarVenda2ActionPerformed
+
+    private void btnPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarProdutoActionPerformed
+        if (txtPesquisarProduto.getText().equals("   Pesquisar Nome de Produto")) {
+            atualizarTabelaProdutos();
+        } else {
+            String nome = txtPesquisarProduto.getText();
+            //TODO: Chamar a DAO para filtrar pelo número
+            ArrayList<Produto> retorno = ProdutoDAO.buscarPorTexto(nome);
+
+            if (retorno != null) {
+                DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+                modelo.setRowCount(0);
+
+                DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                String dataValidade = "";
+
+                for (Produto obj : retorno) {
+                    dataValidade = obj.getValidade().format(fm1);
+
+                    modelo.addRow(new String[]{
+                        String.valueOf(obj.getCodigo()),
+                        obj.getNome(),
+                        obj.getMarca(),
+                        obj.getCategoria(),
+                        "R$ " + String.format("%.2f", obj.getValor()),
+                        dataValidade,
+                        String.valueOf(obj.getQuantidade()),
+                        obj.getStatus() == true ? "Em estoque" : "Sem estoque"
+                    });
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPesquisarProdutoActionPerformed
+
+    private void btnPesquisarProdutoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarProdutoVendaActionPerformed
+        if (txtPesquisarProdutoVenda.getText().equals("   Pesquisar Nome de Produto")) {
+            atualizarTabelaProdutos();
+        } else {
+            String nome = txtPesquisarProdutoVenda.getText();
+            //TODO: Chamar a DAO para filtrar pelo número
+            ArrayList<Produto> retorno = ProdutoDAO.buscarPorTexto(nome);
+
+            if (retorno != null) {
+                DefaultTableModel modelo = (DefaultTableModel) tblVendas.getModel();
+                modelo.setRowCount(0);
+
+                DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                String dataValidade = "";
+
+                for (Produto obj : retorno) {
+                    dataValidade = obj.getValidade().format(fm1);
+
+                    if (obj.getStatus()) {
+                        modelo.addRow(new String[]{
+                            String.valueOf(obj.getCodigo()),
+                            obj.getNome(),
+                            obj.getMarca(),
+                            obj.getCategoria(),
+                            "R$ " + String.format("%.2f", obj.getValor()),
+                            dataValidade,
+                            String.valueOf(obj.getQuantidade()),
+                            obj.getStatus() == true ? "Em estoque" : "Sem estoque"
+                        });
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnPesquisarProdutoVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1280,10 +1359,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoCliente;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnNovoProduto;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarClienteVenda;
-    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarProduto;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarProdutoVenda;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda1;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda2;
-    private com.mycompany.supermercado.JCustoms.ButtonCustom btnPesquisarVenda3;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente1;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente2;
@@ -1316,8 +1395,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JTable tblVendas;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtIdCliente;
     private com.mycompany.supermercado.JCustoms.PesquisarCliente txtPesquisarCliente;
-    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos;
-    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarVenda;
+    private com.mycompany.supermercado.JCustoms.PesquisarProduto txtPesquisarProduto;
+    private com.mycompany.supermercado.JCustoms.PesquisarProduto txtPesquisarProdutoVenda;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeVenda1;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalRelatorio;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalVenda;

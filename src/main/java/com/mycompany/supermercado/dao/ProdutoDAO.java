@@ -158,4 +158,42 @@ public class ProdutoDAO {
         return retorno;
     }
     
+    public static ArrayList<Produto> buscarPorTexto(String cod){
+        
+        ArrayList<Produto> lstProdutos = new ArrayList<Produto>();
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" SELECT * FROM `produto` WHERE `Nome` = ?");
+            comandoSQL.setString(1, cod);
+            
+            ResultSet rs = comandoSQL.executeQuery();
+            
+            while(rs.next()){
+                long codigoProduto = rs.getLong("CodigoProduto");
+                String nome = rs.getString("Nome");
+                String marca = rs.getString("Marca");
+                String categoria = rs.getString("Categoria");
+                double valor = rs.getDouble("Valor");
+                LocalDate dataValidade = convertToLocalDate(rs.getDate("DataValidade"));
+                int quantidade = rs.getInt("Quantidade");
+                boolean status = rs.getBoolean("Status");
+                
+                Produto novoProduto = new Produto(codigoProduto, nome, marca, categoria, valor, dataValidade, quantidade, status);
+                lstProdutos.add(novoProduto);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lstProdutos;
+    }
+    
 }
