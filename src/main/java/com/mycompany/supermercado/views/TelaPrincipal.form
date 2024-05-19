@@ -233,7 +233,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Confirmar"/>
+                <Property name="text" type="java.lang.String" value="Confirmar Venda"/>
                 <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
                 </Property>
@@ -465,6 +465,9 @@
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="radius" type="int" value="15"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesquisarClienteVendaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lbClienteVenda">
               <Properties>
@@ -544,6 +547,9 @@
                   <Color blue="54" green="38" red="6c" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeVenda1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="com.mycompany.supermercado.JCustoms.PesquisarProduto" name="txtPesquisarProdutoVenda">
               <Properties>

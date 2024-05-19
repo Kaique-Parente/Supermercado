@@ -139,7 +139,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5.setText("R$");
 
         btnConfirmar.setForeground(new java.awt.Color(0, 0, 0));
-        btnConfirmar.setText("Confirmar");
+        btnConfirmar.setText("Confirmar Venda");
         btnConfirmar.setBorderColor(java.awt.Color.blue);
         btnConfirmar.setBorderPainted(false);
         btnConfirmar.setColorClick(new java.awt.Color(101, 101, 252));
@@ -250,6 +250,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPesquisarClienteVenda.setColorOver(new java.awt.Color(153, 94, 94));
         btnPesquisarClienteVenda.setFocusPainted(false);
         btnPesquisarClienteVenda.setRadius(15);
+        btnPesquisarClienteVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarClienteVendaActionPerformed(evt);
+            }
+        });
 
         lbClienteVenda.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         lbClienteVenda.setForeground(new java.awt.Color(0, 0, 0));
@@ -289,6 +294,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtQuantidadeVenda1.setCaretColor(new java.awt.Color(0, 0, 0));
         txtQuantidadeVenda1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtQuantidadeVenda1.setSelectionColor(new java.awt.Color(108, 56, 84));
+        txtQuantidadeVenda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeVenda1ActionPerformed(evt);
+            }
+        });
 
         txtPesquisarProdutoVenda.setForeground(new java.awt.Color(0, 0, 0));
         txtPesquisarProdutoVenda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -929,14 +939,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ra.setVisible(true);
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
-    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
-        txtIdCliente.setText("");
-        txtPesquisarProdutoVenda.setText("");
-        txtIdCliente.setText("");
-        txtTotalVenda.setText("");
-    }//GEN-LAST:event_btnConfirmarActionPerformed
-
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         Produtos produto = new Produtos();
         produto.setVisible(true);
@@ -1225,6 +1227,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnPesquisarProdutoVendaActionPerformed
+
+    private void txtQuantidadeVenda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeVenda1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeVenda1ActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
+        txtIdCliente.setText("");
+        txtPesquisarProdutoVenda.setText("");
+        txtIdCliente.setText("");
+        txtTotalVenda.setText("");
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnPesquisarClienteVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarClienteVendaActionPerformed
+
+        if (txtIdCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Digite o ID do Cliente!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int id = Integer.parseInt(txtIdCliente.getText());
+
+            String retorno = ClienteDAO.buscarPorID(id);
+            if (retorno.equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Cliente não encontrado!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                lbClienteVenda.setText("usuário");
+            } else {
+                lbClienteVenda.setText(retorno);
+            }
+        }
+
+
+    }//GEN-LAST:event_btnPesquisarClienteVendaActionPerformed
 
     /**
      * @param args the command line arguments

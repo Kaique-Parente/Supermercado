@@ -204,4 +204,32 @@ public class ClienteDAO {
         
         return lstClientes;
     }
+    
+    public static String buscarPorID(Integer cod){
+        
+        String nome = "";
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" SELECT `Nome` FROM `Cliente` WHERE `ClienteID` = ?");
+            comandoSQL.setInt(1, cod);
+            
+        ResultSet rs = comandoSQL.executeQuery();
+        
+        while(rs.next()) {
+            nome = rs.getString("Nome");
+        }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return nome;
+    }
 }
