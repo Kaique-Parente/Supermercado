@@ -217,11 +217,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblVendas.getColumnModel().getColumn(3).setResizable(false);
             tblVendas.getColumnModel().getColumn(3).setPreferredWidth(120);
             tblVendas.getColumnModel().getColumn(4).setResizable(false);
-            tblVendas.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblVendas.getColumnModel().getColumn(4).setPreferredWidth(130);
             tblVendas.getColumnModel().getColumn(5).setResizable(false);
-            tblVendas.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tblVendas.getColumnModel().getColumn(5).setPreferredWidth(110);
             tblVendas.getColumnModel().getColumn(6).setResizable(false);
-            tblVendas.getColumnModel().getColumn(6).setPreferredWidth(120);
+            tblVendas.getColumnModel().getColumn(6).setPreferredWidth(100);
             tblVendas.getColumnModel().getColumn(7).setResizable(false);
             tblVendas.getColumnModel().getColumn(7).setPreferredWidth(130);
         }
@@ -430,11 +430,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblProdutos.getColumnModel().getColumn(3).setResizable(false);
             tblProdutos.getColumnModel().getColumn(3).setPreferredWidth(120);
             tblProdutos.getColumnModel().getColumn(4).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblProdutos.getColumnModel().getColumn(4).setPreferredWidth(130);
             tblProdutos.getColumnModel().getColumn(5).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tblProdutos.getColumnModel().getColumn(5).setPreferredWidth(110);
             tblProdutos.getColumnModel().getColumn(6).setResizable(false);
-            tblProdutos.getColumnModel().getColumn(6).setPreferredWidth(120);
+            tblProdutos.getColumnModel().getColumn(6).setPreferredWidth(100);
             tblProdutos.getColumnModel().getColumn(7).setResizable(false);
             tblProdutos.getColumnModel().getColumn(7).setPreferredWidth(130);
         }
@@ -921,7 +921,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Compra Efetuada", "Compra Efetuada", JOptionPane.INFORMATION_MESSAGE);
-        txtCPFVenda.setCPF("");
+        txtIdCliente.setText("");
         txtPesquisarVenda.setText("");
         txtIdCliente.setText("");
         txtTotalVenda.setText("");
@@ -940,7 +940,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoProdutoActionPerformed
 
     private void btnCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarVendaActionPerformed
-        txtCPFVenda.setCPF("");
+        txtIdCliente.setText("");
         txtPesquisarVenda.setText("");
         txtIdCliente.setText("");
         txtTotalVenda.setText("");
@@ -955,19 +955,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
             long idExcluir = Long.parseLong(model.getValueAt(indice, 0).toString());
             boolean retorno = ProdutoDAO.excluir(idExcluir);
-            
+
             /*Tabela Vendas
             DefaultTableModel model2 = (DefaultTableModel) tblVendas.getModel();
             long idExcluir2 = Long.parseLong(model2.getValueAt(indice, 0).toString());
             boolean retorno2 = ProdutoDAO.excluir(idExcluir2);
-            */
-            
+             */
             if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso!");
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Falha!");
             }
-   
+
             model.removeRow(indice);
             //model2.removeRow(indice);
 
@@ -1058,7 +1057,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnVisualizarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarProdutoActionPerformed
         int linhaSelecionada = tblProdutos.getSelectedRow();
-        
+
         if (linhaSelecionada >= 0) {
             DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate dataValidade = null;
@@ -1071,7 +1070,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
             dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
             int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
-            
+
             String txtStatus = modelo.getValueAt(linhaSelecionada, 7).toString();
             boolean status = txtStatus.equals("Em estoque");
 
@@ -1085,7 +1084,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnEditarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarProdutoActionPerformed
         int linhaSelecionada = tblProdutos.getSelectedRow();
-        
+
         if (linhaSelecionada >= 0) {
             DateTimeFormatter fm2 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
             LocalDate dataValidade = null;
@@ -1098,7 +1097,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Double valor = Double.parseDouble(modelo.getValueAt(linhaSelecionada, 4).toString());
             dataValidade = LocalDate.parse(modelo.getValueAt(linhaSelecionada, 5).toString(), fm2);
             int quantidade = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 6).toString());
-            
+
             String txtStatus = modelo.getValueAt(linhaSelecionada, 7).toString();
             boolean status = txtStatus.equals("Em estoque");
 
@@ -1218,22 +1217,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 obj.getNome(),
                 obj.getMarca(),
                 obj.getCategoria(),
-                String.valueOf(obj.getValor()),
+                "R$ " + String.format("%.2f", obj.getValor()),
                 dataValidade,
                 String.valueOf(obj.getQuantidade()),
                 obj.getStatus() == true ? "Em estoque" : "Sem estoque"
             });
-            
-            modelo2.addRow(new String[]{
-                String.valueOf(obj.getCodigo()),
-                obj.getNome(),
-                obj.getMarca(),
-                obj.getCategoria(),
-                String.valueOf(obj.getValor()),
-                dataValidade,
-                String.valueOf(obj.getQuantidade()),
-                obj.getStatus() == true ? "Em estoque" : "Sem estoque"
-            });
+
+            if (obj.getStatus()) {
+                modelo2.addRow(new String[]{
+                    String.valueOf(obj.getCodigo()),
+                    obj.getNome(),
+                    obj.getMarca(),
+                    obj.getCategoria(),
+                    "R$ " + String.format("%.2f", obj.getValor()),
+                    dataValidade,
+                    String.valueOf(obj.getQuantidade()),
+                    obj.getStatus() == true ? "Em estoque" : "Sem estoque"
+                });
+            }
         }
     }
 
