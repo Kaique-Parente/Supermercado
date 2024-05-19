@@ -30,7 +30,6 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblDetalhes = new javax.swing.JTable();
-        btnCancelar = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,7 +74,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Codigo de Barras", "Valor", "QTD"
+                "Produto", "Valor", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -98,21 +97,6 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
             tblDetalhes.getColumnModel().getColumn(2).setPreferredWidth(20);
         }
 
-        btnCancelar.setBackground(new java.awt.Color(174, 107, 107));
-        btnCancelar.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancelar.setText("Voltar");
-        btnCancelar.setBorderColor(java.awt.Color.red);
-        btnCancelar.setColor(new java.awt.Color(174, 107, 107));
-        btnCancelar.setColorClick(new java.awt.Color(255, 100, 100));
-        btnCancelar.setColorOver(new java.awt.Color(255, 80, 80));
-        btnCancelar.setFocusPainted(false);
-        btnCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,9 +104,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
             .addComponent(Cabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,9 +113,7 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 .addComponent(Cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(83, 83, 83))
         );
 
         pack();
@@ -180,7 +160,6 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
-    private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblDetalhes;

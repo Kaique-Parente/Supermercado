@@ -6,64 +6,59 @@ import java.util.ArrayList;
 
 public class Venda {
     
-    private Cliente cliente;
-    private Integer quantidade;
-    private Double total; 
-    private Produto produto;
-    private LocalDate data;
+    private Integer idVenda;
+    private LocalDate dataVenda;
+    private Double valorVenda; 
+    private Integer idCliente;
     
-    List<Produto> itemVenda = new ArrayList<>(); 
-    
-    public Venda(Cliente cliente, Integer quantidade, Double total, Produto produto) {
-        this.cliente = cliente;
-        this.quantidade = quantidade;
-        this.total = total;
-        this.produto = produto;
-        itemVenda.add(produto);
-        data = LocalDate.now();
+    List<ItemVenda> itens = new ArrayList<>(); 
+
+    public Venda(LocalDate dataVenda, Double valorVenda, Integer idCliente) {
+        this.dataVenda = dataVenda;
+        this.valorVenda = valorVenda;
+        this.idCliente = idCliente;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Venda(Integer idVenda, LocalDate dataVenda, Double valorVenda, Integer idCliente) {
+        this.idVenda = idVenda;
+        this.dataVenda = dataVenda;
+        this.valorVenda = valorVenda;
+        this.idCliente = idCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public Integer getIdVenda() {
+        return idVenda;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public void setIdVenda(Integer idVenda) {
+        this.idVenda = idVenda;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public LocalDate getDataVenda() {
+        return dataVenda;
     }
 
-    public Double getTotal() {
-        return total;
+    public void setDataVenda(LocalDate dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public Double getValorVenda() {
+        return valorVenda;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public void setValorVenda(Double valorVenda) {
+        this.valorVenda = valorVenda;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public LocalDate getData() {
-        return data;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-    
-    public List<Produto> getItemVenda() {
-        return itemVenda;
+    public List<ItemVenda> getItens() {
+        return itens;
     }
 }

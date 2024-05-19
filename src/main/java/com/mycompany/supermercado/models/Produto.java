@@ -24,6 +24,16 @@ public class Produto {
         this.status = status;
     }
 
+    public Produto(String nome, String marca, String categoria, Double valor, LocalDate validade, Integer quantidade, boolean status) {
+        this.nome = nome;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.validade = validade;
+        this.quantidade = quantidade;
+        this.status = status;
+    }
+
     public long getCodigo() {
         return codigo;
     }

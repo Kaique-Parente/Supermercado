@@ -2,39 +2,40 @@ package com.mycompany.supermercado.models;
 
 public class RelatorioAnalitico {
     
-    private final Venda venda;
-    private final Produto produto;
-    private final Long codBarras;
-    private final Double valor;
-    private final Integer quantidade;
+    private String nomeProduto;
+    private Double valorProduto;
+    private Integer qtdProduto;
+
+    public RelatorioAnalitico(String nomeProduto, Double valorProduto, Integer qtdProduto) {
+        this.nomeProduto = nomeProduto;
+        this.valorProduto = valorProduto;
+        this.qtdProduto = qtdProduto;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public Double getValorProduto() {
+        return valorProduto;
+    }
+
+    public void setValorProduto(Double valorProduto) {
+        this.valorProduto = valorProduto;
+    }
+
+    public Integer getQtdProduto() {
+        return qtdProduto;
+    }
+
+    public void setQtdProduto(Integer qtdProduto) {
+        this.qtdProduto = qtdProduto;
+    }
     
-    public RelatorioAnalitico(Venda venda) {
-        this.venda = venda;
-        produto = venda.getProduto();
-        codBarras = produto.getCodigo();
-        valor = produto.getValor();
-        quantidade = produto.getQuantidade();
-    }
-
-    public Venda getVenda() {
-        return venda;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public Long getCodBarras() {
-        return codBarras;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
     
     
 }

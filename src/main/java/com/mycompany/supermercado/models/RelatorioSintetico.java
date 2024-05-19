@@ -1,34 +1,50 @@
 package com.mycompany.supermercado.models;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class RelatorioSintetico {
     
-    private final Venda venda;
-    private final LocalDate data;
-    private final Cliente cliente;
-    private final Double valor;
+    private Date dataVenda;
+    private Integer idCliente;
+    private String nome;
+    private Float vlrVenda;
 
-    public RelatorioSintetico(Venda venda) {
-        this.venda = venda;
-        data = venda.getData();
-        cliente = venda.getCliente();
-        valor = venda.getTotal();
+    public RelatorioSintetico(Date dataVenda, Integer idCliente, String nome, Float vlrVenda) {
+        this.dataVenda = dataVenda;
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.vlrVenda = vlrVenda;
     }
 
-    public Venda getVenda() {
-        return venda;
+    public Date getDataVenda() {
+        return dataVenda;
     }
 
-    public LocalDate getData() {
-        return data;
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public Double getValor() {
-        return valor;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Float getVlrVenda() {
+        return vlrVenda;
+    }
+
+    public void setVlrVenda(Float vlrVenda) {
+        this.vlrVenda = vlrVenda;
     }
 }
