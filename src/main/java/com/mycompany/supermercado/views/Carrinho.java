@@ -4,6 +4,13 @@
  */
 package com.mycompany.supermercado.views;
 
+import com.mycompany.supermercado.models.Produto;
+import com.mycompany.supermercado.utils.Conversor;
+import static com.mycompany.supermercado.views.TelaPrincipal.lbTotalVenda;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author kaiqu
@@ -159,30 +166,21 @@ public class Carrinho extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirClienteActionPerformed
-       /* int indice = tblClientes.getSelectedRow();
+        int indice = tblCarrinho.getSelectedRow();
 
         if (indice >= 0) {
             //Resgatar o modelo da tabela para exlcuir a linha
-            DefaultTableModel model = (DefaultTableModel) tblClientes.getModel();
-
-            //DAO
-            int idExcluir = Integer.parseInt(model.getValueAt(indice, 0).toString());
-            boolean retorno = ClienteDAO.excluir(idExcluir);
-            if (retorno) {
-                JOptionPane.showMessageDialog(rootPane, "Sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Falha!");
-            }
-
+            DefaultTableModel model = (DefaultTableModel) tblCarrinho.getModel();
             model.removeRow(indice);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
-        */
+        
+        lbTotalVenda.setText(String.format("%.2f", totalVenda()));
     }//GEN-LAST:event_btnExcluirClienteActionPerformed
 
     private void btnExcluirCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCliente1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnExcluirCliente1ActionPerformed
 
     /**
@@ -221,6 +219,50 @@ public class Carrinho extends javax.swing.JFrame {
         });
     }
 
+    public static boolean atualizarCarrinho(ArrayList<Produto> lista) {
+        boolean retorno = true;
+        for (Produto obj : lista) {
+            double soma = obj.getValor() * obj.getQuantidade();
+
+            if (verificarCarrinho(obj)) {
+                DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
+                modelo2.addRow(new String[]{
+                    obj.getNome(),
+                    obj.getMarca(),
+                    "R$ " + String.format("%.2f", soma),
+                    String.valueOf(obj.getQuantidade())
+
+                });
+            } else {
+                return false;
+            }
+        }
+        return retorno;
+    }
+
+    public static boolean verificarCarrinho(Produto obj) {
+        boolean retorno = true;
+        DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
+
+        for (int i = 0; i < modelo2.getRowCount(); i++) {
+            if (obj.getNome().equals(modelo2.getValueAt(i, 0)) && obj.getMarca().equals(modelo2.getValueAt(i, 1))) {
+                return false;
+            } else {
+                retorno = true;
+            }
+        }
+        return retorno;
+    }
+    
+    public static double totalVenda() {
+        double total = 0.0;
+        DefaultTableModel modelo2 = (DefaultTableModel) tblCarrinho.getModel();
+
+        for (int i = 0; i < modelo2.getRowCount(); i++) {
+            total += Conversor.converterValor(modelo2.getValueAt(i, 2).toString());
+        }
+        return total;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirCliente;
