@@ -454,6 +454,9 @@
           </Events>
         </Component>
         <Component class="com.mycompany.supermercado.JCustoms.TextFiledCustom" name="txtQuantidadeProduto">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeProdutoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="com.mycompany.supermercado.JCustoms.SwitchButton" name="btnStatus">
         </Component>

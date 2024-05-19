@@ -1,8 +1,8 @@
 package com.mycompany.supermercado.dao;
 
 import com.mycompany.supermercado.models.Cliente;
-import static com.mycompany.supermercado.models.ConverterData.convertToDate;
-import static com.mycompany.supermercado.models.ConverterData.convertToLocalDate;
+import static com.mycompany.supermercado.utils.ConverterData.convertToDate;
+import static com.mycompany.supermercado.utils.ConverterData.convertToLocalDate;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

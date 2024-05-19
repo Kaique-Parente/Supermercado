@@ -263,6 +263,12 @@ public class Produtos extends javax.swing.JFrame {
             }
         });
 
+        txtQuantidadeProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeProdutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -549,6 +555,10 @@ public class Produtos extends javax.swing.JFrame {
             lbValor.setText("Valor por Unidade:");
         }
     }//GEN-LAST:event_cbCategoriaProdutoFocusLost
+
+    private void txtQuantidadeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeProdutoActionPerformed
 
     /**
      * @param args the command line arguments

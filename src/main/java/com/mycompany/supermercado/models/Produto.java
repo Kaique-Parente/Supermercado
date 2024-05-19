@@ -34,6 +34,13 @@ public class Produto {
         this.status = status;
     }
 
+    public Produto(String nome, String marca, Double valor, Integer quantidade) {
+        this.nome = nome;
+        this.marca = marca;
+        this.valor = valor;
+        this.quantidade = quantidade;
+    }
+
     public long getCodigo() {
         return codigo;
     }

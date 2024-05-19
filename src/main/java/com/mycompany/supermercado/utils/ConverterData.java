@@ -1,4 +1,4 @@
-package com.mycompany.supermercado.models;
+package com.mycompany.supermercado.utils;
 
 import java.time.Instant;
 import java.time.LocalDate;

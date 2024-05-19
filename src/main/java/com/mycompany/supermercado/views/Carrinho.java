@@ -29,7 +29,7 @@ public class Carrinho extends javax.swing.JFrame {
         Cabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblDetalhes = new javax.swing.JTable();
+        tblCarrinho = new javax.swing.JTable();
         btnExcluirCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnExcluirCliente1 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
@@ -60,43 +60,37 @@ public class Carrinho extends javax.swing.JFrame {
 
         jScrollPane4.setBackground(new java.awt.Color(51, 51, 51));
 
-        tblDetalhes.setAutoCreateRowSorter(true);
-        tblDetalhes.setBackground(new java.awt.Color(81, 0, 42));
-        tblDetalhes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        tblDetalhes.setForeground(new java.awt.Color(255, 255, 255));
-        tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
+        tblCarrinho.setAutoCreateRowSorter(true);
+        tblCarrinho.setBackground(new java.awt.Color(81, 0, 42));
+        tblCarrinho.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblCarrinho.setForeground(new java.awt.Color(255, 255, 255));
+        tblCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Produto", "Valor", "Quantidade"
+                "Produto", "Marca", "Valor", "Quantidade"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblDetalhes.setFillsViewportHeight(true);
-        tblDetalhes.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        tblDetalhes.setRowHeight(20);
-        tblDetalhes.setShowGrid(true);
-        jScrollPane4.setViewportView(tblDetalhes);
-        if (tblDetalhes.getColumnModel().getColumnCount() > 0) {
-            tblDetalhes.getColumnModel().getColumn(0).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(1).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(2).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tblCarrinho.setFillsViewportHeight(true);
+        tblCarrinho.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblCarrinho.setRowHeight(20);
+        tblCarrinho.setShowGrid(true);
+        jScrollPane4.setViewportView(tblCarrinho);
+        if (tblCarrinho.getColumnModel().getColumnCount() > 0) {
+            tblCarrinho.getColumnModel().getColumn(0).setResizable(false);
+            tblCarrinho.getColumnModel().getColumn(1).setResizable(false);
+            tblCarrinho.getColumnModel().getColumn(2).setResizable(false);
+            tblCarrinho.getColumnModel().getColumn(3).setResizable(false);
+            tblCarrinho.getColumnModel().getColumn(3).setPreferredWidth(20);
         }
 
         btnExcluirCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -233,6 +227,6 @@ public class Carrinho extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnExcluirCliente1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tblDetalhes;
+    public static javax.swing.JTable tblCarrinho;
     // End of variables declaration//GEN-END:variables
 }
