@@ -74,7 +74,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPesquisarVenda3 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         tClientes = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txtPesquisarProdutos1 = new com.mycompany.supermercado.JCustoms.PesquisarCustom();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         btnNovoCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
@@ -82,6 +81,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnEditarCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnExcluirCliente = new com.mycompany.supermercado.JCustoms.ButtonCustom();
         btnPesquisarVenda2 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        txtPesquisarCliente = new com.mycompany.supermercado.JCustoms.PesquisarCliente();
         tRelatorios = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -562,14 +562,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Lista de Clientes");
 
-        txtPesquisarProdutos1.setForeground(new java.awt.Color(0, 0, 0));
-        txtPesquisarProdutos1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtPesquisarProdutos1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPesquisarProdutos1ActionPerformed(evt);
-            }
-        });
-
         jScrollPane3.setBackground(new java.awt.Color(51, 51, 51));
 
         tblClientes.setAutoCreateRowSorter(true);
@@ -680,6 +672,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPesquisarVenda2.setColorOver(new java.awt.Color(153, 94, 94));
         btnPesquisarVenda2.setFocusPainted(false);
         btnPesquisarVenda2.setRadius(15);
+        btnPesquisarVenda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarVenda2ActionPerformed(evt);
+            }
+        });
+
+        txtPesquisarCliente.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout tClientesLayout = new javax.swing.GroupLayout(tClientes);
         tClientes.setLayout(tClientesLayout);
@@ -690,8 +689,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(tClientesLayout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPesquisarVenda2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -712,8 +711,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(tClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(txtPesquisarProdutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPesquisarVenda2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisarVenda2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPesquisarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -927,10 +926,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtTotalVenda.setText("");
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    private void txtPesquisarProdutos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarProdutos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesquisarProdutos1ActionPerformed
-
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
         Produtos produto = new Produtos();
         produto.setVisible(true);
@@ -1117,6 +1112,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVisualizarCliente2ActionPerformed
 
+    private void btnPesquisarVenda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarVenda2ActionPerformed
+        if (txtPesquisarCliente.getText().equals("   Pesquisar Nome de Cliente")) {
+            atualizarTabelaClientes();
+        } else {
+            String nome = txtPesquisarCliente.getText();
+            //TODO: Chamar a DAO para filtrar pelo número
+            ArrayList<Cliente> retorno = ClienteDAO.buscarPorTexto(nome);
+
+            if (retorno != null) {
+                DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+                modelo.setRowCount(0);
+                
+                DateTimeFormatter fm1 = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                String dataNascimentoS = "";
+
+                for (Cliente obj : retorno) {
+                    dataNascimentoS = obj.getDataNascimento().format(fm1);
+                    modelo.addRow(new String[]{
+                        String.valueOf(obj.getID()),
+                        String.valueOf(obj.getCpf()),
+                        obj.getNome(),
+                        String.valueOf(obj.getTelefone()),
+                        obj.getEmail(),
+                        obj.getEstadoCivil(),
+                        obj.getSexo(),
+                        obj.getRua(),
+                        obj.getEstado(),
+                        obj.getBairro(),
+                        dataNascimentoS
+                    });
+                }
+            }
+        }  
+    }//GEN-LAST:event_btnPesquisarVenda2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1285,8 +1315,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tblRelatorio;
     public static javax.swing.JTable tblVendas;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtIdCliente;
+    private com.mycompany.supermercado.JCustoms.PesquisarCliente txtPesquisarCliente;
     private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos;
-    private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarProdutos1;
     private com.mycompany.supermercado.JCustoms.PesquisarCustom txtPesquisarVenda;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeVenda1;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalRelatorio;

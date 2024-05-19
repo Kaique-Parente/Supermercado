@@ -163,4 +163,45 @@ public class ClienteDAO {
         
         return retorno;
     }
+    
+    public static ArrayList<Cliente> buscarPorTexto(String cod){
+        
+        ArrayList<Cliente> lstClientes = new ArrayList<Cliente>();
+        Connection conexao = null;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, password);
+            
+            PreparedStatement comandoSQL = conexao.prepareStatement(" SELECT * FROM `Cliente` WHERE `Nome` = ?");
+            comandoSQL.setString(1, cod);
+            
+        ResultSet rs = comandoSQL.executeQuery();
+        
+        while(rs.next()) {
+            int clienteID = rs.getInt("ClienteID");
+            String nome = rs.getString("Nome");
+            long cpf = Long.parseLong(rs.getString("CPF"));
+            long telefone = Long.parseLong(rs.getString("Telefone"));
+            String email = rs.getString("Email");
+            String estadoCivil = rs.getString("EstadoCivil");
+            String sexo = rs.getString("Sexo");
+            String rua = rs.getString("Rua");
+            String estado = rs.getString("Estado");
+            String bairro = rs.getString("Bairro");
+            LocalDate data = convertToLocalDate(rs.getDate("DataNascimento"));
+            
+            Cliente novoCliente = new Cliente(clienteID, nome, cpf, telefone, email, estadoCivil, sexo, rua, estado, bairro, data);
+            lstClientes.add(novoCliente);
+        }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lstClientes;
+    }
 }
