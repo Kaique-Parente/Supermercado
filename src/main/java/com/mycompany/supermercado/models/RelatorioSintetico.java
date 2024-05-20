@@ -6,15 +6,18 @@ public class RelatorioSintetico {
     
     private Date dataVenda;
     private Integer idCliente;
+    private Integer idVenda;
     private String nome;
     private Float vlrVenda;
 
-    public RelatorioSintetico(Date dataVenda, Integer idCliente, String nome, Float vlrVenda) {
+    public RelatorioSintetico(Date dataVenda, Integer idCliente, Integer idVenda, String nome, Float vlrVenda) {
         this.dataVenda = dataVenda;
         this.idCliente = idCliente;
+        this.idVenda = idVenda;
         this.nome = nome;
         this.vlrVenda = vlrVenda;
     }
+
 
     public Date getDataVenda() {
         return dataVenda;
@@ -47,4 +50,14 @@ public class RelatorioSintetico {
     public void setVlrVenda(Float vlrVenda) {
         this.vlrVenda = vlrVenda;
     }
+
+    public Integer getIdVenda() {
+        return idVenda;
+    }
+
+    public void setIdVenda(Integer idVenda) {
+        this.idVenda = idVenda;
+    }
+    
+    
 }

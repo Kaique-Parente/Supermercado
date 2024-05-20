@@ -21,10 +21,6 @@ import javax.swing.JOptionPane;
 
 public class ProdutoDAO {
 
-    static String url = "jdbc:mysql://localhost:3306/supermercadobc";
-    static String login = "root";
-    static String password = "Root123@";
-
     public static boolean salvar(Produto obj) {
         boolean retorno = false;
         Connection conexao = null;

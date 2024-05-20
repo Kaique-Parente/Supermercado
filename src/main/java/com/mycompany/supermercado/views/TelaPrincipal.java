@@ -6,20 +6,22 @@ package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
+import com.mycompany.supermercado.dao.RelatorioSinteticoDAO;
 import com.mycompany.supermercado.dao.VendaDAO;
 import com.mycompany.supermercado.models.Cliente;
 import com.mycompany.supermercado.models.ItemVenda;
 import com.mycompany.supermercado.models.Produto;
+import com.mycompany.supermercado.models.RelatorioSintetico;
 import com.mycompany.supermercado.models.Venda;
 import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.Carrinho.tblCarrinho;
 import java.awt.Color;
-import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -97,12 +99,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
-        txtTotalRelatorio = new com.mycompany.supermercado.JCustoms.TextFiledCustom();
         jLabel10 = new javax.swing.JLabel();
         btnDetalhes = new com.mycompany.supermercado.JCustoms.ButtonCustom();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        dtInicio = new com.toedter.calendar.JDateChooser();
+        dtTermino = new com.toedter.calendar.JDateChooser();
         btnPesquisarVenda1 = new com.mycompany.supermercado.JCustoms.ButtonCustom();
+        lbTotalRelatorioSintetico = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -786,11 +788,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Data", "Cliente", "Valor"
+                "ID Venda", "Cliente", "Valor", "Data"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -806,17 +808,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             tblRelatorio.getColumnModel().getColumn(0).setResizable(false);
             tblRelatorio.getColumnModel().getColumn(1).setResizable(false);
             tblRelatorio.getColumnModel().getColumn(2).setResizable(false);
+            tblRelatorio.getColumnModel().getColumn(3).setResizable(false);
         }
-
-        txtTotalRelatorio.setEditable(false);
-        txtTotalRelatorio.setForeground(new java.awt.Color(0, 0, 0));
-        txtTotalRelatorio.setCaretColor(new java.awt.Color(0, 0, 0));
-        txtTotalRelatorio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txtTotalRelatorio.setSelectionColor(new java.awt.Color(108, 56, 84));
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Valor Total");
+        jLabel10.setText("Valor Total: R$");
 
         btnDetalhes.setBackground(new java.awt.Color(174, 107, 107));
         btnDetalhes.setForeground(new java.awt.Color(0, 0, 0));
@@ -833,16 +830,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
-        jDateChooser1.setAlignmentY(3.0F);
-        jDateChooser1.setDateFormatString("dd/MM/yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dtInicio.setBackground(new java.awt.Color(255, 255, 255));
+        dtInicio.setForeground(new java.awt.Color(0, 0, 0));
+        dtInicio.setAlignmentY(3.0F);
+        dtInicio.setDateFormatString("dd/MM/yyyy");
+        dtInicio.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser2.setForeground(new java.awt.Color(0, 0, 0));
-        jDateChooser2.setDateFormatString("dd/MM/yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dtTermino.setBackground(new java.awt.Color(255, 255, 255));
+        dtTermino.setForeground(new java.awt.Color(0, 0, 0));
+        dtTermino.setDateFormatString("dd/MM/yyyy");
+        dtTermino.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         btnPesquisarVenda1.setBackground(new java.awt.Color(174, 107, 107));
         btnPesquisarVenda1.setBorder(null);
@@ -853,6 +850,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnPesquisarVenda1.setColorOver(new java.awt.Color(153, 94, 94));
         btnPesquisarVenda1.setFocusPainted(false);
         btnPesquisarVenda1.setRadius(15);
+        btnPesquisarVenda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarVenda1ActionPerformed(evt);
+            }
+        });
+
+        lbTotalRelatorioSintetico.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lbTotalRelatorioSintetico.setForeground(new java.awt.Color(0, 0, 0));
+        lbTotalRelatorioSintetico.setText("0,00");
 
         javax.swing.GroupLayout tRelatoriosLayout = new javax.swing.GroupLayout(tRelatorios);
         tRelatorios.setLayout(tRelatoriosLayout);
@@ -870,18 +876,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(tRelatoriosLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dtTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                 .addComponent(btnPesquisarVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tRelatoriosLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTotalRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                                .addComponent(lbTotalRelatorioSintetico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(21, 21, 21))))
         );
@@ -893,17 +899,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dtTermino, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisarVenda1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(tRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtTotalRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTotalRelatorioSintetico))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -976,14 +982,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Tabela Produtos
             DefaultTableModel model = (DefaultTableModel) tblProdutos.getModel();
             long idExcluir = Long.parseLong(model.getValueAt(indice, 0).toString());
-           
+
             boolean retorno = ProdutoDAO.excluir(idExcluir);
 
             if (retorno) {
                 JOptionPane.showMessageDialog(rootPane, "Sucesso!");
                 model.removeRow(indice);
             }
-            
+
             atualizarTabelaProdutos();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
@@ -1377,6 +1383,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdClienteActionPerformed
 
+    private void btnPesquisarVenda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarVenda1ActionPerformed
+
+        Date dataInicio = dtInicio.getDate(), dataTermino = dtTermino.getDate();
+        DefaultTableModel modelo = (DefaultTableModel) tblRelatorio.getModel();
+
+        if (dataInicio != null || dataTermino != null) {
+            if (dataInicio.before(dataTermino)) {
+                ArrayList<RelatorioSintetico> lstRelatorio = RelatorioSinteticoDAO.listar(dataInicio, dataTermino);
+
+                modelo.setRowCount(0);
+
+                SimpleDateFormat fm1 = new SimpleDateFormat("dd/MM/yyyy");
+                String dataS = "";
+
+                for (RelatorioSintetico obj : lstRelatorio) {
+                    dataS = fm1.format(obj.getDataVenda());
+
+                    modelo.addRow(new String[]{
+                        String.valueOf(obj.getIdVenda()),
+                        obj.getNome(),
+                        "R$ " + String.format("%.2f", obj.getVlrVenda()),
+                        dataS
+                    });
+                }
+                lbTotalRelatorioSintetico.setText(String.valueOf(valorTotalRelatorioSintetico()));
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Digite datas válidas!", "Erro!", JOptionPane.WARNING_MESSAGE);
+                modelo.setRowCount(0);
+                lbTotalRelatorioSintetico.setText("0,00");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Digite as datas!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            modelo.setRowCount(0);
+            lbTotalRelatorioSintetico.setText("0,00");
+        }
+
+
+    }//GEN-LAST:event_btnPesquisarVenda1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1497,16 +1543,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         }
     }
-    
-    public static void exibirMensagemItemVendido(char letra){
-        
-        if(letra == 'p'){
+
+    public static void exibirMensagemItemVendido(char letra) {
+
+        if (letra == 'p') {
             JOptionPane.showMessageDialog(tblProdutos, "Não é possível excluir Produto já vendido!", "Erro!", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(tblClientes, "Não é possível excluir Cliente que realizou uma compra!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
     }
-   
+
+    public static double valorTotalRelatorioSintetico() {
+        double total = 0.0;
+        DefaultTableModel modelo = (DefaultTableModel) tblRelatorio.getModel();
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            total += Conversor.converterValor(modelo.getValueAt(i, 2).toString());
+        }
+        return total;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1528,8 +1583,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarCliente1;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnVisualizarProduto;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser dtInicio;
+    private com.toedter.calendar.JDateChooser dtTermino;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -1546,6 +1601,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lbClienteVenda;
+    private javax.swing.JLabel lbTotalRelatorioSintetico;
     public static javax.swing.JLabel lbTotalVenda;
     private javax.swing.JPanel tClientes;
     private javax.swing.JPanel tProdutos;
@@ -1553,13 +1609,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel tVendas;
     private static javax.swing.JTable tblClientes;
     private static javax.swing.JTable tblProdutos;
-    private javax.swing.JTable tblRelatorio;
+    public static javax.swing.JTable tblRelatorio;
     public static javax.swing.JTable tblVendas;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtIdCliente;
     private com.mycompany.supermercado.JCustoms.PesquisarCliente txtPesquisarCliente;
     private com.mycompany.supermercado.JCustoms.PesquisarProduto txtPesquisarProduto;
     private com.mycompany.supermercado.JCustoms.PesquisarProduto txtPesquisarProdutoVenda;
     private com.mycompany.supermercado.JCustoms.TextFiledCustom txtQuantidadeVenda;
-    private com.mycompany.supermercado.JCustoms.TextFiledCustom txtTotalRelatorio;
     // End of variables declaration//GEN-END:variables
 }

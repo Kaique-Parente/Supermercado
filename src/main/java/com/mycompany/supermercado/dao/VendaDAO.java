@@ -50,7 +50,6 @@ public class VendaDAO {
                     if (linhasAfetadas > 0) {
                         retorno = true;
                     }
-
                 }
 
             }
