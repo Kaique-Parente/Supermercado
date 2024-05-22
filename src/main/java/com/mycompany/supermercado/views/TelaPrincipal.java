@@ -6,15 +6,18 @@ package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
+import com.mycompany.supermercado.dao.RelatorioAnaliticoDAO;
 import com.mycompany.supermercado.dao.RelatorioSinteticoDAO;
 import com.mycompany.supermercado.dao.VendaDAO;
 import com.mycompany.supermercado.models.Cliente;
 import com.mycompany.supermercado.models.ItemVenda;
+import com.mycompany.supermercado.models.RelatorioAnalitico;
 import com.mycompany.supermercado.models.Produto;
 import com.mycompany.supermercado.models.RelatorioSintetico;
 import com.mycompany.supermercado.models.Venda;
 import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.Carrinho.tblCarrinho;
+import static com.mycompany.supermercado.views.RelatorioAnaliticoV.tblAnalitico;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -36,6 +39,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     Carrinho cr = new Carrinho();
+    RelatorioAnaliticoV ra = new RelatorioAnaliticoV();
 
     public TelaPrincipal() {
         //Aba selecionada cor
@@ -953,8 +957,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
-        RelatorioAnalitico ra = new RelatorioAnalitico();
-        ra.setVisible(true);
+        
+        int linhaSelecionada = tblRelatorio.getSelectedRow();
+        
+        if(linhaSelecionada >= 0){
+            DefaultTableModel modelo = (DefaultTableModel) tblRelatorio.getModel();
+            int idVenda = Integer.parseInt( modelo.getValueAt(linhaSelecionada, 0).toString());
+            ArrayList<RelatorioAnalitico> lstRelatorioAnalitico = RelatorioAnaliticoDAO.listar(idVenda);
+            
+            DefaultTableModel modelo2 = (DefaultTableModel) tblAnalitico.getModel();
+            modelo2.setRowCount(0);
+            
+            for(RelatorioAnalitico item : lstRelatorioAnalitico){
+                modelo2.addRow(new String[]{
+                    item.getNomeProduto(),
+                    String.valueOf(item.getValorProduto()),
+                    String.valueOf(item.getQtdProduto())
+                });
+            }
+            ra.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
     private void btnNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoProdutoActionPerformed
@@ -1407,7 +1432,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         dataS
                     });
                 }
-                lbTotalRelatorioSintetico.setText(String.valueOf(valorTotalRelatorioSintetico()));
+                if(valorTotalRelatorioSintetico() == 0.0){
+                    lbTotalRelatorioSintetico.setText(String.format("%.2f",valorTotalRelatorioSintetico()));
+                } else {
+                    lbTotalRelatorioSintetico.setText(String.format("%.2f",valorTotalRelatorioSintetico()));
+                }
 
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Digite datas válidas!", "Erro!", JOptionPane.WARNING_MESSAGE);

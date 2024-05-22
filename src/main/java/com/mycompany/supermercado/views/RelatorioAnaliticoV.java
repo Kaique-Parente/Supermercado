@@ -8,12 +8,12 @@ package com.mycompany.supermercado.views;
  *
  * @author kaiqu
  */
-public class RelatorioAnalitico extends javax.swing.JFrame {
+public class RelatorioAnaliticoV extends javax.swing.JFrame {
 
     /**
      * Creates new form RelatorioAnalitico
      */
-    public RelatorioAnalitico() {
+    public RelatorioAnaliticoV() {
         initComponents();
     }
 
@@ -29,7 +29,8 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         Cabecalho = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblDetalhes = new javax.swing.JTable();
+        tblAnalitico = new javax.swing.JTable();
+        btnVoltarDetalhes = new com.mycompany.supermercado.JCustoms.ButtonCustom();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,20 +59,13 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
         jScrollPane4.setBackground(new java.awt.Color(51, 51, 51));
 
-        tblDetalhes.setAutoCreateRowSorter(true);
-        tblDetalhes.setBackground(new java.awt.Color(81, 0, 42));
-        tblDetalhes.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        tblDetalhes.setForeground(new java.awt.Color(255, 255, 255));
-        tblDetalhes.setModel(new javax.swing.table.DefaultTableModel(
+        tblAnalitico.setAutoCreateRowSorter(true);
+        tblAnalitico.setBackground(new java.awt.Color(81, 0, 42));
+        tblAnalitico.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        tblAnalitico.setForeground(new java.awt.Color(255, 255, 255));
+        tblAnalitico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Produto", "Valor", "Quantidade"
@@ -85,17 +79,32 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblDetalhes.setFillsViewportHeight(true);
-        tblDetalhes.setIntercellSpacing(new java.awt.Dimension(10, 5));
-        tblDetalhes.setRowHeight(20);
-        tblDetalhes.setShowGrid(true);
-        jScrollPane4.setViewportView(tblDetalhes);
-        if (tblDetalhes.getColumnModel().getColumnCount() > 0) {
-            tblDetalhes.getColumnModel().getColumn(0).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(1).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(2).setResizable(false);
-            tblDetalhes.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tblAnalitico.setFillsViewportHeight(true);
+        tblAnalitico.setIntercellSpacing(new java.awt.Dimension(10, 5));
+        tblAnalitico.setRowHeight(20);
+        tblAnalitico.setShowGrid(true);
+        jScrollPane4.setViewportView(tblAnalitico);
+        if (tblAnalitico.getColumnModel().getColumnCount() > 0) {
+            tblAnalitico.getColumnModel().getColumn(0).setResizable(false);
+            tblAnalitico.getColumnModel().getColumn(1).setResizable(false);
+            tblAnalitico.getColumnModel().getColumn(2).setResizable(false);
+            tblAnalitico.getColumnModel().getColumn(2).setPreferredWidth(20);
         }
+
+        btnVoltarDetalhes.setForeground(new java.awt.Color(0, 0, 0));
+        btnVoltarDetalhes.setText("Voltar");
+        btnVoltarDetalhes.setBorderColor(new java.awt.Color(0, 0, 0));
+        btnVoltarDetalhes.setBorderPainted(false);
+        btnVoltarDetalhes.setColorClick(new java.awt.Color(255, 100, 100));
+        btnVoltarDetalhes.setColorOver(new java.awt.Color(255, 80, 80));
+        btnVoltarDetalhes.setFocusPainted(false);
+        btnVoltarDetalhes.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnVoltarDetalhes.setRadius(15);
+        btnVoltarDetalhes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarDetalhesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +113,9 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
             .addComponent(Cabecalho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVoltarDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,7 +124,9 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 .addComponent(Cabecalho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVoltarDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -122,6 +135,10 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnVoltarDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarDetalhesActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarDetalhesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,28 +157,30 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelatorioAnalitico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnaliticoV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelatorioAnalitico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnaliticoV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelatorioAnalitico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnaliticoV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelatorioAnalitico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RelatorioAnaliticoV.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RelatorioAnalitico().setVisible(true);
+                new RelatorioAnaliticoV().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cabecalho;
+    private com.mycompany.supermercado.JCustoms.ButtonCustom btnVoltarDetalhes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tblDetalhes;
+    public static javax.swing.JTable tblAnalitico;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,16 +38,17 @@ public class VendaDAO {
 
                 if (rs.next()) {
                     int id = rs.getInt(1);
+                    int linhasAfetadas2 = 0;
                     PreparedStatement comandoSQL2 = conexao.prepareStatement(" INSERT INTO `ItemVenda` (VendaID, CodigoProduto, Quantidade, ValorUnitario) VALUES (?,?,?,?)");
                     for (ItemVenda item : obj.getItens()) {
                         comandoSQL2.setInt(1, id);
                         comandoSQL2.setLong(2, item.getIdProduto());
                         comandoSQL2.setInt(3, item.getQtProduto());
                         comandoSQL2.setDouble(4, item.getVlrUnitario());
-
+                        linhasAfetadas2 += comandoSQL2.executeUpdate();
                     }
-                    int linhasAfetadas2 = comandoSQL2.executeUpdate();
-                    if (linhasAfetadas > 0) {
+                     
+                    if (linhasAfetadas2 > 0) {
                         retorno = true;
                     }
                 }
