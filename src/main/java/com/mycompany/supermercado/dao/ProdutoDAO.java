@@ -6,7 +6,6 @@ import static com.mycompany.supermercado.dao.ClienteDAO.url;
 import static com.mycompany.supermercado.utils.ConverterData.convertToDate;
 import static com.mycompany.supermercado.utils.ConverterData.convertToLocalDate;
 import com.mycompany.supermercado.models.Produto;
-import static com.mycompany.supermercado.views.TelaPrincipal.exibirMensagemItemVendido;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +17,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static com.mycompany.supermercado.views.TelaPrincipal.exibirMensagemItemErro;
 
 public class ProdutoDAO {
 
@@ -40,7 +40,13 @@ public class ProdutoDAO {
             comandoSQL.setDouble(5, obj.getValor());
             comandoSQL.setObject(6, convertToDate(obj.getValidade()));
             comandoSQL.setInt(7, obj.getQuantidade());
-            comandoSQL.setBoolean(8, obj.getStatus());
+            
+            
+            if(obj.getQuantidade() <= 0) {
+                comandoSQL.setBoolean(8, false);
+            } else {
+                comandoSQL.setBoolean(8, true);
+            }
 
             int linhasAfetadas = comandoSQL.executeUpdate();
 
@@ -50,6 +56,8 @@ public class ProdutoDAO {
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLIntegrityConstraintViolationException e) {
+            exibirMensagemItemErro('e');
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,6 +80,7 @@ public class ProdutoDAO {
             ResultSet rs = comandoSQL.executeQuery();
 
             while (rs.next()) {
+                boolean status = true;
                 long codigoProduto = rs.getLong("CodigoProduto");
                 String nome = rs.getString("Nome");
                 String marca = rs.getString("Marca");
@@ -79,7 +88,9 @@ public class ProdutoDAO {
                 double valor = rs.getDouble("Valor");
                 LocalDate dataValidade = convertToLocalDate(rs.getDate("DataValidade"));
                 int quantidade = rs.getInt("Quantidade");
-                boolean status = rs.getBoolean("Status");
+                if(quantidade <= 0) {
+                 status = false;
+                } 
 
                 Produto novoProduto = new Produto(codigoProduto, nome, marca, categoria, valor, dataValidade, quantidade, status);
                 lstProdutos.add(novoProduto);
@@ -151,8 +162,7 @@ public class ProdutoDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLIntegrityConstraintViolationException e) {
-            char letra = 'p';
-            exibirMensagemItemVendido(letra);
+            exibirMensagemItemErro('p');
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

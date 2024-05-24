@@ -3,7 +3,6 @@ package com.mycompany.supermercado.dao;
 import com.mycompany.supermercado.models.Cliente;
 import static com.mycompany.supermercado.utils.ConverterData.convertToDate;
 import static com.mycompany.supermercado.utils.ConverterData.convertToLocalDate;
-import static com.mycompany.supermercado.views.TelaPrincipal.exibirMensagemItemVendido;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static com.mycompany.supermercado.views.TelaPrincipal.exibirMensagemItemErro;
 
 public class ClienteDAO {
     
@@ -160,8 +160,7 @@ public class ClienteDAO {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }catch (SQLIntegrityConstraintViolationException e) {
-            char letra = 'c';
-            exibirMensagemItemVendido(letra);
+            exibirMensagemItemErro('c');
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

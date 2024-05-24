@@ -19,12 +19,16 @@ import com.mycompany.supermercado.utils.Conversor;
 import static com.mycompany.supermercado.views.Carrinho.tblCarrinho;
 import static com.mycompany.supermercado.views.RelatorioAnaliticoV.tblAnalitico;
 import java.awt.Color;
+import java.awt.Image;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -45,6 +49,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Aba selecionada cor
         UIManager.put("TabbedPane.selected", Color.DARK_GRAY);
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
         atualizarTabelaClientes();
         atualizarTabelaProdutos();
     }
@@ -1363,11 +1368,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
                     boolean verificar = VendaDAO.salvar(venda);
 
+                    ImageIcon icon = new ImageIcon("C:\\Supermercado\\src\\main\\resources\\images\\logo.png");
+                    Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                    
                     if (verificar) {
-                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                        JOptionPane.showMessageDialog(rootPane, "Compra Realizada!", "Obrigado pela preferência!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(image));
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Falha!");
                     }
+                    
+                    txtPesquisarProdutoVenda.setText("   Pesquisar Nome de Produto");
+                    lbTotalVenda.setText("0,00");
+                    txtQuantidadeVenda.setText("");
+                    atualizarTabelaProdutos();
+                    DefaultTableModel modelo = (DefaultTableModel) tblCarrinho.getModel();
+                    modelo.setRowCount(0);
+                    atualizarTabelaProdutos();
                 }
 
             }
@@ -1573,12 +1589,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }
 
-    public static void exibirMensagemItemVendido(char letra) {
+    public static void exibirMensagemItemErro(char letra) {
 
-        if (letra == 'p') {
-            JOptionPane.showMessageDialog(tblProdutos, "Não é possível excluir Produto já vendido!", "Erro!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(tblClientes, "Não é possível excluir Cliente que realizou uma compra!", "Erro!", JOptionPane.WARNING_MESSAGE);
+        switch (letra) {
+            case 'p' -> JOptionPane.showMessageDialog(tblProdutos, "Não é possível excluir Produto já vendido!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            case 'c' -> JOptionPane.showMessageDialog(tblClientes, "Não é possível excluir Cliente que realizou uma compra!", "Erro!", JOptionPane.WARNING_MESSAGE);
+            default -> JOptionPane.showMessageDialog(tblClientes, "Produto com código já existente!", "Erro!", JOptionPane.WARNING_MESSAGE);
         }
     }
 

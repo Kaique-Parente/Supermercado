@@ -5,21 +5,18 @@
 package com.mycompany.supermercado.views;
 
 import com.mycompany.supermercado.JCustoms.EventSwitchSelected;
-import com.mycompany.supermercado.dao.ClienteDAO;
 import com.mycompany.supermercado.dao.ProdutoDAO;
 import com.mycompany.supermercado.models.Produto;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Image;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 public class Produtos extends javax.swing.JFrame {
 
@@ -31,6 +28,7 @@ public class Produtos extends javax.swing.JFrame {
 
     public Produtos() {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
         btnStatus.addEventSelected(new EventSwitchSelected() {
             @Override
             public void onSelected(boolean selected) {
@@ -42,6 +40,7 @@ public class Produtos extends javax.swing.JFrame {
 
     public Produtos(Produto obj) {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
 
         produtoAlterar = obj;
         txtTituloProduto.setText("Editar Produto");
@@ -69,6 +68,7 @@ public class Produtos extends javax.swing.JFrame {
 
     public Produtos(Produto obj, boolean t) {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
 
         produtoAlterar = obj;
         txtTituloProduto.setText("Visualizar Produto");
@@ -192,7 +192,7 @@ public class Produtos extends javax.swing.JFrame {
 
         cbCategoriaProduto.setBackground(new java.awt.Color(255, 255, 255));
         cbCategoriaProduto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        cbCategoriaProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------", "Açougue", "Padaria", "Horti-Fruti", "Higiente Pessoal", "Produtos de Limpeza", "Bebidas", "Pet  Shop" }));
+        cbCategoriaProduto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "----------", "Açougue", "Aliimentos", "Padaria", "Horti-Fruti", "Higiente Pessoal", "Produtos de Limpeza", "Bebidas", "Pet  Shop" }));
         cbCategoriaProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbCategoriaProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -489,8 +489,11 @@ public class Produtos extends javax.swing.JFrame {
 
                     boolean retorno = ProdutoDAO.salvar(p);
 
+                    ImageIcon icon = new ImageIcon("C:\\Supermercado\\src\\main\\resources\\images\\logo.png");
+                    Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+ 
                     if (retorno) {
-                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                        JOptionPane.showMessageDialog(rootPane, "Produto Cadastrado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(image));
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Erro!");
                     }
@@ -599,7 +602,7 @@ public class Produtos extends javax.swing.JFrame {
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnCancelarProduto;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmar;
     private com.mycompany.supermercado.JCustoms.ButtonCustom btnConfirmarProduto;
-    private com.mycompany.supermercado.JCustoms.SwitchButton btnStatus;
+    public static com.mycompany.supermercado.JCustoms.SwitchButton btnStatus;
     private javax.swing.JComboBox<String> cbCategoriaProduto;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

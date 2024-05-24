@@ -14,8 +14,20 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe que manipula os dados da tabela de Venda no Banco de dados.
+ * @author kaique
+ * @since 24/05/2024
+ * @version 1.0.0
+ */
+
 public class VendaDAO {
 
+    /**
+     * Método utilizado para inserir uma Venda no Banco de Dados
+     * @param obj - objeto do tipo Venda
+     * @return boolean - true: sucesso, false: falha
+     */
     public static boolean salvar(Venda obj) {
         boolean retorno = false;
         Connection conexao = null;

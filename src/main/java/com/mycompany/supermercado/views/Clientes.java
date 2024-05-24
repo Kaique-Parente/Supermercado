@@ -10,12 +10,14 @@ import com.mycompany.supermercado.utils.ValidarEmail;
 import com.mycompany.supermercado.models.Cliente;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Insets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 /**
  *
  * @author digol
@@ -28,11 +30,13 @@ public class Clientes extends javax.swing.JFrame {
      */
     public Clientes() {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
     }
     
     public Clientes(Cliente obj){
         
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
         clienteAlterar = obj;
         txtTituloCliente.setText("Editar Cliente");
         
@@ -53,6 +57,7 @@ public class Clientes extends javax.swing.JFrame {
     
     public Clientes(Cliente obj, boolean t) {
         initComponents();
+        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png")).getImage());
         clienteAlterar = obj;
         txtTituloCliente.setText("Visualizar Cliente");
         
@@ -522,8 +527,11 @@ public class Clientes extends javax.swing.JFrame {
                     //Adicionar ao Banco de Dados
                     boolean retorno = ClienteDAO.salvar(c);
 
+                    ImageIcon icon = new ImageIcon("C:\\Supermercado\\src\\main\\resources\\images\\logo.png");
+                    Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                    
                     if(retorno) {
-                        JOptionPane.showMessageDialog(rootPane, "Sucesso!");
+                        JOptionPane.showMessageDialog(rootPane, "Cadastro Realizado!", "Seja bem-vindo(a)!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(image));
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Erro!");
                     }
@@ -562,8 +570,11 @@ public class Clientes extends javax.swing.JFrame {
             
             boolean retorno = ClienteDAO.alterar(clienteAlterar);
             
+            ImageIcon icon = new ImageIcon("C:\\Supermercado\\src\\main\\resources\\images\\logo.png");
+            Image image = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
             if(retorno) {
-                JOptionPane.showMessageDialog(rootPane, "Sucesso!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Cadastro Alterado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(image));
                 TelaPrincipal.atualizarTabelaClientes();
                 this.dispose();
             } else {
