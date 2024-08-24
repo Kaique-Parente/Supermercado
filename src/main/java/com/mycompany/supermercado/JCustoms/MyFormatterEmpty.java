@@ -145,8 +145,8 @@ public class MyFormatterEmpty extends JPanel {
 
     private boolean over;
     private Color colorOver;
-    private Color colorClick;
-    private Color borderColor;
+    public Color colorClick;
+    public Color borderColor;
     private int radius = 0;
 
     
