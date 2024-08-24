@@ -6,7 +6,7 @@ Olá, pessoal! 👋
 
 ## Apresentação 📣
 ![Imagem do Projeto](./src/main/resources/images/CapaKR.PNG) <br>
-**Link do vídeo de demonstração:** [Clique aqui](https://www.linkedin.com/posts/kaique-parente-da-silva-82697b216_ol%C3%A1-pessoal-faz-um-tempo-que-n%C3%A3o-apare%C3%A7o-activity-7232903189199560705-urga?utm_source=share&utm_medium=member_desktop)
+**Link do vídeo de demonstração:** [Clique aqui](https://www.linkedin.com/posts/kaique-parente-da-silva-82697b216_ol%C3%A1-pessoal-faz-um-tempo-que-n%C3%A3o-apare%C3%A7o-activity-7232903189199560705-urga?utm_source=share&utm_medium=member_desktop) 🎬
 
 
 ## Índice 📑
