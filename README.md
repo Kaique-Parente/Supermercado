@@ -46,4 +46,4 @@ Obrigado pelo apoio e até a próxima! 👋🚀
 
 ## :memo: Licença
 
-Este projeto está licenciado sob a [MIT License](https://github.com/Kaique-Parente/ExerciciosReactJS/blob/main/LICENSE). 📜
+Este projeto está licenciado sob a [MIT License](https://github.com/Kaique-Parente/Supermercado/blob/main/LICENSE). 📜
